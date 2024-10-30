@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\repositorios\\Proyecto-ChatBot\\Program\\Program.csproj": {}
+    "C:\\repositorios\\pii_2024_2_equipo15\\Program\\Program.csproj": {}
   },
   "projects": {
-    "C:\\repositorios\\Proyecto-ChatBot\\Program\\Program.csproj": {
+    "C:\\repositorios\\pii_2024_2_equipo15\\Program\\Program.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\repositorios\\Proyecto-ChatBot\\Program\\Program.csproj",
+        "projectUniqueName": "C:\\repositorios\\pii_2024_2_equipo15\\Program\\Program.csproj",
         "projectName": "Program",
-        "projectPath": "C:\\repositorios\\Proyecto-ChatBot\\Program\\Program.csproj",
+        "projectPath": "C:\\repositorios\\pii_2024_2_equipo15\\Program\\Program.csproj",
         "packagesPath": "C:\\Users\\joaco\\.nuget\\packages\\",
-        "outputPath": "C:\\repositorios\\Proyecto-ChatBot\\Program\\obj\\",
+        "outputPath": "C:\\repositorios\\pii_2024_2_equipo15\\Program\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\joaco\\AppData\\Roaming\\NuGet\\NuGet.Config"

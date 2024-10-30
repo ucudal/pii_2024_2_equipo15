@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\repositorios\\Proyecto-ChatBot\\Library\\Library.csproj",
+      "projectUniqueName": "C:\\repositorios\\pii_2024_2_equipo15\\Library\\Library.csproj",
       "projectName": "Library",
-      "projectPath": "C:\\repositorios\\Proyecto-ChatBot\\Library\\Library.csproj",
+      "projectPath": "C:\\repositorios\\pii_2024_2_equipo15\\Library\\Library.csproj",
       "packagesPath": "C:\\Users\\joaco\\.nuget\\packages\\",
-      "outputPath": "C:\\repositorios\\Proyecto-ChatBot\\Library\\obj\\",
+      "outputPath": "C:\\repositorios\\pii_2024_2_equipo15\\Library\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\joaco\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -377,6 +377,16 @@
             "related": ".xml"
           }
         }
+      },
+      "Library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Library.dll": {}
+        }
       }
     }
   },
@@ -970,10 +980,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Library/1.0.0": {
+      "type": "project",
+      "path": "../Library/Library.csproj",
+      "msbuildProject": "../Library/Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Library >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "NUnit >= 3.14.0",
       "NUnit.Analyzers >= 3.9.0",
@@ -987,11 +1003,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\repositorios\\Proyecto-ChatBot\\LibraryTests\\LibraryTests.csproj",
+      "projectUniqueName": "C:\\repositorios\\pii_2024_2_equipo15\\LibraryTests\\LibraryTests.csproj",
       "projectName": "LibraryTests",
-      "projectPath": "C:\\repositorios\\Proyecto-ChatBot\\LibraryTests\\LibraryTests.csproj",
+      "projectPath": "C:\\repositorios\\pii_2024_2_equipo15\\LibraryTests\\LibraryTests.csproj",
       "packagesPath": "C:\\Users\\joaco\\.nuget\\packages\\",
-      "outputPath": "C:\\repositorios\\Proyecto-ChatBot\\LibraryTests\\obj\\",
+      "outputPath": "C:\\repositorios\\pii_2024_2_equipo15\\LibraryTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\joaco\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1005,7 +1021,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\repositorios\\pii_2024_2_equipo15\\Library\\Library.csproj": {
+              "projectPath": "C:\\repositorios\\pii_2024_2_equipo15\\Library\\Library.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
