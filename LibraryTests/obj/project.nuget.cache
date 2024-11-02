@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OgaBaO6Q/wkeddW7oNgSPV0W9Uiy+DtnJy7nYmOdN3NZP0bJu8nNIDDLjfrJK/mDH2J0Ub0jPlVKwDTPZT8ysA==",
+  "dgSpecHash": "1+aYQHDILXGJNc57H1HrHeopzK9ldwAAxastNYK4HBFYlCVV5CBdIwH/LwZ7inMQ3zue+u2O6K5LMhDVJBdOJQ==",
   "success": true,
-  "projectFilePath": "C:\\repositorios\\pii_2024_2_equipo15\\LibraryTests\\LibraryTests.csproj",
+  "projectFilePath": "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\LibraryTests\\LibraryTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\joaco\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\joaco\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",

@@ -18,6 +18,7 @@ namespace Library
 
         public void SeleccionarPokemonAlEquipo(Pokemon pokemon)
         {
+            
 
         }
 

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\repositorios\\pii_2024_2_equipo15\\Program\\Program.csproj",
+      "projectUniqueName": "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\Program\\Program.csproj",
       "projectName": "Program",
-      "projectPath": "C:\\repositorios\\pii_2024_2_equipo15\\Program\\Program.csproj",
+      "projectPath": "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\Program\\Program.csproj",
       "packagesPath": "C:\\Users\\joaco\\.nuget\\packages\\",
-      "outputPath": "C:\\repositorios\\pii_2024_2_equipo15\\Program\\obj\\",
+      "outputPath": "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\Program\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\joaco\\AppData\\Roaming\\NuGet\\NuGet.Config"
