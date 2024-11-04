@@ -20,17 +20,17 @@ public class Pokemon : IPokemon
 
     public void RecibirDaño(int daño)
     {
-      
+        Salud = Salud - daño;
     }
 
 
     public int MostrarSalud()
     {
-        return 0;
+        return Salud;
     }
     
-    public string ConocerAtaques()
+    public List<IAtaque> ConocerAtaques()
     {
-        return null;
+        return Ataques; 
     }
 }
