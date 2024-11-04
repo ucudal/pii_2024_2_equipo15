@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\Library\\Library.csproj": {}
+    "C:\\Repositorios\\pii_2024_2_equipo15\\Library\\Library.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\Library\\Library.csproj": {
+    "C:\\Repositorios\\pii_2024_2_equipo15\\Library\\Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\Library\\Library.csproj",
+        "projectUniqueName": "C:\\Repositorios\\pii_2024_2_equipo15\\Library\\Library.csproj",
         "projectName": "Library",
-        "projectPath": "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\Library\\Library.csproj",
-        "packagesPath": "C:\\Users\\joaco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\Library\\obj\\",
+        "projectPath": "C:\\Repositorios\\pii_2024_2_equipo15\\Library\\Library.csproj",
+        "packagesPath": "C:\\Users\\Estudiante UCU\\.nuget\\packages\\",
+        "outputPath": "C:\\Repositorios\\pii_2024_2_equipo15\\Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\joaco\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Estudiante UCU\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
