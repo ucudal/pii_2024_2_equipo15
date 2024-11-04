@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\joaco\\.nuget\\packages\\": {}
+    "C:\\Users\\Estudiante UCU\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\Program\\Program.csproj",
+      "projectUniqueName": "C:\\Repositorios\\pii_2024_2_equipo15\\Program\\Program.csproj",
       "projectName": "Program",
-      "projectPath": "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\Program\\Program.csproj",
-      "packagesPath": "C:\\Users\\joaco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\joaco\\OneDrive\\Documentos\\GitHub\\pii_2024_2_equipo15\\Program\\obj\\",
+      "projectPath": "C:\\Repositorios\\pii_2024_2_equipo15\\Program\\Program.csproj",
+      "packagesPath": "C:\\Users\\Estudiante UCU\\.nuget\\packages\\",
+      "outputPath": "C:\\Repositorios\\pii_2024_2_equipo15\\Program\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\joaco\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Estudiante UCU\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
