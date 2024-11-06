@@ -1,3 +1,5 @@
+using NUnit.Framework;
+
 namespace LibraryTests;
 using Library;
 
@@ -26,9 +28,9 @@ public class Tests
         Tipos tipoPlanta = new Tipos("planta"); //Creamos un tipo 
         Ataques ataque = new Ataques("Rayo solar", 90, tipoPlanta); //Creamos un ataque de tipo 
 
-        Assert.AreEqual("Rayo solar", ataque.Nombre);
-        Assert.AreEqual(90, ataque.Daño);
-        Assert.AreEqual("planta", ataque.Tipo.NombreTipo);
+        Assert.That(ataque.Nombre, Is.EqualTo("Rayo solar"));
+        Assert.That(ataque.Daño, Is.EqualTo(90));
+        Assert.That(ataque.Tipo.NombreTipo, Is.EqualTo("planta"));
     }
 
     [Test]
@@ -40,8 +42,8 @@ public class Tests
         Pokemon charmander = new Pokemon("Charmander", tipoHielo, 100, new List<IAtaque> { ataqueCongelado }, new List<IAtaque>()); //Crea el Pokémon 
         entrenador.SeleccionarPokemonAlEquipo(charmander); //Añadimos el pokemon en el equipo
 
-        Assert.AreEqual(1, entrenador.Equipo.Count);
-        Assert.AreEqual("Charmander", entrenador.Equipo[0].Nombre);
+        Assert.That(entrenador.Equipo.Count, Is.EqualTo(1));
+        Assert.That(entrenador.Equipo[0].Nombre, Is.EqualTo("Charmander"));
     }
 
     [Test]
@@ -51,7 +53,7 @@ public class Tests
         Tipos tipoAgua = new Tipos("Agua"); //Creamos un tipo
         double efectividad = tipoElectrico.EfectividadDeDaño(tipoAgua); //Calcular la efectividad de daño entre los dos tipos
 
-        Assert.AreEqual(0, efectividad);
+        Assert.That(efectividad, Is.EqualTo(0));
     }
     [Test]
     public void Batalla() //test para probar la clase Batalla
@@ -60,7 +62,6 @@ public class Tests
         Entrenador entrenador2 = new Entrenador("Tabarez"); //Creamos un entrenador 
         Batalla batalla = new Batalla(entrenador1, entrenador2); //batalla entre los entrenadores
         
-        Assert.AreEqual("Bielsa", batalla.Entrenador1.Nombre); 
-        Assert.AreEqual("Tabarez", batalla.Entrenador2.Nombre); 
-    }
+        Assert.That(batalla.Entrenador1.Nombre, Is.EqualTo("Bielsa"));
+        Assert.That(batalla.Entrenador2.Nombre, Is.EqualTo("Tabarez"));    }
 }
