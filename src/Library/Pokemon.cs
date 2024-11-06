@@ -4,7 +4,8 @@ public class Pokemon : IPokemon
 {
     public string Nombre { get;  set; }        
     public ITipo Tipo { get;  set; }            
-    public int Salud { get; set; }             
+    public int Salud { get; set; }   
+    public int SaludTotal { get; set; }
     public List<IAtaque> Ataques { get;  set; }
     
     public List<IAtaque> AtaquesEspeciales { get; set; }
@@ -15,6 +16,7 @@ public class Pokemon : IPokemon
         Nombre = nombre;
         Tipo = tipo;
         Salud = salud;
+        SaludTotal = salud;
         this.Ataques = new List<IAtaque>();
         this.AtaquesEspeciales = new List<IAtaque>();
     }
@@ -23,11 +25,10 @@ public class Pokemon : IPokemon
     {
       
     }
-
-
-    public int MostrarSalud()
+    
+    public string MostrarSalud(Pokemon pokemon)
     {
-        return 0;
+        return $"{pokemon.Salud}/{pokemon.SaludTotal}" ;
     }
 
     public void AgregarAtaques(IAtaque ataque)
@@ -40,8 +41,11 @@ public class Pokemon : IPokemon
         this.AtaquesEspeciales.Add(ataque);
     }
 
-    public string ConocerAtaques()
+    public string ConocerAtaques(Pokemon pokemon)
     {
-        return null;
+        return $"---Ataques disponibles---" +
+               $"{pokemon.Ataques}" +
+               $"{pokemon.AtaquesEspeciales}";
+
     }
 }
