@@ -9,13 +9,14 @@ public class Pokemon : IPokemon
     
     public List<IAtaque> AtaquesEspeciales { get; set; }
 
-    public Pokemon(string nombre, ITipo tipo, int salud, List<IAtaque> ataques, List<IAtaque> ataquesEspeciales)
+    //Cambio la clase pokemon para que en el constructor no se pida agregar una lista de ataques, la lista se crea y se agrega un metodo para agregar los ataques a la misma
+    public Pokemon(string nombre, ITipo tipo, int salud)
     {
         Nombre = nombre;
         Tipo = tipo;
         Salud = salud;
-        Ataques = ataques;
-        AtaquesEspeciales = ataquesEspeciales;
+        this.Ataques = new List<IAtaque>();
+        this.AtaquesEspeciales = new List<IAtaque>();
     }
 
     public void RecibirDaño(int daño)
@@ -28,7 +29,17 @@ public class Pokemon : IPokemon
     {
         return 0;
     }
+
+    public void AgregarAtaques(IAtaque ataque)
+    {
+        this.Ataques.Add(ataque);
+    }
     
+    public void AgregarAtaquesEspeciales(IAtaque ataque)
+    {
+        this.AtaquesEspeciales.Add(ataque);
+    }
+
     public string ConocerAtaques()
     {
         return null;
