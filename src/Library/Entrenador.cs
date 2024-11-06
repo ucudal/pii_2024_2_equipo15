@@ -16,9 +16,17 @@ namespace Library
             return 0 ;
         }
 
+        public void MostrarPokemon()
+        {
+            foreach (Pokemon pokemon in Equipo)
+            {
+                Console.WriteLine(pokemon);
+            }
+        }
+
         public void SeleccionarPokemonAlEquipo(Pokemon pokemon)
         {
-
+            
         }
 
         public void CambiarPokemonDelEquipo(Pokemon pokemon)
