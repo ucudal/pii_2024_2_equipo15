@@ -3,3 +3,10 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //-------------------------------------
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("¡Hola, mundo!");
+    }
+}
