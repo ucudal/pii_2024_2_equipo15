@@ -18,9 +18,13 @@ public class Pokemon : IPokemon
         AtaquesEspeciales = ataquesEspeciales;
     }
 
-    public void RecibirDaño(int daño)
+    public void recibirDaño(int daño)
     {
-      
+        Salud -= daño;
+        if (Salud <= 0)
+        {
+            Salud = 0;
+        }
     }
 
 

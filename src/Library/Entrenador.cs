@@ -13,7 +13,11 @@ namespace Library
 
         public int Atacar(IPokemon objetivo, IAtaque ataque)
         {
-            return 0 ;
+            int efectividadObjetivo= ataque.Tipo.efectividadDeDaño(objetivo.Tipo);  // Calcula la efectividad del tipo del ataque en relación con el tipo del objetivo
+            int dañoTotal = (int)(ataque.Daño * efectividadObjetivo); //Cálculo del daño del ataque aumentado con la efectividad del tipo
+            objetivo.recibirDaño(dañoTotal); //Realiza el ataque restándole salud al objetivo
+
+            return dañoTotal;
         }
 
         public void MostrarPokemon()
