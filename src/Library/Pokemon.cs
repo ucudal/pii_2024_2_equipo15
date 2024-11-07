@@ -21,9 +21,13 @@ public class Pokemon : IPokemon
         AtaquesEspeciales = new List<IAtaque>();
     }
 
-    public void RecibirDaño(int daño)
+    public void recibirDaño(int daño)
     {
-      
+        Salud -= daño;
+        if (Salud <= 0)
+        {
+            Salud = 0;
+        }
     }
     
     public string MostrarSalud(Pokemon pokemon)
