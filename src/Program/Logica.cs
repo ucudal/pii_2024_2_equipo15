@@ -73,7 +73,37 @@ public class Logica
     //     A continuación se instancian todos los pokemon disponibles
     //--------------------------------------------------------------------------------
 
+    private static Pokemon Blastoise = new Pokemon("Blastoise", Agua, 268);
+    private static Pokemon Arbok = new Pokemon("Arbok", Veneno, 230);
+    private static Pokemon Pikachu = new Pokemon("Pikachu", Electrico, 180);
+    private static Pokemon Sandslash = new Pokemon("Sandslash", Tierra, 260);
+    private static Pokemon Ninetales = new Pokemon("Ninetales", Fuego, 256);
+    private static Pokemon Persian = new Pokemon("Persian", Normal, 240);
+    private static Pokemon Dragonair = new Pokemon("Dragonair", Dragon, 232);
+    private static Pokemon Meganium = new Pokemon("Meganium", Planta, 270);
+    private static Pokemon Misdreavus = new Pokemon("Misdreavus", Fantasma, 230);
+    private static Pokemon Hariyama = new Pokemon("Hariyama", Lucha, 398);
+    private static Pokemon Nosepass = new Pokemon("Nosepass", Roca, 170);
+    private static Pokemon Glaceon = new Pokemon("Glaceon", Hielo, 240);
+    private static Pokemon Accelgor = new Pokemon("Accelgor", Bicho, 270);
+    private static Pokemon Tornadus = new Pokemon("Tornadus", Volador, 268);
+    private static Pokemon Samurott = new Pokemon("Samurott", Agua, 300);
+    private static Pokemon Weezing = new Pokemon("Weezing", Veneno, 240);
+    private static Pokemon Ampharos = new Pokemon("Ampharos", Electrico, 290);
+    private static Pokemon Donphan = new Pokemon("Donphan", Tierra, 290);
+    private static Pokemon Darmanitan = new Pokemon("Darmanitan", Fuego, 320);
+    private static Pokemon Snorlax = new Pokemon("Snorlaz", Normal, 430);
+    private static Pokemon Goodra = new Pokemon("Goodra", Dragon, 290);
+    private static Pokemon Sceptile = new Pokemon("Sceptile", Planta, 250);
+    private static Pokemon Mismagius = new Pokemon("Mismagius", Fantasma, 230);
+    private static Pokemon Passimian = new Pokemon("Passimian", Lucha, 310);
+    private static Pokemon Rampardos = new Pokemon("Rampardos", Roca, 304);
+    private static Pokemon Beartic = new Pokemon("Beartic", Hielo, 300);
+    private static Pokemon Pinsir = new Pokemon("Pinsir", Bicho, 240);
+    private static Pokemon Pidgeotto = new Pokemon("Pidgeotto", Volador, 236);
+    
+    
+    
+    
 
-    
-    
 }

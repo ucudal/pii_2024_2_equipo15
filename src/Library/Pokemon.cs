@@ -17,8 +17,8 @@ public class Pokemon : IPokemon
         Tipo = tipo;
         Salud = salud;
         SaludTotal = salud;
-        this.Ataques = new List<IAtaque>();
-        this.AtaquesEspeciales = new List<IAtaque>();
+        Ataques = new List<IAtaque>();
+        AtaquesEspeciales = new List<IAtaque>();
     }
 
     public void RecibirDaño(int daño)

@@ -11,5 +11,5 @@ public interface IPokemon
 
     void RecibirDaño(int daño);      // Método para recibir daño y reducir salud
      
-    int MostrarSalud(); // Método para mostrar salud de un Pokémon
+    int MostrarSalud();         // Método para mostrar salud de un Pokémon
 }
