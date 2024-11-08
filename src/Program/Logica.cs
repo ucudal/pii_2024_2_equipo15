@@ -61,22 +61,22 @@ public class Logica
     private static Ataques RayoHielo = new Ataques("Rayo Hielo", 90, Hielo); //Creamos un ataque llamado Rayo Hielo
     private static Ataques SombraVil = new Ataques("Sombra Vil", 40, Fantasma); //Creamos un ataque llamado Sombra Vil
     private static Ataques BolaSombra = new Ataques("Bola Sombra", 80, Fantasma); //Creamos un ataque llamado Bola Sombra
-    private static Ataques ABocajarro = new Ataques("A Bocajarro", 120, Lucha); //Creamos un ataque llamado A Bocajarro
-    private static Ataques DanzaPetalo = new Ataques("Danza Petalo", 120, Planta); //Creamos un ataque llamado Danza Petalo
-    private static Ataques Ventisca = new Ataques("Ventisca", 110, Hielo); //Creamos un ataque llamado Ventisca
-    private static Ataques HidroBomba = new Ataques("Hidro Bomba", 110, Agua); //Creamos un ataque llamado Hidro Bomba
-    private static Ataques Impactrueno = new Ataques("Impactureno", 40,Electrico); //Creamos un ataque llamado Impactrueno
-    private static Ataques Picotazo = new Ataques("Picotazo", 35, Volador); //Creamos un ataque llamado Picotazo
-    private static Ataques Garraumbria = new Ataques("Garra Umbria", 60, Bicho); //Creamos un ataque llamado Garra Umbria
-    private static Ataques GolpeMordaza = new Ataques("Golpe Mordaza", 90, Bicho); //Creamos un ataque llamado Golpe Mordaza
+    public static Ataques ABocajarro = new Ataques("A Bocajarro", 120, Lucha); //Creamos un ataque llamado A Bocajarro
+    public static Ataques DanzaPetalo = new Ataques("Danza Petalo", 120, Planta); //Creamos un ataque llamado Danza Petalo
+    public static Ataques Ventisca = new Ataques("Ventisca", 110, Hielo); //Creamos un ataque llamado Ventisca
+    public static Ataques HidroBomba = new Ataques("Hidro Bomba", 110, Agua); //Creamos un ataque llamado Hidro Bomba
+    public static Ataques Impactrueno = new Ataques("Impactureno", 40,Electrico); //Creamos un ataque llamado Impactrueno
+    public static Ataques Picotazo = new Ataques("Picotazo", 35, Volador); //Creamos un ataque llamado Picotazo
+    public static Ataques Garraumbria = new Ataques("Garra Umbria", 60, Bicho); //Creamos un ataque llamado Garra Umbria
+    public static Ataques GolpeMordaza = new Ataques("Golpe Mordaza", 90, Bicho); //Creamos un ataque llamado Golpe Mordaza
     
     //--------------------------------------------------------------------------------
     //     A continuación se instancian todos los pokemon disponibles
     //--------------------------------------------------------------------------------
 
-    private static Pokemon Blastoise = new Pokemon("Blastoise", Agua, 268);
-    private static Pokemon Arbok = new Pokemon("Arbok", Veneno, 230);
-    private static Pokemon Pikachu = new Pokemon("Pikachu", Electrico, 180);
+    public static Pokemon Blastoise = new Pokemon("Blastoise", Agua, 268);
+    public static Pokemon Arbok = new Pokemon("Arbok", Veneno, 230);
+    public static Pokemon Pikachu = new Pokemon("Pikachu", Electrico, 180);
     private static Pokemon Sandslash = new Pokemon("Sandslash", Tierra, 260);
     private static Pokemon Ninetales = new Pokemon("Ninetales", Fuego, 256);
     private static Pokemon Persian = new Pokemon("Persian", Normal, 240);
