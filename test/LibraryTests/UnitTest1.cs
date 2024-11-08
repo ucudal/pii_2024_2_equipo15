@@ -110,8 +110,8 @@ public class Batalla
         var entrenador = new Entrenador("Juan");
         var pokemon_actual = new Pokemon("Charizard", new Tipos("Fuego"), 110);
         var nuevo_pokemon = new Pokemon("Pikachu", new Tipos("Electrico"), 130);
-        entrenador.AgregarPokemonAlEquipo(pokemon_actual);
-        entrenador.AgregarPokemonAlEquipo(nuevo_pokemon);
+        entrenador.AgregarPokemon(pokemon_actual);
+        entrenador.AgregarPokemon(nuevo_pokemon);
 
         var batalla = new Batalla(entrenador, new Entrenador("Ash"));
         var resultado = batalla.CambiarPokemon(entrenador, nuevo_pokemon);
@@ -127,10 +127,102 @@ public class Entrenador
         var entrenador = new Entrenador("Juan");
         var pokemon = new Pokemon("Gengar", new Tipos("Fantasma"), 100);
         var resultado = entrenador.AgregarPokemon(pokemon);
+
+        Assert.AreEqual("Se agrego a Gengar al equipo");
     }
-}
+    public void CambiarPokemon()
+    {
+        var entrenador = new Entrenador("Juan");
+        var pokemon_actual = new Pokemon("Bulbasur", new Tipos("Planta"), 90);
+        var nuevo_pokemon = new Pokemon("Squirtle", new Tipos("Agua"), 80);
+        entrenador.AgregarPokemon(pokemon_actual);
+        var resultado = entrenador.CambiarPokemon(pokemon_actual, nuevo_pokemon);
+
+        Assert.AreEqual("Se cambio a Bulbasur por Squirtle", resultado);
+        Assert.Contains(nuevo_pokemon, entrenador.Equipo);
     
+    }
+}    
+public class Entrenador
+{
+    [Test]
+    public void AgregarPokemon()
+    {
+        var entrenador = new Entrenador("Juan");
+        var pokemon = new Pokemon("Gengar", new Tipos("Fantasma"), 100);
+        var resultado = entrenador.AgregarPokemon(pokemon);
+
+        Assert.AreEqual("Se agrego a Gengar al equipo");
+    }
+    public void CambiarPokemon()
+    {
+        var entrenador = new Entrenador("Juan");
+        var pokemon_actual = new Pokemon("Bulbasur", new Tipos("Planta"), 90);
+        var nuevo_pokemon = new Pokemon("Squirtle", new Tipos("Agua"), 80);
+        entrenador.AgregarPokemon(pokemon_actual);
+        var resultado = entrenador.CambiarPokemon(pokemon_actual, nuevo_pokemon);
+
+        Assert.AreEqual("Se cambio a Bulbasur por Squirtle", resultado);
+        Assert.Contains(nuevo_pokemon, entrenador.Equipo);
     
+    }
+}    
+
+public class Pokemon
+{
+    [Test]
+    public void RecibirDaño()
+    {
+        var pokemon = new Pokemon("Charizard", new Tipos("Fuego"), 100);
+        pokemon.RecibirDaño(40);
+
+        Assert.AreEqual(60, pokemon.Salud);
+    }
+    public void MostrarSalud()
+    {
+        var pokemon = new Pokemon("Hypno", new Tipos("Psiquico"), 130);
+        pokemon.RecibirDaño(20);
+        var resultado = pokemon.MostrarSalud(pokemon);
+
+        Assert.AreEqual("130/150", resultado);
+        
     
+    }
+}    
+public class Tipos
+{
+    [Test]
+    public void AltaEfectividad()
+    {
+        var tipo_ataque = new Tipos("Agua");
+        var tipo_objetivo = new Tipos("Fuego");
+
+        int efectividad = tipo_ataque.AltaEfectividad(tipo_objetivo);
+
+        Assert.AreEqual(4, efectividad);
+    }    
+    public void MediaEfectividad()
+    {
+        var tipo_ataque = new Tipos("Agua");
+        var tipo_objetivo = new Tipos("Agua");
+
+        int efectividad = tipo_ataque.MediaEfectividad(tipo_objetivo);
+
+        Assert.AreEqual(3, efectividad);
+    
+    } 
+    public void BajaEfectividad()
+    {
+        var tipo_ataque = new Tipos("Electrico");
+        var tipo_objetivo = new Tipos("Tierra");
+
+        int efectividad = tipo_ataque.BajaEfectividad(tipo_objetivo);
+
+        Assert.AreEqual(2, efectividad);
+    
+    } 
+    
+}    
+
 }
 
