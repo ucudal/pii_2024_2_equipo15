@@ -70,8 +70,8 @@ public class bLogica
     private static Ataques Picotazo = new Ataques("Picotazo", 35, Volador); //Creamos un ataque llamado Picotazo
     private static Ataques Garraumbria = new Ataques("Garra Umbria", 60, Bicho); //Creamos un ataque llamado Garra Umbria
     private static Ataques GolpeMordaza = new Ataques("Golpe Mordaza", 90, Bicho); //Creamos un ataque llamado Golpe Mordaza
-    private static Ataques Gravedad = new Ataques("Gravedad", 70, Bicho); // Creamos un ataque llamado Gravedad
-    private static Ataques Psicoonda = new Ataques("Psicoonda", 800, Bicho); //Creamos un ataque llamado Psicoonda
+    private static Ataques Gravedad = new Ataques("Gravedad", 70, Psiquico); // Creamos un ataque llamado Gravedad
+    private static Ataques Psicoonda = new Ataques("Psicoonda", 800, Psiquico); //Creamos un ataque llamado Psicoonda
     
     
     //--------------------------------------------------------------------------------
