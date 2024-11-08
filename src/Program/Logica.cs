@@ -28,6 +28,7 @@ public class bLogica
     private static Tipos Tierra = new Tipos("Tierra"); //Creamos un tipo llamado Tierra    
     private static Tipos Veneno = new Tipos("Veneno"); //Creamos un tipo llamado Veneno    
     private static Tipos Volador = new Tipos("Volador"); //Creamos un tipo llamado Volador    
+    private static Tipos Psiquico = new Tipos("Psiquico"); //Creamos un tipo llamado Psiquico
     
     //--------------------------------------------------------------------------------
     //     A continuación se instancian todos los ataques disponibles
@@ -69,6 +70,9 @@ public class bLogica
     private static Ataques Picotazo = new Ataques("Picotazo", 35, Volador); //Creamos un ataque llamado Picotazo
     private static Ataques Garraumbria = new Ataques("Garra Umbria", 60, Bicho); //Creamos un ataque llamado Garra Umbria
     private static Ataques GolpeMordaza = new Ataques("Golpe Mordaza", 90, Bicho); //Creamos un ataque llamado Golpe Mordaza
+    private static Ataques Gravedad = new Ataques("Gravedad", 70, Bicho); // Creamos un ataque llamado Gravedad
+    private static Ataques Psicoonda = new Ataques("Psicoonda", 800, Bicho); //Creamos un ataque llamado Psicoonda
+    
     
     //--------------------------------------------------------------------------------
     //     A continuación se instancian todos los pokemon disponibles
@@ -101,7 +105,10 @@ public class bLogica
     private static Pokemon Rampardos = new Pokemon("Rampardos", Roca, 304);
     private static Pokemon Beartic = new Pokemon("Beartic", Hielo, 300);
     private static Pokemon Pinsir = new Pokemon("Pinsir", Bicho, 240);
+    private static Pokemon Hypno = new Pokemon("Hypno", Psiquico, 220);
     private static Pokemon Pidgeotto = new Pokemon("Pidgeotto", Volador, 236);
+    private static Pokemon Mewtwo = new Pokemon("Mewtwo", Psiquico, 305);
+    
     
     
     
