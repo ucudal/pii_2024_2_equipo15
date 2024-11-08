@@ -13,13 +13,44 @@ namespace Library
 
         public int Atacar(IPokemon objetivo, IAtaque ataque)
         {
-            
+            if (ataque.EsEspecial == true)
+            {
+                Random random = new Random();
+                int probabilidad = random.Next(0, 10);
+                if (ataque.Tipo.NombreTipo == "Fuego")
+                {
+                    if (probabilidad <= 1) ;
+                    {
+                        objetivo.EstaQuemado = true;
+                    }
+                }
+                else if (ataque.Tipo.NombreTipo == "Electrico")
+                {
+                    if (probabilidad <= 1) ;
+                    {
+                        objetivo.EstaParalizado = true;
+                    }
+                }
+                else if (ataque.Tipo.NombreTipo == "Veneno")
+                {
+                    if (probabilidad <= 3) ;
+                    {
+                        objetivo.EstaEnvenenado = true;
+                    }
+                }
+                else if (ataque.Tipo.NombreTipo == "Planta")
+                {
+                    objetivo.EstaDormido = true;
+                }
+                
+                
+            }
             int efectividadObjetivo= ataque.Tipo.efectividadDeDaño(objetivo.Tipo);  // Calcula la efectividad del tipo del ataque en relación con el tipo del objetivo
             int dañoTotal = (int)(ataque.Daño * efectividadObjetivo); //Cálculo del daño del ataque aumentado con la efectividad del tipo
             objetivo.recibirDaño(dañoTotal); //Realiza el ataque restándole salud al objetivo
-
             return dañoTotal;
         }
+        
 
         public void MostrarPokemon()
         {
