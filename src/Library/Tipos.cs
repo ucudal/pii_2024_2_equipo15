@@ -13,19 +13,10 @@ public class Tipos : ITipo
     //Muy_efectivo:4 Efectivo:3 Poco_efectivo:2
     public int efectividadDeDaño(ITipo tipoObjetivo)
     {
-        // ----------------------------Acero----------------------------------------//
-        if (NombreTipo == "Acero")
-        {
-            if (tipoObjetivo.NombreTipo == "Hada" || tipoObjetivo.NombreTipo == "Hielo" ||
-                tipoObjetivo.NombreTipo == "Roca")
-                return 4;
-            else if (tipoObjetivo.NombreTipo == "Acero" || tipoObjetivo.NombreTipo == "Agua" ||
-                     tipoObjetivo.NombreTipo == "Fuego" || tipoObjetivo.NombreTipo == "Eléctrico")
-                return 3;
-        }
+        
         
         // ----------------------------Agua----------------------------------------//
-        else if (NombreTipo == "Agua")
+        if (NombreTipo == "Agua")
         {
             if (tipoObjetivo.NombreTipo == "Fuego" ||  tipoObjetivo.NombreTipo == "Tierra" || tipoObjetivo.NombreTipo == "Roca")
                 return 4; 
@@ -85,16 +76,6 @@ public class Tipos : ITipo
                 return 4; 
             else if (tipoObjetivo.NombreTipo == "Agua" || tipoObjetivo.NombreTipo == "Dragón" ||
                      tipoObjetivo.NombreTipo == "Fuego" || tipoObjetivo.NombreTipo == "Roca")
-                return 3;
-        } 
-        
-        // ----------------------------Hada----------------------------------------//
-        else if (NombreTipo == "Hada")
-        {
-            if (tipoObjetivo.NombreTipo == "Dragón" ||  tipoObjetivo.NombreTipo == "Lucha" || tipoObjetivo.NombreTipo == "Siniestro")
-                return 4; 
-            else if (tipoObjetivo.NombreTipo == "Acero" || tipoObjetivo.NombreTipo == "Fuego" ||
-                        tipoObjetivo.NombreTipo == "Veneno" )
                 return 3;
         } 
         
@@ -159,15 +140,6 @@ public class Tipos : ITipo
                 return 3;
         }
         
-        // ----------------------------Siniestro----------------------------------------//
-        else if (NombreTipo == "Siniestro")
-        {
-            if (tipoObjetivo.NombreTipo == "Fantasma" ||  tipoObjetivo.NombreTipo == "Psíquico")
-                return 4; 
-            else if (tipoObjetivo.NombreTipo == "Acero" || tipoObjetivo.NombreTipo == "Lucha" ||
-                                   tipoObjetivo.NombreTipo == "Siniestro")
-                return 3;
-        }
         
         // ----------------------------Tierra----------------------------------------//
         else if (NombreTipo == "Tierra")
