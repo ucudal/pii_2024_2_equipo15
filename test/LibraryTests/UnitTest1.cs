@@ -13,7 +13,7 @@ public class Tests
         Tipos tipoElectrico = new Tipos("Electrico"); //Creamos un tipo llamado Electrico
         Ataques ataqueRayo = new Ataques("Rayo", 50, tipoElectrico); //Creamos un ataque llamado Rayo
         List<IAtaque> ataques = new List<IAtaque> { ataqueRayo }; //A la lista de ataques agregamos Rayo
-        Pokemon pokemon = new Pokemon("Pikachu", tipoElectrico, 100, ataques, new List<IAtaque>()); //creamos el pokemon Pikachu
+        Pokemon pokemon = new Pokemon("Pikachu", tipoElectrico, 100); //creamos el pokemon Pikachu
 
         Assert.That(pokemon.Nombre, Is.EqualTo("Pikachu"));
         Assert.That(pokemon.Salud, Is.EqualTo(100));
@@ -39,8 +39,8 @@ public class Tests
         Entrenador entrenador = new Entrenador("Guille"); //Creamos un entrenador 
         Tipos tipoHielo = new Tipos("Hielo"); //Creamos un tipo 
         Ataques ataqueCongelado = new Ataques("Congelado", 90, tipoHielo); //Creamos un ataque 
-        Pokemon charmander = new Pokemon("Charmander", tipoHielo, 100, new List<IAtaque> { ataqueCongelado }, new List<IAtaque>()); //Crea el Pokémon 
-        entrenador.SeleccionarPokemonAlEquipo(charmander); //Añadimos el pokemon en el equipo
+        Pokemon charmander = new Pokemon("Charmander", tipoHielo, 100); //Crea el Pokémon 
+        entrenador.AgregarPokemonAlEquipo(charmander); //Añadimos el pokemon en el equipo
 
         Assert.That(entrenador.Equipo.Count, Is.EqualTo(1));
         Assert.That(entrenador.Equipo[0].Nombre, Is.EqualTo("Charmander"));
@@ -51,7 +51,7 @@ public class Tests
     {
         Tipos tipoElectrico = new Tipos("Electrico"); //Creamos un tipo 
         Tipos tipoAgua = new Tipos("Agua"); //Creamos un tipo
-        double efectividad = tipoElectrico.EfectividadDeDaño(tipoAgua); //Calcular la efectividad de daño entre los dos tipos
+        double efectividad = tipoElectrico.efectividadDeDaño(tipoAgua); //Calcular la efectividad de daño entre los dos tipos
 
         Assert.That(efectividad, Is.EqualTo(0));
     }
