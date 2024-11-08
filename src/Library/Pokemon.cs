@@ -38,17 +38,44 @@ public class Pokemon : IPokemon
     
     public string MostrarSalud(Pokemon pokemon)
     {
-        return $"{pokemon.Salud}/{pokemon.SaludTotal}" ;
+        return $"{Salud}/{SaludTotal}" ;
     }
 
     public void AgregarAtaques(IAtaque ataque)
     {
-        this.Ataques.Add(ataque);
+        Ataques.Add(ataque);
     }
     
     public string ConocerAtaques(Pokemon pokemon)
     {
         return $"---Ataques disponibles---" +
                $"{pokemon.Ataques}";
+    }
+    
+    public void Curar(int pocion)
+    {
+        Salud += pocion;
+        if (Salud > SaludTotal)
+        {
+            Salud = SaludTotal;
+        }
+    }
+    
+    public void Revivir(double revive)
+    {
+        if (Salud == 0)
+        {
+            Salud = (int)(SaludTotal * revive);
+        }
+    }
+
+    public void CurarEfecto()
+    {
+        {
+            EstaDormido = false;
+            EstaEnvenenado = false;
+            EstaParalizado = false;
+            EstaQuemado = false;
+        }
     }
 }
