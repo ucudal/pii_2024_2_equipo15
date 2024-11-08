@@ -6,7 +6,7 @@
 
 using Library;
 
-public class Logica
+public class bLogica
 {
 
     //--------------------------------------------------------------------------------

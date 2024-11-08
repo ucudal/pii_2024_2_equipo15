@@ -63,5 +63,74 @@ public class Tests
         Batalla batalla = new Batalla(entrenador1, entrenador2); //batalla entre los entrenadores
         
         Assert.That(batalla.Entrenador1.Nombre, Is.EqualTo("Bielsa"));
-        Assert.That(batalla.Entrenador2.Nombre, Is.EqualTo("Tabarez"));    }
+        Assert.That(batalla.Entrenador2.Nombre, Is.EqualTo("Tabarez"));
+        
+    } 
+public class AtaquesTest
+{
+    [Test]
+    public void Constructor()
+    {
+        string nombre = "Impactrueno";
+        int daño = 40;
+        ITipo tipo = new Tipos("Electrico");
+
+        var ataque = new Ataques(nombre, daño, tipo);
+
+        Assert.AreEqual(nombre, ataque.Nombre);
+        Assert.AreEqual(daño, ataque.Daño);
+        Assert.AreEqual(tipo, ataque.Tipo);
+            
+
+
+    }
+        
 }
+
+public class Batalla
+{
+    [Test]
+    public void CambiarTurno()
+    {
+        var entrenador1 = new Entrenador("Juan");
+        var entrenador2 = new Entrenador("Ash");
+        var batlla = new Batalla(entrenador1, entrenador2);
+        bool turno_inicial =    batalla.MostrarTurnoActual().Contains(entrenador1.Nombre);
+        batalla.CambiarTurno();
+        bool turno_final = batalla.MostrarTurnoActual().Contains(entrenador1.Nombre);
+
+        Assert.AreNotEqual(turno_inicial, turno_final);
+
+
+    }
+
+    [Test]
+    public void CambiarPokemon()
+    {
+        var entrenador = new Entrenador("Juan");
+        var pokemon_actual = new Pokemon("Charizard", new Tipos("Fuego"), 110);
+        var nuevo_pokemon = new Pokemon("Pikachu", new Tipos("Electrico"), 130);
+        entrenador.AgregarPokemonAlEquipo(pokemon_actual);
+        entrenador.AgregarPokemonAlEquipo(nuevo_pokemon);
+
+        var batalla = new Batalla(entrenador, new Entrenador("Ash"));
+        var resultado = batalla.CambiarPokemon(entrenador, nuevo_pokemon);
+        Assert.AreEqual("El entrenador que tenia el turno cambio de pokemon y pierde su turno", resultado);
+    }
+}
+
+public class Entrenador
+{
+    [Test]
+    public void AgregarPokemon()
+    {
+        var entrenador = new Entrenador("Juan");
+        var pokemon = new Pokemon("Gengar", new Tipos("Fantasma"), 100);
+        var resultado = entrenador.AgregarPokemon(pokemon);
+    }
+}
+    
+    
+    
+}
+
