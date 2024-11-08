@@ -15,43 +15,46 @@ namespace Library
         {
             if (ataque.EsEspecial == true)
             {
-                Random random = new Random();
-                int probabilidad = random.Next(0, 10);
-                if (ataque.Tipo.NombreTipo == "Fuego")
+                if (objetivo.EstaDormido == false && objetivo.EstaEnvenenado == false && objetivo.EstaParalizado == false && objetivo.EstaQuemado == false)
                 {
-                    if (probabilidad <= 1) ;
+                    Random random = new Random();
+                    int probabilidad = random.Next(0, 10);
+                    if (ataque.Tipo.NombreTipo == "Fuego")
                     {
-                        objetivo.EstaQuemado = true;
+                        if (probabilidad <= 1) ;
+                        {
+                            objetivo.EstaQuemado = true;
+                        }
                     }
-                }
-                else if (ataque.Tipo.NombreTipo == "Electrico")
-                {
-                    if (probabilidad <= 1) ;
+                    else if (ataque.Tipo.NombreTipo == "Electrico")
                     {
-                        objetivo.EstaParalizado = true;
+                        if (probabilidad <= 1) ;
+                        {
+                            objetivo.EstaParalizado = true;
+                        }
                     }
-                }
-                else if (ataque.Tipo.NombreTipo == "Veneno")
-                {
-                    if (probabilidad <= 3) ;
+                    else if (ataque.Tipo.NombreTipo == "Veneno")
                     {
-                        objetivo.EstaEnvenenado = true;
+                        if (probabilidad <= 3) ;
+                        {
+                            objetivo.EstaEnvenenado = true;
+                        }
                     }
-                }
-                else if (ataque.Tipo.NombreTipo == "Planta")
-                {
-                    objetivo.EstaDormido = true;
-                }
+                    else if (ataque.Tipo.NombreTipo == "Planta")
+                    {
+                        objetivo.EstaDormido = true;
+                    }
                 
                 
+                }
+               
             }
             int efectividadObjetivo= ataque.Tipo.efectividadDeDaño(objetivo.Tipo);  // Calcula la efectividad del tipo del ataque en relación con el tipo del objetivo
             int dañoTotal = (int)(ataque.Daño * efectividadObjetivo); //Cálculo del daño del ataque aumentado con la efectividad del tipo
             objetivo.recibirDaño(dañoTotal); //Realiza el ataque restándole salud al objetivo
             return dañoTotal;
-        }
         
-
+        }
         public void MostrarPokemon()
         {
             foreach (Pokemon pokemon in Equipo)
