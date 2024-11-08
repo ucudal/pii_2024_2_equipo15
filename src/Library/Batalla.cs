@@ -22,7 +22,7 @@ public class Batalla
         {
             entrenador.CambiarPokemonDeEquipo(entrenador.Equipo[0], nuevoPokemon); 
             CambiarTurno();
-            return $"el entrenador que tenia el turno ha cambiado de Pokémon y pierde el turno.";
+            return $"El entrenador que tenia el turno ha cambiado de Pokémon y pierde el turno.";
         }
         return "No es tu turno para cambiar de Pokémon.";
     }
@@ -44,7 +44,7 @@ public class Batalla
         if (turnoEntrenador1 && entrenador == Entrenador1 || !turnoEntrenador1 && entrenador == Entrenador2)
         {
             CambiarTurno();
-            return $"el entrenador que tenia el turno usó un item y pierde el turno.";
+            return $"El entrenador que tenia el turno usó un item y pierde el turno.";
         }
         return "No es tu turno para usar un ítem.";
     }
