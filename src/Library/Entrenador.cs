@@ -28,6 +28,11 @@ namespace Library
                 Console.WriteLine(pokemon);
             }
         }
+        public string UnirseAListaDeEspera(List<Entrenador> listaEspera)
+        {
+            listaEspera.Add(this);
+            return $"{Nombre} se ha unido a la lista de espera para una batalla.";
+        }
 
         public string AgregarPokemonAlEquipo(Pokemon pokemon)
         {
@@ -61,7 +66,10 @@ namespace Library
 
         public void MostrarEquipo()
         {
-            
+            foreach (var pokemon in Equipo)
+            {
+                Console.WriteLine(pokemon.Nombre);
+            }
         }
     }
 }
