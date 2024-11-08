@@ -26,6 +26,19 @@ public class Batalla
         }
         return "No es tu turno para cambiar de Pokémon.";
     }
+    public string MostrarTurnoActual()
+    {
+        string turnoActual;
+        if (turnoEntrenador1)
+        {
+            turnoActual = Entrenador1.Nombre;
+        }
+        else
+        {
+            turnoActual = Entrenador2.Nombre;
+        }
+        return $"Es el turno de: {turnoActual}";
+    }
     public string UsarItem(Entrenador entrenador, string item)
     {
         if (turnoEntrenador1 && entrenador == Entrenador1 || !turnoEntrenador1 && entrenador == Entrenador2)

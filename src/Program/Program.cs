@@ -1,4 +1,5 @@
 ﻿using System;
+using Library;
 using System.Collections.Generic;
 
 class Program
@@ -9,17 +10,17 @@ class Program
     {
         Console.WriteLine("Hello, World!");
 
-        // Ejemplo: Crear entrenadores y unirse a la lista de espera
-        Entrenador entrenador1 = new Entrenador("Ash");
-        Entrenador entrenador2 = new Entrenador("Gary");
+
+        Entrenador entrenador1 = new Entrenador("lolo");
+        Entrenador entrenador2 = new Entrenador("pepe");
 
         Console.WriteLine(entrenador1.UnirseAListaDeEspera(listaEspera));
         Console.WriteLine(entrenador2.UnirseAListaDeEspera(listaEspera));
 
-        // Mostrar lista de espera
+
         MostrarListaEspera();
 
-        // Iniciar batalla si hay dos jugadores en la lista de espera
+
         if (listaEspera.Count >= 2)
         {
             IniciarBatalla();
@@ -28,12 +29,13 @@ class Program
 
     static void MostrarListaEspera()
     {
-        Console.WriteLine("--- Jugadores en espera ---");
+        Console.WriteLine("-Jugadores en espera-");
         foreach (var entrenador in listaEspera)
         {
             Console.WriteLine(entrenador.Nombre);
         }
     }
+
     static void IniciarBatalla()
     {
         var entrenador1 = listaEspera[0];
@@ -42,5 +44,11 @@ class Program
 
         Batalla batalla = new Batalla(entrenador1, entrenador2);
         Console.WriteLine($"¡Batalla iniciada entre {entrenador1.Nombre} y {entrenador2.Nombre}!");
+        Console.WriteLine(batalla.MostrarTurnoActual()); 
+
+        Console.WriteLine(batalla.CambiarPokemon(entrenador1, entrenador1.Equipo[0]));         Console.WriteLine(batalla.MostrarTurnoActual()); 
+
+
+        Console.WriteLine(batalla.MostrarTurnoActual());
     }
 }

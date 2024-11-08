@@ -8,10 +8,7 @@ using Library;
 
 public class Logica
 {
-    static void Main()
-    {
-        Console.WriteLine("¡Hola, Mundo!");
-    }
+
     //--------------------------------------------------------------------------------
     //     A continuación se instancian todos los tipos disponibles
     //--------------------------------------------------------------------------------
