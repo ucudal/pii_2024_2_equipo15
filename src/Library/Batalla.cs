@@ -56,16 +56,16 @@ public class Batalla
 
             foreach (Pokemon pokemon in Entrenador1.Equipo)  //Buscar si hay algún pokemon de Entrenador1 que tenga Salud
             {
-                if (pokemon.Salud > 0)  //Si encontramos un pokemon que su Ssalud sea mayor que 0
+                if (pokemon.Salud > 0)  //Si encontramos un pokemon que su Salud sea mayor que 0, dejamos de buscar
                 {
                     TodosSinSaludEntrenador1 = false;
                     break; 
                 }
             }
 
-            foreach (var pokemon in Entrenador2.Equipo) //Buscar si hay algún pokemon de Entrenador2 que tenga Salud
+            foreach (Pokemon pokemon in Entrenador2.Equipo) //Buscar si hay algún pokemon de Entrenador2 que tenga Salud
             {
-                if (pokemon.Salud > 0) //Si encontramos un pokemon que su Salud sea mayor que 0
+                if (pokemon.Salud > 0) //Si encontramos un pokemon que su Salud sea mayor que 0, dejamos de buscar
                 {
                     TodosSinSaludEntrenador2 = false;
                     break;  
@@ -86,7 +86,21 @@ public class Batalla
     }
     public void PokemonDebilitado()
     {
-        
+            foreach (Pokemon pokemon in Entrenador1.Equipo)  //Buscar si hay algún pokemon de Entrenador1 abatido
+            {
+                if (pokemon.Salud == 0)  //Si encontramos un pokemon que su Salud=0, aparece en pantalla
+                {
+                 Console.WriteLine($"{pokemon} ha sido abatido");   
+                }
+            }
+
+            foreach (Pokemon pokemon in Entrenador2.Equipo) //Buscar si hay algún pokemon de Entrenador2 abatido
+            {
+                if (pokemon.Salud == 0)  //Si encontramos un pokemon que su Salud=0, aparece en pantalla
+                {
+                    Console.WriteLine($"{pokemon} ha sido abatido");   
+                }
+            }
     }
     
 }
