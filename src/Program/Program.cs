@@ -7,27 +7,45 @@ class Program
     private static List<Entrenador> listaEspera = new List<Entrenador>();
     static void Main(string[] args)
     {
-        
-    Entrenador entrenador1 = new Entrenador("lolo");
-    Entrenador entrenador2 = new Entrenador("pepe");
+        Console.WriteLine("Iniciando simulación de batalla Pokémon...");
 
-    Console.WriteLine(entrenador1.UnirseAListaDeEspera(listaEspera));
-    Console.WriteLine(entrenador2.UnirseAListaDeEspera(listaEspera));
+
+        var entrenador1 = new Entrenador("Lolo");
+        var entrenador2 = new Entrenador("Pepe");
+        Console.WriteLine(entrenador1.UnirseAListaDeEspera(listaEspera));
+        Console.WriteLine(entrenador2.UnirseAListaDeEspera(listaEspera));
 
     
 
-    if (listaEspera.Count >= 2)
-    {
-        IniciarBatalla();
+        var ataqueAgua = Logica.HidroBomba;
+        var ataqueElectrico = Logica.Impactrueno;
         
-        static void MostrarListaEspera()
+        // Usando los Pokémon definidos en la clase lógica
+        var blastoise = Logica.Blastoise;
+        var pikachu = Logica.Pikachu;
+        
+
+        //Mostrar equipos de entrenadores
+        Console.WriteLine("Equipo de Lolo:");
+        entrenador1.MostrarEquipo();
+        Console.WriteLine("Equipo de Pepe:");
+        entrenador2.MostrarEquipo();
+
+        //Iniciar batalla si hay al menos 2 entrenadores en lista de espera
+        if (listaEspera.Count >= 2)
         {
-            Console.WriteLine("-Jugadores en espera-");
-            foreach (var entrenador in listaEspera)
-            {
-                Console.WriteLine(entrenador.Nombre);
-            }
+            IniciarBatalla(entrenador1, entrenador2);
         }
+    }
+
+    static void MostrarListaEspera()
+    {
+        Console.WriteLine("-Jugadores en espera-");
+        foreach (var entrenador in listaEspera)
+        {
+            Console.WriteLine(entrenador.Nombre);
+        }
+    }
 
         static void IniciarBatalla()
         {
