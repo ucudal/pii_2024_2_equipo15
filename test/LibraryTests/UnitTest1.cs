@@ -65,4 +65,144 @@ public class Tests
         Assert.That(batalla.Entrenador1.Nombre, Is.EqualTo("Bielsa"));
         Assert.That(batalla.Entrenador2.Nombre, Is.EqualTo("Tabarez")); 
     }
+
+    public class AtaquesTests
+    {
+        [Test]
+        public void Ataques()
+        {
+            var tipo_fuego = new Tipos("Fuego");
+            var ataque = new Ataques("Lanzallamas", 90, tipo_fuego, true);
+            
+            Assert.That(ataque.Nombre, Is.EqualTo("Lanzallamas"));
+            Assert.That(ataque.Daño, Is.EqualTo(90));
+            Assert.That(ataque.Tipo, Is.EqualTo("Fuego"));
+            Assert.That(ataque.EsEspecial, Is.True);
+        }
+
+    }
+
+    public class BatallaTests
+    {
+        [Test]
+        public void Batalla()
+        {
+            var entrenador1 = new Entrenador("Juan");
+            var entrenador2 = new Entrenador("Mateo");
+            var batalla = new Batalla(entrenador1, entrenador2);
+            
+            Assert.That(batalla.Entrenador1.Nombre, Is.EqualTo("Juan"));
+            Assert.That(batalla.Entrenador2.Nombre, Is.EqualTo("Mateo"));
+            
+        }
+        
+        
+        [Test]
+        public void CambiarTurno()
+        {
+            var entrenador1 = new Entrenador("Juan");
+            var entrenador2 = new Entrenador("Mateo");
+            var batalla = new Batalla(entrenador1, entrenador1);
+
+            var turno_inicial = batalla.MostrarTurnoActual();
+            batalla.CambiarTurno();
+            var turno_final = batalla.MostrarTurnoActual();
+            
+            Assert.That(turno_inicial, Is.Not.EqualTo(turno_final));
+            
+        }
+    }
+
+    public class EntrenadorTests
+    {
+        [Test]
+        public void Entrenador()
+        {
+            var entrenador = new Entrenador("Montecristo");
+            
+            Assert.That(entrenador.Nombre, Is.EqualTo("Montecristo"));
+            Assert.That(entrenador.Equipo.Count, Is.EqualTo(0));
+            Assert.That(entrenador.SuperPociones, Is.EqualTo(4));
+            Assert.That(entrenador.Revivir, Is.EqualTo(1));
+            Assert.That(entrenador.CuraTotal, Is.EqualTo(2));
+            
+        }
+
+        [Test]
+        public void AgregarPokemon()
+        {
+            var entrenador = new Entrenador("Montecristo");
+            var tipo_roca = new Tipos("Roca");
+            var pokemon = new Pokemon("Onix", tipo_roca, 200);
+            var resultado = entrenador.AgregarPokemonAlEquipo(pokemon);
+            
+            Assert.That(entrenador.Equipo.Count, Is.EqualTo(1));
+            Assert.That(entrenador.Equipo[0].Nombre, Is.EqualTo("Onix"));
+            Assert.That(resultado, Contains.Substring("Onix ahora forma parte del equipo"));
+        }
+        
+    }
+
+    public class PokemonTests
+    {
+        [Test]
+        public void Pokemon()
+        {
+            var tipo_agua = new Tipos("Agua");
+            var pokemon = new Pokemon("Squirtle", tipo_agua, 150);
+            
+            Assert.That(pokemon.Nombre, Is.EqualTo("Squirtle"));
+            Assert.That(pokemon.Salud, Is.EqualTo(150));
+            Assert.That(pokemon.SaludTotal, Is.EqualTo(150));
+            Assert.That(pokemon.Tipo.NombreTipo, Is.EqualTo("Agua"));
+            Assert.That(pokemon.Ataques.Count, Is.EqualTo(0));
+            
+        }
+        
+        [Test]
+        public void AgregarAtaques()
+        {
+            var tipo_fuego = new Timer("Fuego");
+            var pokemon = new Pokemon("Charmander", tipo_fuego, 100);
+            var ataque = new Ataques("Lanzallamas", 90, tipo_fuego, true);
+            pokemon.AgregarAtaques(ataque);
+            
+            Assert.That(pokemon.Ataques.Count, Is.EqualTo(1));
+            Assert.That(pokemon.Ataques[0].Nombre, Is.EqualTo("Lanzallamas"));
+        }
+        [Test]
+        public void RecibirDaño()
+        {
+            var tipo_planta = new Tipos("Planta");
+            var pokemon = new Pokemon("Bulbasaur", tipo_planta, 200);
+            pokemon.recibirDaño(50);
+            
+            Assert.That(pokemon.Salud, Is.EqualTo(150));
+        }
+    }
+
+
+    public class TiposTest
+    {
+        [Test]
+        public void Tipos()
+        { 
+            var tipo_agua = new Tipos("Agua");
+            
+            Assert.That(tipo_agua.NombreTipo, Is.EqualTo("Agua"));
+            
+        }
+
+        [Test]
+        public void EfectividadDaño()
+        {
+            var tipo_agua = new Tipos("Agua");
+            var tipo_fuego = new Tipos("Fuego");
+            double efectividad = tipo_agua.efectividadDeDaño(tipo_fuego);
+            
+            Assert.That(efectividad, Is.EqualTo(2));
+        }
+        
+    }
 }
+    
