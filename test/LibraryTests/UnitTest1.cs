@@ -162,7 +162,7 @@ public class Tests
         [Test]
         public void AgregarAtaques()
         {
-            var tipo_fuego = new Timer("Fuego");
+            var tipo_fuego = new Tipos("Fuego");
             var pokemon = new Pokemon("Charmander", tipo_fuego, 100);
             var ataque = new Ataques("Lanzallamas", 90, tipo_fuego, true);
             pokemon.AgregarAtaques(ataque);

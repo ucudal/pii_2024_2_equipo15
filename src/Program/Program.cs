@@ -34,7 +34,7 @@ class Program
         //Iniciar batalla si hay al menos 2 entrenadores en lista de espera
         if (listaEspera.Count >= 2)
         {
-            IniciarBatalla(entrenador1, entrenador2);
+            IniciarBatalla();
         }
     }
 
@@ -64,5 +64,3 @@ class Program
             Console.WriteLine(batalla.MostrarTurnoActual());
         }
     }
-    }
-}           
