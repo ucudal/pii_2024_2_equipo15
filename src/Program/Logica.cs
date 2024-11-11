@@ -36,7 +36,7 @@ public class Logica
     
     private static Ataques Placaje = new Ataques("Placaje", 40, Normal, true); //Creamos un ataque llamado Placaje
     private static Ataques Hiperrayo = new Ataques("Hiperrayo", 150, Normal, false); //Creamos un ataque llamado Hiperrayo
-    private static Ataques Lanzallamas = new Ataques("Lanzallamas", 90, Fuego, false); //Creamos un ataque llamado Lanzallamas
+    private static Ataques Lanzallamas = new Ataques("Lanzallamas", 90, Fuego, true); //Creamos un ataque llamado Lanzallamas
     private static Ataques Ascuas = new Ataques("Ascuas", 40, Fuego,false); //Creamos un ataque llamado Ascuas
     private static Ataques RayoBurubuja = new Ataques("Rayo Burbuja", 65, Agua, true); //Creamos un ataque llamado Rayo Burbuja
     private static Ataques Surf = new Ataques("Surf", 90, Agua,true); //Creamos un ataque llamado Surf
