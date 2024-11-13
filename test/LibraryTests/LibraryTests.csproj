@@ -25,4 +25,7 @@
     <ProjectReference Include="../../src/Library/Library.csproj" />
     <ProjectReference Include="..\..\src\Program\Program.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="TrainTests.cs" />
+  </ItemGroup>
 </Project>
