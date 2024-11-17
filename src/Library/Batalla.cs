@@ -48,7 +48,7 @@ public class Batalla
         }
         return "No es tu turno para usar un ítem.";
     }
-    public void ConocerGanador()
+    public string ConocerGanador()
     {
         {
             bool TodosSinSaludEntrenador1 = true;
@@ -78,19 +78,19 @@ public class Batalla
             }
             else if (TodosSinSaludEntrenador2)
             {
-                Console.WriteLine($"El equipo de {Entrenador1.Nombre} ha ganado"); 
+                return $"El equipo de {Entrenador1.Nombre} ha ganado"; 
             }
             
         }
-
+        return null;
     }
-    public void PokemonDebilitado()
+    public string PokemonDebilitado()
     {
             foreach (Pokemon pokemon in Entrenador1.Equipo)  //Buscar si hay algún pokemon de Entrenador1 abatido
             {
                 if (pokemon.Salud == 0)  //Si encontramos un pokemon que su Salud=0, aparece en pantalla
                 {
-                 Console.WriteLine($"{pokemon} ha sido abatido");   
+                 return $"{pokemon} ha sido abatido";   
                 }
             }
 
@@ -98,9 +98,9 @@ public class Batalla
             {
                 if (pokemon.Salud == 0)  //Si encontramos un pokemon que su Salud=0, aparece en pantalla
                 {
-                    Console.WriteLine($"{pokemon} ha sido abatido");   
+                    return $"{pokemon} ha sido abatido";   
                 }
-            }
+            } 
+            return null;
     }
-    
 }
