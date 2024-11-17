@@ -74,7 +74,7 @@ public class Batalla
 
             if (TodosSinSaludEntrenador1) //Si uno de los dos equipos tiene a todos sus pokemons con Salud=0
             {
-                Console.WriteLine( $"El equipo de {Entrenador2.Nombre} ha ganado"); 
+                return $"El equipo de {Entrenador2.Nombre} ha ganado";
             }
             else if (TodosSinSaludEntrenador2)
             {
