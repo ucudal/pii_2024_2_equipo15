@@ -4,22 +4,25 @@ public class Batalla
 {
     public Entrenador Entrenador1 { get; }
     public Entrenador Entrenador2 { get; }
-    private bool turnoEntrenador1;
+    private bool turno;
+
     public Batalla(Entrenador entrenador1, Entrenador entrenador2)
     {
         Entrenador1 = entrenador1;
         Entrenador2 = entrenador2;
-        turnoEntrenador1 = new Random().Next(2) == 0;
+        turno = new Random().Next(2) == 0;
+        
     }
 
     public void CambiarTurno()
     {
-        turnoEntrenador1 = !turnoEntrenador1;
+        turno = !turno;
     }
+
     public string MostrarTurnoActual()
     {
         string turnoActual;
-        if (turnoEntrenador1)
+        if (turno == false)
         {
             turnoActual = Entrenador1.Nombre;
         }
@@ -27,16 +30,8 @@ public class Batalla
         {
             turnoActual = Entrenador2.Nombre;
         }
+
         return $"Es el turno de: {turnoActual}";
-    }
-    public string UsarItem(Entrenador entrenador, string item)
-    {
-        if (turnoEntrenador1 && entrenador == Entrenador1 || !turnoEntrenador1 && entrenador == Entrenador2)
-        {
-            CambiarTurno();
-            return $"El entrenador que tenia el turno usó un item y pierde el turno.";
-        }
-        return "No es tu turno para usar un ítem.";
     }
     public string ConocerGanador()
     {
@@ -44,12 +39,12 @@ public class Batalla
             bool TodosSinSaludEntrenador1 = true;
             bool TodosSinSaludEntrenador2 = true;
 
-            foreach (Pokemon pokemon in Entrenador1.Equipo)  //Buscar si hay algún pokemon de Entrenador1 que tenga Salud
+            foreach (Pokemon pokemon in Entrenador1.Equipo) //Buscar si hay algún pokemon de Entrenador1 que tenga Salud
             {
-                if (pokemon.Salud > 0)  //Si encontramos un pokemon que su Salud sea mayor que 0, dejamos de buscar
+                if (pokemon.Salud > 0) //Si encontramos un pokemon que su Salud sea mayor que 0, dejamos de buscar
                 {
                     TodosSinSaludEntrenador1 = false;
-                    break; 
+                    break;
                 }
             }
 
@@ -58,7 +53,7 @@ public class Batalla
                 if (pokemon.Salud > 0) //Si encontramos un pokemon que su Salud sea mayor que 0, dejamos de buscar
                 {
                     TodosSinSaludEntrenador2 = false;
-                    break;  
+                    break;
                 }
             }
 
@@ -68,28 +63,57 @@ public class Batalla
             }
             else if (TodosSinSaludEntrenador2)
             {
-                return $"El equipo de {Entrenador1.Nombre} ha ganado"; 
+                return $"El equipo de {Entrenador1.Nombre} ha ganado";
             }
-            
+
         }
         return null;
     }
+
     public string PokemonDebilitado()
     {
-            foreach (Pokemon pokemon in Entrenador1.Equipo)  //Buscar si hay algún pokemon de Entrenador1 abatido
+        foreach (Pokemon pokemon in Entrenador1.Equipo) //Buscar si hay algún pokemon de Entrenador1 abatido
+        {
+            if (pokemon.Salud == 0) //Si encontramos un pokemon que su Salud=0, aparece en pantalla
             {
-                if (pokemon.Salud == 0)  //Si encontramos un pokemon que su Salud=0, aparece en pantalla
-                {
-                 return $"{pokemon} ha sido abatido";   
-                }
+                return $"{pokemon} ha sido abatido";
             }
+        }
 
-            foreach (Pokemon pokemon in Entrenador2.Equipo) //Buscar si hay algún pokemon de Entrenador2 abatido
+        foreach (Pokemon pokemon in Entrenador2.Equipo) //Buscar si hay algún pokemon de Entrenador2 abatido
+        {
+            if (pokemon.Salud == 0) //Si encontramos un pokemon que su Salud=0, aparece en pantalla
             {
-                if (pokemon.Salud == 0)  //Si encontramos un pokemon que su Salud=0, aparece en pantalla
+                return $"{pokemon} ha sido abatido";
+            }
+        }
+
+        return null;
+    }
+
+    public string VerificarEstado(Pokemon pokemon)
+    {
+            if (pokemon.EstaDormido)
+            {
+                Random random = new Random(); 
+                int chances = random.Next(0,4);
+                if (chances >= 4 )
                 {
-                    return $"{pokemon} ha sido abatido";   
+                    return $"{pokemon.Nombre} no ha podido atacar, esta dormido como un tronco";
                 }
+                pokemon.EstaDormido = false;
+                return $"{pokemon.Nombre} se ha despertado y ha realizado su ataque";
+            }
+            if (pokemon.EstaParalizado)
+            {
+                Random random = new Random(); 
+                int chances = random.Next(0,4);
+                if (chances >= 4 )
+                {
+                    return $"{pokemon.Nombre} esta paralizado y no se ha podido mover";
+                }
+                pokemon.EstaDormido = false;
+                return $"{pokemon.Nombre} se ha librado de la paralisis y ha realizado su ataque";
             } 
             return null;
     }
