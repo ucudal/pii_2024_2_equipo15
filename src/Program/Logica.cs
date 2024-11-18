@@ -34,43 +34,74 @@ public class Logica
     //     A continuación se instancian todos los ataques disponibles
     //--------------------------------------------------------------------------------
     
-    public static Ataques Placaje = new Ataques("Placaje", 40, Normal, true); //Creamos un ataque llamado Placaje
-    public static Ataques Hiperrayo = new Ataques("Hiperrayo", 150, Normal, false); //Creamos un ataque llamado Hiperrayo
-    public static Ataques Lanzallamas = new Ataques("Lanzallamas", 90, Fuego, true); //Creamos un ataque llamado Lanzallamas
-    public static Ataques Ascuas = new Ataques("Ascuas", 40, Fuego,false); //Creamos un ataque llamado Ascuas
-    public static Ataques RayoBurubuja = new Ataques("Rayo Burbuja", 65, Agua, true); //Creamos un ataque llamado Rayo Burbuja
-    public static Ataques Surf = new Ataques("Surf", 90, Agua,true); //Creamos un ataque llamado Surf
-    public static Ataques HojaAfilada = new Ataques("Hoja Afilada", 55, Planta, true); //Creamos un ataque llamado Hoja Afilada
-    public static Ataques RayoSolar = new Ataques("Rayo Solar", 120, Planta, false); //Creamos un ataque llamado Rayo Solar
-    public static Ataques Trueno = new Ataques("Trueno", 110, Electrico, true); //Creamos un ataque llamado Trueno
-    public static Ataques Chispazo = new Ataques("Chispazo", 65, Electrico,false); //Creamos un ataque llamado Chispazo
-    public static Ataques Terremoto = new Ataques("Terremoto", 100, Tierra, true); //Creamos un ataque llamado Terremoto
-    public static Ataques DisparoLodo = new Ataques("Disparo Lodo", 55, Tierra,true); //Creamos un ataque llamado Disparo Lodo
-    public static Ataques AlaDeAcero = new Ataques("Ala de Acero", 70, Volador,false); //Creamos un ataque llamado Ala de Acero
-    public static Ataques Tornado = new Ataques("Tornado", 40, Volador,true); //Creamos un ataque llamado Tornado
-    public static Ataques CorteNoche = new Ataques("Corte Noche", 70, Normal,true); //Creamos un ataque llamado Corte Noche
-    public static Ataques Triturar = new Ataques("Triturar", 80, Normal,true); //Creamos un ataque llamado Triturar
-    public static Ataques LanzaMugre = new Ataques("Lanza Mugre", 65, Veneno,false); //Creamos un ataque llamado Lanza Mugre
-    public static Ataques BombaLodo = new Ataques("Bomba Lodo", 90, Veneno,false); //Creamos un ataque llamado Bomba Lodo
-    public static Ataques RocaAfilada = new Ataques("Roca Afilada", 100, Roca,false); //Creamos un ataque llamado Roca Afilada
-    public static Ataques Avalancha = new Ataques("Avalancha", 75, Roca,false); //Creamos un ataque llamado Avalancha
-    public static Ataques ColaFerrea = new Ataques("Cola Ferrea", 100, Dragon,false); //Creamos un ataque llamado Cola Ferrea
-    public static Ataques CabezaDeHierro = new Ataques("Cabeza de Hierro", 80, Roca,false); //Creamos un ataque llamado Cabeza de Hierro
-    public static Ataques GarraDragon = new Ataques("Garra Dragon", 80, Dragon,false); //Creamos un ataque llamado Garra Dragon
-    public static Ataques CometaDraco = new Ataques("Cometa Draco", 130, Dragon, true); //Creamos un ataque llamado Cometa Draco
-    public static Ataques PuñoHielo = new Ataques("Puño Hielo", 75, Hielo,false); //Creamos un ataque llamado Puño Hielo
-    public static Ataques RayoHielo = new Ataques("Rayo Hielo", 90, Hielo,false); //Creamos un ataque llamado Rayo Hielo
-    public static Ataques SombraVil = new Ataques("Sombra Vil", 40, Fantasma,true); //Creamos un ataque llamado Sombra Vil
-    public static Ataques BolaSombra = new Ataques("Bola Sombra", 80, Fantasma,false); //Creamos un ataque llamado Bola Sombra
-    public static Ataques ABocajarro = new Ataques("A Bocajarro", 120, Lucha,true); //Creamos un ataque llamado A Bocajarro
-    public static Ataques DanzaPetalo = new Ataques("Danza Petalo", 120, Planta,false); //Creamos un ataque llamado Danza Petalo
-    public static Ataques Ventisca = new Ataques("Ventisca", 110, Hielo,false); //Creamos un ataque llamado Ventisca
-    public static Ataques HidroBomba = new Ataques("Hidro Bomba", 110, Agua,false); //Creamos un ataque llamado Hidro Bomba
-    public static Ataques Impactrueno = new Ataques("Impactureno", 40,Electrico,true); //Creamos un ataque llamado Impactrueno
-    public static Ataques Picotazo = new Ataques("Picotazo", 35, Volador,false); //Creamos un ataque llamado Picotazo
-    public static Ataques Garraumbria = new Ataques("Garra Umbria", 60, Bicho,false); //Creamos un ataque llamado Garra Umbria
-    public static Ataques GolpeMordaza = new Ataques("Golpe Mordaza", 90, Bicho,false); //Creamos un ataque llamado Golpe Mordaza
-    public static Ataques Congelado = new Ataques("Congelado", 90, Hielo, false); //Creamos un ataque llamado Congelado
+    // Ataques de Tipo Normal
+    public static Ataques Placaje = new Ataques("Placaje", 40, Normal, true);
+    public static Ataques Hiperrayo = new Ataques("Hiperrayo", 150, Normal, false);
+    public static Ataques CorteNoche = new Ataques("Corte Noche", 70, Normal, true);
+    public static Ataques Triturar = new Ataques("Triturar", 80, Normal, true);
+
+    // Ataques de Tipo Fuego
+    public static Ataques Lanzallamas = new Ataques("Lanzallamas", 90, Fuego, true);
+    public static Ataques Ascuas = new Ataques("Ascuas", 40, Fuego, false);
+
+    // Ataques de Tipo Agua
+    public static Ataques RayoBurubuja = new Ataques("Rayo Burbuja", 65, Agua, true);
+    public static Ataques Surf = new Ataques("Surf", 90, Agua, true);
+    public static Ataques HidroBomba = new Ataques("Hidro Bomba", 110, Agua, false);
+
+    // Ataques de Tipo Planta
+    public static Ataques HojaAfilada = new Ataques("Hoja Afilada", 55, Planta, true);
+    public static Ataques RayoSolar = new Ataques("Rayo Solar", 120, Planta, false);
+    public static Ataques DanzaPetalo = new Ataques("Danza Petalo", 120, Planta, false);
+
+    // Ataques de Tipo Eléctrico
+    public static Ataques Trueno = new Ataques("Trueno", 110, Electrico, true);
+    public static Ataques Chispazo = new Ataques("Chispazo", 65, Electrico, false);
+    public static Ataques Impactrueno = new Ataques("Impactureno", 40, Electrico, true);
+
+    // Ataques de Tipo Tierra
+    public static Ataques Terremoto = new Ataques("Terremoto", 100, Tierra, true);
+    public static Ataques DisparoLodo = new Ataques("Disparo Lodo", 55, Tierra, true);
+
+    // Ataques de Tipo Volador
+    public static Ataques AlaDeAcero = new Ataques("Ala de Acero", 70, Volador, false);
+    public static Ataques Tornado = new Ataques("Tornado", 40, Volador, true);
+    public static Ataques Picotazo = new Ataques("Picotazo", 35, Volador, false);
+
+    // Ataques de Tipo Veneno
+    public static Ataques LanzaMugre = new Ataques("Lanza Mugre", 65, Veneno, false);
+    public static Ataques BombaLodo = new Ataques("Bomba Lodo", 90, Veneno, false);
+
+    // Ataques de Tipo Roca
+    public static Ataques RocaAfilada = new Ataques("Roca Afilada", 100, Roca, false);
+    public static Ataques Avalancha = new Ataques("Avalancha", 75, Roca, false);
+    public static Ataques CabezaDeHierro = new Ataques("Cabeza de Hierro", 80, Roca, false);
+
+    // Ataques de Tipo Dragón
+    public static Ataques ColaFerrea = new Ataques("Cola Ferrea", 100, Dragon, false);
+    public static Ataques GarraDragon = new Ataques("Garra Dragon", 80, Dragon, false);
+    public static Ataques CometaDraco = new Ataques("Cometa Draco", 130, Dragon, true);
+
+    // Ataques de Tipo Hielo
+    public static Ataques PuñoHielo = new Ataques("Puño Hielo", 75, Hielo, false);
+    public static Ataques RayoHielo = new Ataques("Rayo Hielo", 90, Hielo, false);
+    public static Ataques Ventisca = new Ataques("Ventisca", 110, Hielo, false);
+    public static Ataques Congelado = new Ataques("Congelado", 90, Hielo, false);
+
+    // Ataques de Tipo Fantasma
+    public static Ataques SombraVil = new Ataques("Sombra Vil", 40, Fantasma, true);
+    public static Ataques BolaSombra = new Ataques("Bola Sombra", 80, Fantasma, false);
+
+    // Ataques de Tipo Lucha
+    public static Ataques ABocajarro = new Ataques("A Bocajarro", 120, Lucha, true);
+
+    // Ataques de Tipo Bicho
+    public static Ataques Garraumbria = new Ataques("Garra Umbria", 60, Bicho, false);
+    public static Ataques GolpeMordaza = new Ataques("Golpe Mordaza", 90, Bicho, false);
+
+    // Ataques de Tipo Psíquico
+    public static Ataques Confusion = new Ataques("Confusión", 50, Psiquico, true);
+    public static Ataques Psicorayo = new Ataques("Psicorayo", 65, Psiquico, false);
     
     //--------------------------------------------------------------------------------
     //     A continuación se instancian todos los pokemon disponibles
