@@ -16,16 +16,6 @@ public class Batalla
     {
         turnoEntrenador1 = !turnoEntrenador1;
     }
-    public string CambiarPokemon(Entrenador entrenador, Pokemon nuevoPokemon)
-    {
-        if (turnoEntrenador1 && entrenador==Entrenador1 || !turnoEntrenador1 && entrenador == Entrenador2)
-        {
-            entrenador.CambiarPokemonDeEquipo(entrenador.Equipo[0], nuevoPokemon); 
-            CambiarTurno();
-            return $"El entrenador que tenia el turno ha cambiado de Pokémon y pierde el turno.";
-        }
-        return "No es tu turno para cambiar de Pokémon.";
-    }
     public string MostrarTurnoActual()
     {
         string turnoActual;
