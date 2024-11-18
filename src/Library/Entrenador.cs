@@ -98,12 +98,14 @@ namespace Library
         }
 
 
-        public void MostrarPokemon()
+        public string MostrarPokemon()
         {
             foreach (Pokemon pokemon in Equipo)
             {
-                Console.WriteLine(pokemon);
+                return $"{pokemon.Nombre}";
             }
+
+            return null;
         }
         public string UnirseAListaDeEspera(List<Entrenador> listaEspera)
         {
@@ -139,14 +141,6 @@ namespace Library
             }
 
             return $"{pokemonEnEquipo.Nombre} no está en el equipo";
-        }
-
-        public void MostrarEquipo()
-        {
-            foreach (var pokemon in Equipo)
-            {
-                Console.WriteLine(pokemon.Nombre);
-            }
         }
     }
 }
