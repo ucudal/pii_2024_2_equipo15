@@ -52,7 +52,7 @@ public class Tests
     {
         Tipos tipoElectrico = new Tipos("Electrico"); //Creamos un tipo 
         Tipos tipoAgua = new Tipos("Agua"); //Creamos un tipo
-        double efectividad = tipoElectrico.efectividadDeDaño(tipoAgua); //Calcular la efectividad de daño entre los dos tipos
+        double efectividad = tipoElectrico.EfectividadDeDaño(tipoAgua); //Calcular la efectividad de daño entre los dos tipos
 
         Assert.That(efectividad, Is.EqualTo(0));
     }
@@ -176,7 +176,7 @@ public class Tests
         {
             var tipo_planta = new Tipos("Planta");
             var pokemon = new Pokemon("Bulbasaur", tipo_planta, 200);
-            pokemon.recibirDaño(50);
+            pokemon.RecibirDaño(50);
             
             Assert.That(pokemon.Salud, Is.EqualTo(150));
         }
@@ -199,7 +199,7 @@ public class Tests
         {
             var tipo_agua = new Tipos("Agua");
             var tipo_fuego = new Tipos("Fuego");
-            double efectividad = tipo_agua.efectividadDeDaño(tipo_fuego);
+            double efectividad = tipo_agua.EfectividadDeDaño(tipo_fuego);
             
             Assert.That(efectividad, Is.EqualTo(2));
         }

@@ -20,7 +20,7 @@ namespace Library
 
         public int Atacar(IPokemon objetivo, IAtaque ataque)
         {
-            if (ataque.EsEspecial == true)
+            if (ataque.EsEspecial)
             {
                 if (objetivo.EstaDormido == false && objetivo.EstaEnvenenado == false && objetivo.EstaParalizado == false && objetivo.EstaQuemado == false)
                 {
@@ -56,9 +56,9 @@ namespace Library
                 }
                
             }
-            double efectividadObjetivo= ataque.Tipo.efectividadDeDaño(objetivo.Tipo);  // Calcula la efectividad del tipo del ataque en relación con el tipo del objetivo
+            double efectividadObjetivo= ataque.Tipo.EfectividadDeDaño(objetivo.Tipo);  // Calcula la efectividad del tipo del ataque en relación con el tipo del objetivo
             int dañoTotal = (int)(ataque.Daño * efectividadObjetivo); //Cálculo del daño del ataque aumentado con la efectividad del tipo
-            objetivo.recibirDaño(dañoTotal); //Realiza el ataque restándole salud al objetivo
+            objetivo.RecibirDaño(dañoTotal); //Realiza el ataque restándole salud al objetivo
             return dañoTotal;
         
         }
