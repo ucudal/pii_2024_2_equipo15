@@ -14,4 +14,7 @@
   <ItemGroup>
     <Compile Remove="Train.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Library.xml" />
+  </ItemGroup>
 </Project>
