@@ -70,6 +70,7 @@ public class Logica
     public static Ataques Picotazo = new Ataques("Picotazo", 35, Volador,false); //Creamos un ataque llamado Picotazo
     public static Ataques Garraumbria = new Ataques("Garra Umbria", 60, Bicho,false); //Creamos un ataque llamado Garra Umbria
     public static Ataques GolpeMordaza = new Ataques("Golpe Mordaza", 90, Bicho,false); //Creamos un ataque llamado Golpe Mordaza
+    public static Ataques Congelado = new Ataques("Congelado", 90, Hielo, false); //Creamos un ataque llamado Congelado
     
     //--------------------------------------------------------------------------------
     //     A continuación se instancian todos los pokemon disponibles
