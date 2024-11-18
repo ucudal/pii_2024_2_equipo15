@@ -27,7 +27,7 @@ public class Pokemon : IPokemon
 
     }
 
-    public void recibirDaño(int daño)
+    public void RecibirDaño(int daño)
     {
         Salud -= daño;
         if (Salud <= 0)

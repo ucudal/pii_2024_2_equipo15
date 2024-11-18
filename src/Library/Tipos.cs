@@ -11,7 +11,7 @@ public class Tipos : ITipo
     }
 
     //Muy_efectivo:2 Poco_efectivo:0,5 Inmune=0
-    public double efectividadDeDaño(ITipo tipoObjetivo)
+    public double EfectividadDeDaño(ITipo tipoObjetivo)
     {
         
         

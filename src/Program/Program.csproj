@@ -13,9 +13,9 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
   <ItemGroup>
-    <AdditionalFiles Include="../../.analyzers/stylecop.json" />
+    <ProjectReference Include="..\Library\Library.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Library\Library.csproj" />
+    <None Remove="Program.xml" />
   </ItemGroup>
 </Project>

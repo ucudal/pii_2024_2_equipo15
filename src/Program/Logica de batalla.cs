@@ -2,7 +2,7 @@ using System;
 using Library;
 using System.Collections.Generic;
 
-class Program
+class LogicaDeBatlla
 {
     private static List<Entrenador> listaEspera = new List<Entrenador>();
     static void Main(string[] args)
@@ -27,9 +27,9 @@ class Program
 
         //Mostrar equipos de entrenadores
         Console.WriteLine("Equipo de Lolo:");
-        entrenador1.MostrarEquipo();
+        entrenador1.MostrarPokemon();
         Console.WriteLine("Equipo de Pepe:");
-        entrenador2.MostrarEquipo();
+        entrenador2.MostrarPokemon();
 
         //Iniciar batalla si hay al menos 2 entrenadores en lista de espera
         if (listaEspera.Count >= 2)
@@ -50,7 +50,7 @@ class Program
         static void IniciarBatalla()
         {
             var entrenador1 = listaEspera[0]; 
-            var entrenador2 = listaEspera[0]; 
+            var entrenador2 = listaEspera[1]; 
 
             
             Batalla batalla = new Batalla(entrenador1, entrenador2);

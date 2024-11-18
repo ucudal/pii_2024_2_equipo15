@@ -28,4 +28,8 @@
   <ItemGroup>
     <Compile Remove="TrainTests.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="LibraryTests.xml" />
+    <None Remove="lcov.info" />
+  </ItemGroup>
 </Project>

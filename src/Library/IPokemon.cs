@@ -13,7 +13,7 @@ public interface IPokemon
     bool EstaEnvenenado { get; set; } // Sirve para conocer el estado del pokemon
     
 
-    void recibirDaño(int daño);      // Método para recibir daño y reducir salud
+    void RecibirDaño(int daño);      // Método para recibir daño y reducir salud
      
     string MostrarSalud(Pokemon pokemon);         // Método para mostrar salud de un Pokémon
 }
