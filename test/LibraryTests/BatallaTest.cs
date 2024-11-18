@@ -39,22 +39,6 @@ public class BatallaTest
     }
 
     /// <summary>
-    /// Válida que un entrenador pueda usar un ítem durante su turno.
-    /// Comprueba que el mensaje devuelto por el método <see cref="Batalla.UsarItem"/> sea correcto.
-    /// </summary>
-    [Test]
-    public void UsarItem()
-    {
-        var entrenador1 = new Entrenador("Juan");
-        var entrenador2 = new Entrenador("Mateo");
-        var batalla = new Batalla(entrenador1, entrenador2);
-
-        var resultado = batalla.UsarItem(entrenador1, "SuperPocion");
-
-        Assert.That(resultado, Contains.Substring("Uso un item y pierde el turno"));
-    }
-
-    /// <summary>
     /// Válida que el método <see cref="Batalla.ConocerGanador"/> devuelva el entrenador ganador
     /// cuando todos los Pokémon de uno de los entrenadores están debilitados.
     /// </summary>

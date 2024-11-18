@@ -25,7 +25,7 @@ public class TiposTest
     {
         var tipo_agua = new Tipos("Agua");
         var tipo_fuego = new Tipos("Fuego");
-        double efectividad = tipo_agua.efectividadDeDaño(tipo_fuego);
+        double efectividad = tipo_agua.EfectividadDeDaño(tipo_fuego);
 
         Assert.That(efectividad, Is.EqualTo(2));
     }
@@ -39,7 +39,7 @@ public class TiposTest
     {
         var tipo_agua = new Tipos("Agua");
         var tipo_planta = new Tipos("Planta");
-        double efectividad = tipo_agua.efectividadDeDaño(tipo_planta);
+        double efectividad = tipo_agua.EfectividadDeDaño(tipo_planta);
 
         Assert.That(efectividad, Is.EqualTo(0.5));
     }
@@ -53,7 +53,7 @@ public class TiposTest
     {
         var tipo_agua = new Tipos("Agua");
         var tipo_normal = new Tipos("Normal");
-        double efectividad = tipo_agua.efectividadDeDaño(tipo_normal);
+        double efectividad = tipo_agua.EfectividadDeDaño(tipo_normal);
 
         Assert.That(efectividad, Is.EqualTo(1));
     }
@@ -67,7 +67,7 @@ public class TiposTest
     {
         var tipo_fantasma = new Tipos("Fantasma");
         var tipo_normal = new Tipos("Normal");
-        double efectividad = tipo_normal.efectividadDeDaño(tipo_fantasma);
+        double efectividad = tipo_normal.EfectividadDeDaño(tipo_fantasma);
 
         Assert.That(efectividad, Is.EqualTo(0));
     }
@@ -80,7 +80,7 @@ public class TiposTest
     public void DañoMismoTipo()
     {
         var tipo_fuego = new Tipos("Fuego");
-        double efectividad = tipo_fuego.efectividadDeDaño(tipo_fuego);
+        double efectividad = tipo_fuego.EfectividadDeDaño(tipo_fuego);
 
         Assert.That(efectividad, Is.EqualTo(1));
     }

@@ -56,8 +56,6 @@ class LogicaDeBatlla
             Batalla batalla = new Batalla(entrenador1, entrenador2);
             Console.WriteLine($"¡Batalla iniciada entre {entrenador1.Nombre} y {entrenador2.Nombre}!");
             Console.WriteLine(batalla.MostrarTurnoActual());
-
-            Console.WriteLine(batalla.CambiarPokemon(entrenador1, entrenador1.Equipo[0]));
             Console.WriteLine(batalla.MostrarTurnoActual());
 
 

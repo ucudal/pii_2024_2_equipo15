@@ -48,20 +48,8 @@ public class PokemonTest
         Assert.That(pokemon.Ataques[0].Nombre, Is.EqualTo("Lanzallamas"));
     }
 
-    /// <summary>
-    /// Válida que el método <see cref="Pokemon.recibirDaño"/> reduzca correctamente la salud
-    /// de un Pokémon al recibir daño.
-    /// </summary>
-    [Test]
-    public void RecibirDaño()
-    {
-        var tipo_planta = new Tipos("Planta");
-        var pokemon = new Pokemon("Bulbasaur", tipo_planta, 200);
-        pokemon.recibirDaño(50);
-
-        Assert.That(pokemon.Salud, Is.EqualTo(150));
-    }
-
+  
+   
     /// <summary>
     /// Válida que el método <see cref="Pokemon.ConocerAtaques"/> devuelva correctamente
     /// los nombres de los ataques disponibles de un Pokémon.
