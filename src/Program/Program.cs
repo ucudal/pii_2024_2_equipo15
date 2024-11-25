@@ -1,4 +1,6 @@
-﻿using Library.Services;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Library.Services;
+using Microsoft.Extensions.Logging;
 
 
 namespace Program;
@@ -11,23 +13,28 @@ internal static class Program
     /// <summary>
     /// Punto de entrada al programa.
     /// </summary>
-    private static void Main()
+    private static async Task Main(string[] args)
     {
-        //DemoFacade();
-        DemoBot();
-    }
+        // Configurar el contenedor de dependencias
+        var serviceProvider = new ServiceCollection()
+            .AddLogging(options =>
+            {
+                options.ClearProviders();
+                options.AddConsole();
+            })
+            .AddScoped<IBot, Bot>() // Vincula IBot con Bot
+            .BuildServiceProvider();
 
-    /*private static void DemoFacade()
-    {
-        Console.WriteLine(Facade.Instance.AddTrainerToWaitingList("player"));
-        Console.WriteLine(Facade.Instance.AddTrainerToWaitingList("opponent"));
-        Console.WriteLine(Facade.Instance.GetAllTrainersWaiting());
-        Console.WriteLine(Facade.Instance.StartBattle("player", "opponent"));
-        Console.WriteLine(Facade.Instance.GetAllTrainersWaiting());
-    }
-*/
-    private static void DemoBot()
-    {
-        BotLoader.LoadAsync().GetAwaiter().GetResult();
+        // Resuelve la implementación de IBot desde el contenedor
+        IBot bot = serviceProvider.GetRequiredService<IBot>();
+
+        // Inicia el bot
+        await bot.StartAsync(serviceProvider);
+
+        Console.WriteLine("Bot en ejecución. Presiona cualquier tecla para detener...");
+        Console.ReadKey();
+
+        // Detiene el bot
+        await bot.StopAsync();
     }
 }

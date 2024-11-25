@@ -9,7 +9,7 @@
             Un programa que implementa un bot de Discord.
             </summary>
         </member>
-        <member name="M:Program.Program.Main">
+        <member name="M:Program.Program.Main(System.String[])">
             <summary>
             Punto de entrada al programa.
             </summary>
