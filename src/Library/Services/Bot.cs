@@ -1,81 +1,105 @@
-﻿using System.Reflection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Discord;
+﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
+using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
-namespace Library.Services;
-
-/// <summary>
-/// Esta clase implementa el bot de Discord.
-/// </summary>
-public class Bot : IBot
+namespace Library.Services
 {
-    private ServiceProvider? serviceProvider;
-    private readonly ILogger<Bot> logger;
-    private readonly IConfiguration configuration;
-    private readonly DiscordSocketClient client;
-    private readonly CommandService commands;
-
-    public Bot(ILogger<Bot> logger, IConfiguration configuration)
+    public class Bot : IBot
     {
-        this.logger = logger;
-        this.configuration = configuration;
+        private readonly DiscordSocketClient _client;
+        private readonly CommandService _commands;
+        private readonly IServiceProvider _services;
 
-        DiscordSocketConfig config = new()
+        public Bot()
         {
-            AlwaysDownloadUsers = true,
-            GatewayIntents = 
-                GatewayIntents.AllUnprivileged
-                | GatewayIntents.MessageContent/*
-                | GatewayIntents.GuildMembers*/
-        };
+            var config = new DiscordSocketConfig
+            {
+                GatewayIntents = GatewayIntents.Guilds |
+                                 GatewayIntents.GuildMessages |
+                                 GatewayIntents.MessageContent |
+                                 GatewayIntents.GuildMembers
+            };
 
-        client = new DiscordSocketClient(config);
-        commands = new CommandService();
-    }
-
-    public async Task StartAsync(ServiceProvider services)
-    {
-        string discordToken = configuration["DiscordToken"] ?? throw new Exception("Falta el token");
-
-        logger.LogInformation("Iniciando el con token {Token}", discordToken);
-        
-        serviceProvider = services;
-
-        await commands.AddModulesAsync(Assembly.GetExecutingAssembly(), serviceProvider);
-
-        await client.LoginAsync(TokenType.Bot, discordToken);
-        await client.StartAsync();
-
-        client.MessageReceived += HandleCommandAsync;
-    }
-
-    public async Task StopAsync()
-    {
-        logger.LogInformation("Finalizando");
-        await client.LogoutAsync();
-        await client.StopAsync();
-    }
-
-    private async Task HandleCommandAsync(SocketMessage arg)
-    {
-        if (arg is not SocketUserMessage message || message.Author.IsBot)
-        {
-            return;
+            _client = new DiscordSocketClient(config);
+            _commands = new CommandService();
+            _services = new ServiceCollection()
+                .AddSingleton(_client)
+                .AddSingleton(_commands)
+                .BuildServiceProvider();
         }
-        
-        int position = 0;
-        bool messageIsCommand = message.HasCharPrefix('!', ref position);
 
-        if (messageIsCommand)
+        public async Task StartAsync(IServiceProvider serviceProvider)
         {
-            await commands.ExecuteAsync(
-                new SocketCommandContext(client, message),
-                position,
-                serviceProvider);
+            // Carga el token desde UserSecrets
+            var token = LoadTokenFromSecrets();
+
+            if (string.IsNullOrEmpty(token))
+            {
+                Console.WriteLine("No se encontró el token en los secretos. Verifica la configuración.");
+                return;
+            }
+
+            _client.Log += LogAsync;
+            _client.Ready += ReadyAsync;
+            _client.ButtonExecuted += HandleButtonInteractionAsync;
+
+            await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
+            _client.MessageReceived += HandleCommandAsync;
+
+            await _client.LoginAsync(TokenType.Bot, token);
+            await _client.StartAsync();
+
+            Console.WriteLine("Bot iniciado y conectado.");
+        }
+
+        public async Task StopAsync()
+        {
+            Console.WriteLine("Deteniendo el bot...");
+            await _client.LogoutAsync();
+            await _client.StopAsync();
+        }
+
+        private string LoadTokenFromSecrets()
+        {
+            var builder = new ConfigurationBuilder()
+                .AddUserSecrets<Bot>(); // Vincula UserSecrets al proyecto
+
+            var configuration = builder.Build();
+            return configuration["DiscordToken"]; // Lee el token
+        }
+
+        private async Task LogAsync(LogMessage log)
+        {
+            Console.WriteLine(log.ToString());
+        }
+
+        private async Task ReadyAsync()
+        {
+            Console.WriteLine("Bot conectado y listo.");
+        }
+
+        private async Task HandleCommandAsync(SocketMessage messageParam)
+        {
+            var message = messageParam as SocketUserMessage;
+            var context = new SocketCommandContext(_client, message);
+
+            if (message == null || message.Author.IsBot) return;
+
+            int argPos = 0;
+            if (message.HasCharPrefix('!', ref argPos))
+            {
+                await _commands.ExecuteAsync(context, argPos, _services);
+            }
+        }
+
+        private async Task HandleButtonInteractionAsync(SocketMessageComponent component)
+        {
+            await component.RespondAsync("Interacción no implementada aún."); // Placeholder
         }
     }
 }

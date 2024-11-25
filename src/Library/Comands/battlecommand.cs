@@ -1,4 +1,4 @@
-﻿using Discord;
+﻿/*using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 
@@ -36,4 +36,4 @@ public class BattleCommand : ModuleBase<SocketCommandContext>
 
         await ReplyAsync(result);
     }
-}
+}*/
