@@ -163,5 +163,7 @@ public class Tipos : ITipo
         
         return 1; //situación en la que no hay ventaja ni desventaja relacionada con la efectividad de tipos.
     }
-
+    
+    
+    
 }
