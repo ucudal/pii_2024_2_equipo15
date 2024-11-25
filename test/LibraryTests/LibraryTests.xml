@@ -4,29 +4,144 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
-        <member name="T:Tests.TrainTests">
+        <member name="M:LibraryTests.AtaquesTest.Ataques">
             <summary>
-            Prueba de la clase <see cref="T:ClassLibrary.Train"/>.
+            Verifica que los ataques se inicialicen correctamente y que sus propiedades sean válidas.
             </summary>
         </member>
-        <member name="F:Tests.TrainTests.train">
+        <member name="M:LibraryTests.BatallaTest.Batalla">
             <summary>
-            El tren para probar.
+            Válida que los entrenadores inicializados en la batalla sean los esperados.
+            Comprueba que las propiedades <see cref="P:Library.Batalla.Entrenador1"/> y <see cref="P:Library.Batalla.Entrenador2"/> 
+            correspondan a los valores dados durante la creación de la batalla.
             </summary>
         </member>
-        <member name="M:Tests.TrainTests.Setup">
+        <member name="M:LibraryTests.BatallaTest.CambiarTurno">
             <summary>
-            Crea un tren para probar.
+            Válida el cambio de turno en la batalla.
+            Comprueba que el turno actual cambia después de llamar al método <see cref="M:Library.Batalla.CambiarTurno"/>.
             </summary>
         </member>
-        <member name="M:Tests.TrainTests.StartTrainTest">
+        <member name="M:LibraryTests.BatallaTest.ConocerGanador">
             <summary>
-            Prueba que el tren arranque.
+            Válida que el método <see cref="M:Library.Batalla.ConocerGanador"/> devuelva el entrenador ganador
+            cuando todos los Pokémon de uno de los entrenadores están debilitados.
             </summary>
         </member>
-        <member name="M:Tests.TrainTests.StopTrainTest">
+        <member name="M:LibraryTests.BatallaTest.PokemonDebilitado">
             <summary>
-            Prueba que el tren se detenga.
+            Válida que el método <see cref="M:Library.Batalla.PokemonDebilitado"/> identifique correctamente
+            si un Pokémon ha sido derrotado en la batalla.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.EntrenadorTest.Entrenador">
+            <summary>
+            Válida la correcta inicialización de un objeto <see cref="M:LibraryTests.EntrenadorTest.Entrenador"/>.
+            Comprueba que los valores predeterminados de las propiedades del entrenador sean correctos:
+            <list type="bullet">
+            <item><description>Nombre del entrenador.</description></item>
+            <item><description>Equipo inicial vacío.</description></item>
+            <item><description>Cantidad de ítems iniciales.</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:LibraryTests.EntrenadorTest.AgregarPokemon">
+            <summary>
+            Válida que un Pokémon se pueda agregar al equipo del entrenador.
+            Comprueba que el Pokémon aparece en la lista de equipo y que el mensaje de retorno es correcto.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.EntrenadorTest.Atacar">
+            <summary>
+            Válida que el método <see cref="M:Library.Entrenador.Atacar(Library.IPokemon,Library.IAtaque)"/> reduzca correctamente la salud
+            del Pokémon objetivo en base al daño del ataque utilizado.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.EntrenadorTest.ItemSuperPocion">
+            <summary>
+            Válida el uso de una Súper Poción para curar a un Pokémon.
+            Comprueba que la salud del Pokémon aumenta y que el mensaje retornado es correcto.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.EntrenadorTest.ItemRevivir">
+            <summary>
+            Válida el uso del ítem Revivir para restaurar parcialmente la salud de un Pokémon debilitado.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.EntrenadorTest.ItemCuraTotal">
+            <summary>
+            Válida el uso del ítem Cura Total para eliminar efectos de estado (como quemaduras o envenenamientos) de un Pokémon.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.EntrenadorTest.MostrarPokemon">
+            <summary>
+            Válida que el método <see cref="M:Library.Entrenador.MostrarPokemon"/> devuelva correctamente
+            los nombres de los Pokémon en el equipo del entrenador.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.PokemonTest.Pokemon">
+            <summary>
+            Válida que un objeto <see cref="M:LibraryTests.PokemonTest.Pokemon"/> se inicialice correctamente.
+            Comprueba las propiedades:
+            <list type="bullet">
+            <item><description>Nombre del Pokémon.</description></item>
+            <item><description>Salud inicial y salud total.</description></item>
+            <item><description>Tipo del Pokémon.</description></item>
+            <item><description>Lista de ataques inicial (vacía).</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:LibraryTests.PokemonTest.AgregarAtaques">
+            <summary>
+            Válida que un ataque se pueda agregar correctamente a la lista de ataques de un Pokémon.
+            Comprueba que:
+            <list type="bullet">
+            <item><description>El ataque se añade a la lista de ataques.</description></item>
+            <item><description>El nombre del ataque añadido es correcto.</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:LibraryTests.PokemonTest.ConocerAtaques">
+            <summary>
+            Válida que el método <see cref="M:Library.Pokemon.ConocerAtaques(Library.Pokemon)"/> devuelva correctamente
+            los nombres de los ataques disponibles de un Pokémon.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TiposTest.Tipos">
+            <summary>
+            Válida que un objeto <see cref="M:LibraryTests.TiposTest.Tipos"/> se inicialice correctamente.
+            Comprueba que el nombre del tipo corresponda al valor esperado.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TiposTest.EfectividadDaño">
+            <summary>
+            Válida que el método <see cref="!:Tipos.efectividadDeDaño"/> devuelva correctamente
+            la efectividad entre un tipo atacante y un tipo objetivo.
+            En este caso, Agua es muy efectivo contra Fuego.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TiposTest.DañoPocoEfectivo">
+            <summary>
+            Válida que el daño sea poco efectivo entre tipos.
+            En este caso, Agua es poco efectivo contra Planta.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TiposTest.DañoNeutral">
+            <summary>
+            Válida que el daño sea neutral entre tipos.
+            En este caso, Agua contra Normal no tiene ventajas ni desventajas.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TiposTest.DañoInmune">
+            <summary>
+            Válida que un tipo sea inmune al daño de otro.
+            En este caso, Fantasma es inmune a Normal.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TiposTest.DañoMismoTipo">
+            <summary>
+            Válida que los ataques de un tipo contra sí mismo sean neutrales.
+            En este caso, Fuego contra Fuego.
             </summary>
         </member>
     </members>

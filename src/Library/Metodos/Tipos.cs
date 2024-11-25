@@ -58,6 +58,8 @@ public class Tipos : ITipo
         {
             if (tipoObjetivo.NombreTipo == "Fantasma" ||  tipoObjetivo.NombreTipo == "Psíquico")
                 return 2; 
+            else if ( tipoObjetivo.NombreTipo == "Normal")
+                return 0;
             
         }
         
@@ -96,8 +98,7 @@ public class Tipos : ITipo
         {
             if ( tipoObjetivo.NombreTipo == "Roca" || tipoObjetivo.NombreTipo == "Fantasma")
                 return 0.5;
-            else if ( tipoObjetivo.NombreTipo == "Fantasma")
-                return 0;
+            
             
         }
         
