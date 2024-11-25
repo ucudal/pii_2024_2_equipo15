@@ -67,7 +67,7 @@ public class TiposTest
     {
         var tipo_fantasma = new Tipos("Fantasma");
         var tipo_normal = new Tipos("Normal");
-        double efectividad = tipo_normal.EfectividadDeDaño(tipo_fantasma);
+        double efectividad = tipo_fantasma.EfectividadDeDaño(tipo_normal);
 
         Assert.That(efectividad, Is.EqualTo(0));
     }
@@ -79,9 +79,9 @@ public class TiposTest
     [Test]
     public void DañoMismoTipo()
     {
-        var tipo_fuego = new Tipos("Fuego");
-        double efectividad = tipo_fuego.EfectividadDeDaño(tipo_fuego);
+        var tipoFantasma = new Tipos("Fantasma");
+        double efectividad = tipoFantasma.EfectividadDeDaño(tipoFantasma);
 
-        Assert.That(efectividad, Is.EqualTo(1));
+        Assert.That(efectividad, Is.EqualTo(2));
     }
 }
