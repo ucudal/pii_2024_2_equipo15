@@ -64,6 +64,7 @@ public class PokemonTest
         pokemon.AgregarAtaques(ataque);
         var resultado = pokemon.ConocerAtaques(pokemon);
 
+        Assert.That(resultado, Contains.Substring("---Ataques disponibles---"));
         Assert.That(resultado, Contains.Substring("Lanzallamas"));
     }
 }

@@ -48,8 +48,12 @@ public class Pokemon : IPokemon
     
     public string ConocerAtaques(Pokemon pokemon)
     {
-        return $"---Ataques disponibles---" +
-               $"{pokemon.Ataques}";
+        string resultado = "---Ataques disponibles---\n"; 
+       
+        foreach (var ataque in pokemon.Ataques) 
+        { resultado += ataque.Nombre + "\n"; } 
+        
+        return resultado; 
     }
     
     public void Curar(int pocion)
