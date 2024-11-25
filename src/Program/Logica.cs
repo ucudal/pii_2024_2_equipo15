@@ -136,7 +136,7 @@ public class Logica
     public static Pokemon Hypno = new Pokemon("Hypno", Psiquico, 220);
     public static Pokemon Pidgeotto = new Pokemon("Pidgeotto", Volador, 236);
     public static Pokemon Mewtwo = new Pokemon("Mewtwo", Psiquico, 305);
-    
+    public static Pokemon Charmnder = new Pokemon("Charmander", Fuego, 100);
     
     
     

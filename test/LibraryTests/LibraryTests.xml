@@ -22,7 +22,7 @@
             Comprueba que el turno actual cambia después de llamar al método <see cref="M:Library.Batalla.CambiarTurno"/>.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTest.ConocerGanador">
+        <member name="M:LibraryTests.BatallaTest.ConocerGanador_Mateo">
             <summary>
             Válida que el método <see cref="M:Library.Batalla.ConocerGanador"/> devuelva el entrenador ganador
             cuando todos los Pokémon de uno de los entrenadores están debilitados.
@@ -32,6 +32,36 @@
             <summary>
             Válida que el método <see cref="M:Library.Batalla.PokemonDebilitado"/> identifique correctamente
             si un Pokémon ha sido derrotado en la batalla.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTest.MostrarTurnoActual">
+            <summary>
+            Válida que el método <see cref="M:Library.Batalla.MostrarTurnoActual"/> devuelva correctamente
+            el entrenador cuyo turno es el actual.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTest.VerificarEstado_Dormido_NoAtacar">
+            <summary>
+            Válida que el Pokémon dormido no pueda atacar.
+            Este test hace que cuando un Pokémon está dormido, no puede realizar un ataque.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTest.VerificarEstado_Dormido_Atacar">
+            <summary>
+            Válida que el Pokémon dormido pueda atacar.
+            Este test hace que si el Pokémon dormido se despierta, pueda atacar correctamente.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTest.VerificarEstado_Paralizado_NoAtacar">
+            <summary>
+            Válida que el Pokémon paralizado no pueda atacar.
+            Este test hace que cuando un Pokémon está paralizado, no puede realizar un ataque.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTest.VerificarEstado_Paralizado_Atacar">
+            <summary>
+            Válida que el Pokémon paralizado pueda atacar.
+            Este test hace que si el Pokémon paralizado se libera, pueda atacar correctamente.
             </summary>
         </member>
         <member name="M:LibraryTests.EntrenadorTest.Entrenador">
