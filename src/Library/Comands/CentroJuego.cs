@@ -1,6 +1,6 @@
 ﻿using Discord.Commands;
-namespace program;
-
+namespace Library.Commands;
+using program;
 public class CentroJuego : ModuleBase<SocketCommandContext>
 {
     [Command("centro")]

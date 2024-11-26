@@ -1,105 +1,46 @@
-﻿/*using NUnit.Framework;
+﻿using NUnit.Framework;
 namespace LibraryTests;
-using Library;
+using program;
 
-
+[TestFixture]
 public class PokemonTest
 {
-    /// <summary>
-    /// Válida que un objeto <see cref="Pokemon"/> se inicialice correctamente.
-    /// Comprueba las propiedades:
-    /// <list type="bullet">
-    /// <item><description>Nombre del Pokémon.</description></item>
-    /// <item><description>Salud inicial y salud total.</description></item>
-    /// <item><description>Tipo del Pokémon.</description></item>
-    /// <item><description>Lista de ataques inicial (vacía).</description></item>
-    /// </list>
-    /// </summary>
     [Test]
-    public void Pokemon()
+    public void CrearPokemon()
     {
-        var tipo_agua = new Tipos("Agua");
-        var pokemon = new Pokemon("Squirtle", tipo_agua, 150);
+        var tipoElectrico = new Tipos("Electrico", new Dictionary<string, double>());
+        var pokemon = new Pokemon("Pikachu", 100, tipoElectrico, velocidad: 120, ataque: 50, defensa: 40);
 
-        Assert.That(pokemon.Nombre, Is.EqualTo("Squirtle"));
-        Assert.That(pokemon.Salud, Is.EqualTo(150));
-        Assert.That(pokemon.SaludTotal, Is.EqualTo(150));
-        Assert.That(pokemon.Tipo.NombreTipo, Is.EqualTo("Agua"));
-        Assert.That(pokemon.Ataques.Count, Is.EqualTo(0));
-    }
-
-    /// <summary>
-    /// Válida que un ataque se pueda agregar correctamente a la lista de ataques de un Pokémon.
-    /// Comprueba que:
-    /// <list type="bullet">
-    /// <item><description>El ataque se añade a la lista de ataques.</description></item>
-    /// <item><description>El nombre del ataque añadido es correcto.</description></item>
-    /// </list>
-    /// </summary>
-    [Test]
-    public void AgregarAtaques()
-    {
-        var tipo_fuego = new Tipos("Fuego");
-        var pokemon = new Pokemon("Charmander", tipo_fuego, 100);
-        var ataque = new Ataques("Lanzallamas", 90, tipo_fuego, true);
-        pokemon.AgregarAtaques(ataque);
-
-        Assert.That(pokemon.Ataques.Count, Is.EqualTo(1));
-        Assert.That(pokemon.Ataques[0].Nombre, Is.EqualTo("Lanzallamas"));
-    }
-
-  
-   
-    /// <summary>
-    /// Válida que el método <see cref="Pokemon.ConocerAtaques"/> devuelva correctamente
-    /// los nombres de los ataques disponibles de un Pokémon.
-    /// </summary>
-    [Test]
-    public void ConocerAtaques()
-    {
-        var tipoElectrico = new Tipos("Electrico");
-        var pokemon = new Pokemon("Pikachu", tipoElectrico, 180);
-        var ataque = new Ataques("Lanzallamas", 90, tipoElectrico, true);
-
-        pokemon.AgregarAtaques(ataque);
-        var resultado = pokemon.ConocerAtaques(pokemon);
-
-        Assert.That(resultado, Contains.Substring("---Ataques disponibles---"));
-        Assert.That(resultado, Contains.Substring("Lanzallamas"));
-    }
-
-    [Test] 
-    public void RecibirDaño()
-    {
-        var tipoRoca = new Tipos("Roca");
-        var Pokemon = new Pokemon("Onix", tipoRoca, 200);
-
-        Pokemon.RecibirDaño(50);
-        Assert.That(Pokemon.Salud, Is.EqualTo(150));
-
-        Pokemon.RecibirDaño(160); 
-        Assert.That(Pokemon.Salud, Is.EqualTo(0)); 
-    }
-    
-    [Test]
-    public void MostrarSalud()
-    {
-        var tipoPlanta = new Tipos("Planta");
-        var Pokemon = new Pokemon("Bulbasaur", tipoPlanta, 100);
-
-        Assert.That(Pokemon.MostrarSalud(Pokemon), Is.EqualTo("100/100")); 
+        Assert.That(pokemon.Nombre, Is.EqualTo("Pikachu"));
+        Assert.That(pokemon.Vida, Is.EqualTo(100));
+        Assert.That(pokemon.Velocidad, Is.EqualTo(120));
+        Assert.That(pokemon.Ataque, Is.EqualTo(50));
+        Assert.That(pokemon.Defensa, Is.EqualTo(40));
     }
 
     [Test]
-    public void Curar()
+    public void AprenderHabilidad()
     {
-        var tipoPlanta = new Tipos("Planta");
-        var Pokemon = new Pokemon("Bulbasaur", tipoPlanta, 100);
-        
-        Pokemon.RecibirDaño(30);
-        Pokemon.Curar(70); 
-        Assert.That(Pokemon.Salud, Is.EqualTo(100)); 
-        
-        
+        var tipoElectrico = new Tipos("Electrico", new Dictionary<string, double>());
+        var habilidad = new Habilidades("Impactrueno", tipoElectrico, 40, 90, 15, false);
+        var pokemon = new Pokemon("Pikachu", 100, tipoElectrico);
+
+        pokemon.AprenderHabilidad(habilidad);
+
+        Assert.That(pokemon.Habilidades.Count, Is.EqualTo(1));
+        Assert.That(pokemon.Habilidades[0].Nombre, Is.EqualTo("Impactrueno"));
     }
-}*/
+
+    [Test]
+    public void MostrarHabilidades()
+    {
+        var tipoElectrico = new Tipos("Electrico", new Dictionary<string, double>());
+        var habilidad = new Habilidades("Impactrueno", tipoElectrico, 40, 90, 15, false);
+        var pokemon = new Pokemon("Pikachu", 100, tipoElectrico);
+
+        pokemon.AprenderHabilidad(habilidad);
+        var resultado = pokemon.MostrarHabilidades();
+
+        Assert.That(resultado, Contains.Substring("Impactrueno"));
+    }
+}
