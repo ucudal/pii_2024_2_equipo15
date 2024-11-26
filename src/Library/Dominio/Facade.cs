@@ -1,4 +1,5 @@
-﻿namespace Library;
+﻿using program;
+namespace Library;
 
 public class Facade
 {
@@ -18,6 +19,26 @@ public class Facade
         }
     }
     
+    
+        public static List<Pokemon> catalogoPokemon = new List<Pokemon>
+        {
+            Logica.Blastoise,
+            Logica.Arbok,
+            Logica.Pikachu,
+            Logica.Sandslash,
+            Logica.Ninetales,
+            Logica.Persian,
+            Logica.Dragonair,
+            Logica.Meganium,
+      
+        };
+
+        public List<Pokemon> ObtenerCatalogoPokemon()
+        {
+            return catalogoPokemon;
+        }
+    
+
 
     private Facade()
     {

@@ -4,12 +4,12 @@
         <name>Program</name>
     </assembly>
     <members>
-        <member name="T:Program.Program">
+        <member name="T:program.Program">
             <summary>
             Un programa que implementa un bot de Discord.
             </summary>
         </member>
-        <member name="M:Program.Program.Main(System.String[])">
+        <member name="M:program.Program.Main(System.String[])">
             <summary>
             Punto de entrada al programa.
             </summary>
