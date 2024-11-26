@@ -9,7 +9,7 @@ public class MenuCommand : ModuleBase<SocketCommandContext>
 {
     [Command("menu")]
     [Summary("Muestra un menú interactivo con opciones de acciones.")]
-    public async Task ShowMenuAsync()
+    public async Task ShowMenuAsync()   
     {
         // Crea un mensaje inicial con un menú de botones
         var builder = new ComponentBuilder()

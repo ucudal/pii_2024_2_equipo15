@@ -18,6 +18,10 @@
   <ItemGroup>
     <None Remove="Program.xml" />
   </ItemGroup>
+<ItemGroup>
+  <ProjectReference Include="../Library/Library.csproj" />
+</ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Discord.Net" Version="3.16.0" />
   </ItemGroup>
