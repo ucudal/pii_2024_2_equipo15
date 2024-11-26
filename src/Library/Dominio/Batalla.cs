@@ -62,21 +62,30 @@ namespace program
                 return $"{atacante.Nombre} intentó usar {habilidad.Nombre}, ¡pero falló!";
             }
 
+            // Calcular efectividad del ataque
             double efectividad = habilidad.Tipo.EsEfectivoOPocoEfectivo(defensor.TipoPrincipal);
             if (defensor.TipoSecundario != null)
             {
                 efectividad *= habilidad.Tipo.EsEfectivoOPocoEfectivo(defensor.TipoSecundario);
             }
 
+            // Cálculo de daño con crítico y variación aleatoria
             double critico = new Random().Next(0, 100) < 10 ? 1.5 : 1.0;
             double aleatorio = new Random().NextDouble() * (1.0 - 0.85) + 0.85;
 
-            int daño = (int)((habilidad.Poder * (atacante.Ataque / (double)defensor.Defensa) + 2) * efectividad * critico * aleatorio);
+            int daño = (int)((habilidad.Danio * (atacante.Velocidad / (double)defensor.Velocidad) + 2) * efectividad * critico * aleatorio);
             defensor.Vida -= daño;
 
             if (defensor.Vida <= 0)
             {
                 defensor.Vida = 0;
+
+                // Verificar si el equipo contrario ya no tiene Pokémon vivos
+                if (!entrenadorEnEspera.TienePokemonesVivos())
+                {
+                    return $"{atacante.Nombre} usó {habilidad.Nombre} y derrotó a {defensor.Nombre}. ¡{entrenadorActual.Nombre} gana la batalla!";
+                }
+
                 CambiarTurno();
                 return $"{atacante.Nombre} usó {habilidad.Nombre} y derrotó a {defensor.Nombre}!";
             }
@@ -90,6 +99,11 @@ namespace program
             if (nuevoPokemon == null || !entrenadorActual.Pokemones.Contains(nuevoPokemon))
             {
                 return "Ese Pokémon no está en tu equipo.";
+            }
+
+            if (nuevoPokemon.Vida <= 0)
+            {
+                return $"{nuevoPokemon.Nombre} está debilitado y no puede ser enviado a la batalla.";
             }
 
             entrenadorActual.PokemonActivo = nuevoPokemon;
@@ -111,16 +125,22 @@ namespace program
             return "La batalla continúa...";
         }
 
-        // MÉTODO RESTAURADO: ContieneEntrenador
+        // ContieneEntrenador: Verificar si el entrenador pertenece a esta batalla
         public bool ContieneEntrenador(string nombreEntrenador)
         {
             return entrenador1.Nombre == nombreEntrenador || entrenador2.Nombre == nombreEntrenador;
         }
 
-        // NUEVO MÉTODO: JugadoresDisponibles
+        // JugadoresDisponibles: Retornar los entrenadores en esta batalla
         public List<Entrenador> JugadoresDisponibles()
         {
             return new List<Entrenador> { entrenador1, entrenador2 };
+        }
+
+        // Mostrar el turno actual
+        public string MostrarTurnoActual()
+        {
+            return $"Es el turno de {entrenadorActual.Nombre} con {entrenadorActual.PokemonActivo.Nombre}.";
         }
     }
 }
