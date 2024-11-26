@@ -1,98 +1,87 @@
-﻿using System.Collections.ObjectModel;
+﻿﻿using System.Collections.Generic;
 
+namespace Proyecto_Pokemon;
 
-
-/// <summary>
-/// Esta clase representa la lista de jugadores esperando para jugar.
-/// </summary>
 public class WaitingList
 {
-    private readonly List<Trainer> trainers = new List<Trainer>();
-
-    public int Count
+    // Lista de entrenadores en el lobby
+    private List<Entrenador> Entrenadoress { get; }= new List<Entrenador>();
+   
+    public int Cantidad
     {
-        get { return this.trainers.Count; }
-    }
-
-    public ReadOnlyCollection<Trainer> GetAllWaiting()
-    {
-        return this.trainers.AsReadOnly();
+        get { return Entrenadoress.Count; }
     }
     
-    /// <summary>
-    /// Agrega un jugador a la lista de espera.
-    /// </summary>
-    /// <param name="displayName">El nombre de usuario de Discord en el servidor
-    /// del bot a agregar.
-    /// </param>
-    /// <returns><c>true</c> si se agrega el usuario; <c>false</c> en caso
-    /// contrario.</returns>
-    public bool AddTrainer(string displayName)
+    // Método para agregar un entrenador al lobby
+    public bool AgregarEntrenadores(string NombreEntrenador)
     {
-        if (string.IsNullOrEmpty(displayName))
-        {
-            throw new ArgumentException(nameof(displayName));
-        }
+        // Verificamos que el nombre no sea nulo o vacío
+        if (string.IsNullOrEmpty(NombreEntrenador))
+            throw new ArgumentException(nameof(NombreEntrenador));
         
-        if (this.FindTrainerByDisplayName(displayName) != null) return false;
-        trainers.Add(new Trainer(displayName));
+        // Si el entrenador ya está, no lo agregamos
+        if (EntrenadorPorNombre(NombreEntrenador) != null) 
+            return false;
+        
+        // Agregamos nuevo entrenador
+        Entrenadoress.Add(new Entrenadores(NombreEntrenador));
         return true;
-
     }
-
-    /// <summary>
-    /// Remueve un jugador de la lista de espera.
-    /// </summary>
-    /// <param name="displayName">El nombre de usuario de Discord en el servidor
-    /// del bot a remover.
-    /// </param>
-    /// <returns><c>true</c> si se remueve el usuario; <c>false</c> en caso
-    /// contrario.</returns>
-    public bool RemoveTrainer(string displayName)
+    
+    // Método para eliminar un entrenador del lobby, bool para indicar si se completó
+    public bool SacarEntrenadores(string EntrenadoresName)
     {
-        Trainer? trainer = this.FindTrainerByDisplayName(displayName);
-        if (trainer == null) return false;
-        trainers.Remove(trainer);
+        // Buscamos al entrenador por nombre string, si no está, no se puede eliminar
+        Entrenadores? Entrenadores = EntrenadorPorNombre(EntrenadoresName);
+        if (Entrenadores == null)
+            return false;
+        
+        // Lo removemos de la lista
+        Entrenadoress.Remove(Entrenadores);
         return true;
-
     }
-
-    /// <summary>
-    /// Busca un jugador por el nombre de usuario de Discord en el servidor del
-    /// bot.
-    /// </summary>
-    /// <param name="displayName">El nombre de usuario de Discord en el servidor
-    /// del bot a buscar.
-    /// </param>
-    /// <returns>El jugador encontrado o <c>null</c> en caso contrario.
-    /// </returns>
-    public Trainer? FindTrainerByDisplayName(string displayName)
+    
+    // Método para obtener un entrenador por su nombre como string, útil para fachada y futuras implementaciones
+    public Entrenador? EntrenadorPorNombre(string EntrenadoresName)
     {
-        foreach (Trainer trainer in this.trainers)
-        {
-            if (trainer.DisplayName == displayName)
+        foreach (Entrenador Entrenadores in Entrenadoress)
+            if (Entrenadores.Nombre == EntrenadoresName)
             {
-                return trainer;
+                return Entrenadores;
             }
-        }
-
         return null;
     }
-
-    /// <summary>
-    /// Retorna un jugador cualquiera esperando para jugar. En esta
-    /// implementación provista no es cualquiera, sino el primero. En la
-    /// implementación definitiva, debería ser uno aleatorio.
-    /// 
-    /// </summary>
-    /// <returns></returns>
-    public Trainer? GetAnyoneWaiting()
+    
+    // Método para asignar un oponente random
+    public Entrenador? AnadirRandom(string EntrenadoresName)
     {
-        if (this.trainers.Count == 0)
-        {
+        Random random = new Random();
+        // Si hay menos de dos entrenadores en lobby, no se puede asignar oponente
+        if (Cantidad <= 1)
             return null;
+        
+        int numerorandom;
+        do
+        {
+            //Generamos número random dentro de los posibles
+            numerorandom = random.Next(0, Cantidad);
+            // Nos aseguramos de que el entrenador seleccionado no sea uno mismo
+        } while (Entrenadoress[numerorandom].Nombre == EntrenadoresName);
+        return Entrenadoress[numerorandom];
+    }
+    
+    // Método para ver la lista de entrenadores en el lobby
+    public string VerListaLobby()
+    {
+        string result = null;
+            
+        // Recorremos la lista y agregamos los nombres al string result
+        foreach (var entrenador in Entrenadoress)
+        {
+            result += entrenador.Nombre + "\n";
         }
 
-        return this.trainers[0];
+        return result;
     }
+    
 }

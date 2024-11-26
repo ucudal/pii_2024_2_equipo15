@@ -4,15 +4,5 @@
         <name>Program</name>
     </assembly>
     <members>
-        <member name="T:program.Program">
-            <summary>
-            Un programa que implementa un bot de Discord.
-            </summary>
-        </member>
-        <member name="M:program.Program.Main(System.String[])">
-            <summary>
-            Punto de entrada al programa.
-            </summary>
-        </member>
     </members>
 </doc>
