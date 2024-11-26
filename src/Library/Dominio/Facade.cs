@@ -11,6 +11,10 @@ namespace program
         {
             return Logica.Instance.MostrarPokemones();
         }
+        public static string MostrarAtaquesDePokemones()
+        {
+            return Logica.Instance.MostrarAtaquesDePokemones();
+        }
         // Gestión de Entrenadores
         public static string IngresarUsuarioAlCentro(string nombre)
         {

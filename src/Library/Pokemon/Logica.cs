@@ -215,5 +215,21 @@
         {
             return new List<Pokemon>(pokemones);
         }
+        public string MostrarAtaquesDePokemones()
+        {
+            string resultado = "```Lista de ataques de cada Pokémon:\n";
+            foreach (var pokemon in pokemones)
+            {
+                resultado += $"{pokemon.Nombre}:\n";
+                foreach (var habilidad in pokemon.Habilidades)
+                {
+                    resultado += $"- {habilidad.Nombre} | Daño: {habilidad.Danio} | Precisión: {habilidad.Precision} | Tipo: {habilidad.Tipo.Nombre}\n";
+                }
+                resultado += "\n";
+            }
+            resultado += "```";
+            return resultado;
+        }
+
     }
 }

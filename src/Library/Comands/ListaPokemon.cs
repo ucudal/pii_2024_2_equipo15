@@ -3,7 +3,7 @@ using program;
 
 namespace Library.Commands;
 
-public class ListaPokemonCommand : ModuleBase<SocketCommandContext>
+public class ListaPokemon : ModuleBase<SocketCommandContext>
 {
     [Command("listapokemon")]
     [Summary("Muestra todos los Pokémon disponibles para elegir en el equipo.")]
