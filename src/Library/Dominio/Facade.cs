@@ -77,7 +77,7 @@ namespace program
 
             if (jugador1 == null || jugador2 == null)
             {
-                return "No se encontraron los jugadores para iniciar la batalla.";
+                return "No hay jugadores suficientes para la batalla.";
             }
 
             Batalla batalla = new Batalla(jugador1, jugador2);
@@ -90,7 +90,7 @@ namespace program
         public static string UsarHabilidad(string entrenador, string? habilidad)
         {
             Batalla batalla = ObtenerBatallaPorEntrenador(entrenador);
-            if (batalla == null) return "No estás en una batalla activa.";
+            if (batalla == null) return "No estás en una batalla actyalmente.";
 
             Entrenador jugador = GameManager.ObtenerEntrenador(entrenador);
             IHabilidad habilidadUsar = jugador.PokemonActivo.ObtenerHabilidad(habilidad);
@@ -101,7 +101,7 @@ namespace program
         public static string CambiarPokemones(string entrenador, string pokemon)
         {
             Batalla batalla = ObtenerBatallaPorEntrenador(entrenador);
-            if (batalla == null) return "No estás en una batalla activa.";
+            if (batalla == null) return "No estás en una batalla actualmente.";
 
             Entrenador jugador = GameManager.ObtenerEntrenador(entrenador);
             Pokemon cambio = jugador.ObtenerPokemonPorNombre(pokemon);
@@ -125,9 +125,9 @@ namespace program
         public static string VerCentroJuego()
         {
             List<string> nombres = GameManager.ObtenerNombresEntrenadores();
-            if (nombres.Count == 0) return "No hay jugadores en el lobby.";
+            if (nombres.Count == 0) return "No hay jugadores en el centro de juego.";
 
-            string respuesta = "Jugadores en el lobby:\n";
+            string respuesta = "Jugadores en el centro de juego:\n";
             respuesta += string.Join("\n", nombres);
             return respuesta;
         }
