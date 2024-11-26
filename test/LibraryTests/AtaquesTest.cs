@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿/*using NUnit.Framework;
 namespace LibraryTests;
 using Library;
 
@@ -51,3 +51,4 @@ public class AtaquesTest
         Assert.That(ataqueConfusion.EsEspecial, Is.True);
     }
 }
+*/

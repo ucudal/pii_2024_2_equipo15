@@ -1,62 +1,36 @@
-namespace program;
-
-public class Entrenador
+namespace program
 {
-    public string Nombre { get; }
-    public List<Pokemon> Pokemones { get; }
-    public int CantidadDePokemones
+    public class Entrenador
     {
-        get { return Pokemones.Count; }
-    }
-    public Pokemon PokemonActivo { get; set; }
+        public string Nombre { get; }
+        public List<Pokemon> Pokemones { get; }
+        public Pokemon? PokemonActivo { get; set; }
+        public bool EnBatalla { get; set; }
 
-    public bool EnBatalla { get; set; }
-
-    public Entrenador(string nombre)
-    {
-        Nombre = nombre;
-        Pokemones = new List<Pokemon>();
-        EnBatalla = false;
-    }
-
-    public bool BuscarPokemon(string nombrePokemon)
-    {
-        foreach (Pokemon pokemon in Pokemones)
+        public Entrenador(string nombre)
         {
-            if (pokemon.Nombre == nombrePokemon)
-            {
-                return true;
-            }
+            Nombre = nombre;
+            Pokemones = new List<Pokemon>();
+            EnBatalla = false;
         }
-        return false;
-    }
 
-    public Pokemon? BuscarPokemonYGuardar(string nombrePokemon)
-    {
-        foreach (Pokemon pokemon in Pokemones)
+        // Buscar un Pokémon por su nombre
+        public Pokemon? ObtenerPokemonPorNombre(string nombrePokemon)
         {
-            if (pokemon.Nombre == nombrePokemon)
-            {
-                return pokemon;
-            }
+            return Pokemones.Find(p => p.Nombre.Equals(nombrePokemon, StringComparison.OrdinalIgnoreCase));
         }
-        return null;
-    }
 
-    public bool FijarPokemonActual(Pokemon? pokemon = null)
-    {
-        if (pokemon != null)
+        // Establecer un Pokémon como el Pokémon activo
+        public bool FijarPokemonActual(Pokemon? pokemon = null)
         {
-            if (pokemon.Vida > 0)
+            if (pokemon != null && Pokemones.Contains(pokemon) && pokemon.Vida > 0)
             {
                 PokemonActivo = pokemon;
                 return true;
             }
-            return false;
-        }
-        else
-        {
-            foreach (Pokemon poke in Pokemones)
+
+            // Si no se especifica un Pokémon, buscar uno vivo
+            foreach (var poke in Pokemones)
             {
                 if (poke.Vida > 0)
                 {
@@ -64,34 +38,41 @@ public class Entrenador
                     return true;
                 }
             }
+
+            return false; // No hay Pokémon vivos
         }
-        return false;
-    }
 
-    public List<Pokemon> RecibirEquipoPokemon()
-    {
-        return Pokemones;
-    }
-
-    public bool TienePokemonesVivos()
-    {
-        return Pokemones.Any(pokemon => pokemon.Vida > 0);
-    }
-
-    public bool AñadirPokemon(Pokemon pokemon)
-    {
-        if (Pokemones.Count < 6)
+        // Verificar si hay Pokémon vivos en el equipo
+        public bool TienePokemonesVivos()
         {
+            return Pokemones.Any(pokemon => pokemon.Vida > 0);
+        }
+
+        // Añadir un Pokémon al equipo del entrenador (máximo 6)
+        public bool AñadirPokemon(Pokemon pokemon)
+        {
+            if (Pokemones.Count >= 6) return false; // Limitar a 6 Pokémon
+
             if (!Pokemones.Contains(pokemon))
             {
-                if (Pokemones.Count == 0)
-                {
-                    FijarPokemonActual(pokemon);
-                }
                 Pokemones.Add(pokemon);
+
+                // Si no hay Pokémon activo, establecer el primero añadido como activo
+                if (PokemonActivo == null)
+                {
+                    PokemonActivo = pokemon;
+                }
+
                 return true;
             }
+
+            return false; // El Pokémon ya está en el equipo
         }
-        return false;
+
+        // Devolver una lista de todos los Pokémon del entrenador
+        public List<Pokemon> RecibirEquipoPokemon()
+        {
+            return new List<Pokemon>(Pokemones);
+        }
     }
 }

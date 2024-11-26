@@ -2,9 +2,9 @@
 
 namespace program;
 
-public class WaitingList
+public class CentroDelJuego
 {
-    // Lista de entrenadores en el lobby
+
     private List<Entrenador> Entrenadoress { get; }= new List<Entrenador>();
    
     public int Cantidad
@@ -12,18 +12,18 @@ public class WaitingList
         get { return Entrenadoress.Count; }
     }
     
-    // Método para agregar un entrenador al lobby
+
     public bool AgregarEntrenadores(string NombreEntrenador)
     {
-        // Verificamos que el nombre no sea nulo o vacío
+
         if (string.IsNullOrEmpty(NombreEntrenador))
             throw new ArgumentException(nameof(NombreEntrenador));
         
-        // Si el entrenador ya está, no lo agregamos
+
         if (EntrenadorPorNombre(NombreEntrenador) != null) 
             return false;
         
-        // Agregamos nuevo entrenador
+
         Entrenadoress.Add(new Entrenador(NombreEntrenador));
         return true;
     }
@@ -71,7 +71,7 @@ public class WaitingList
     }
     
     // Método para ver la lista de entrenadores en el lobby
-    public string VerListaLobby()
+    public string VerCentroJuego()
     {
         string result = null;
             

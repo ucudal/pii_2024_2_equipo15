@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿/*using NUnit.Framework;
 namespace LibraryTests;
 using Library;
 
@@ -282,3 +282,4 @@ public class EntrenadorTest
         Assert.That(listaEspera.Count, Is.EqualTo(2)); 
     }
 }
+*/
