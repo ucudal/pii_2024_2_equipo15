@@ -11,10 +11,12 @@ namespace program
         {
             return Logica.Instance.MostrarPokemones();
         }
+
         public static string MostrarAtaquesDePokemones()
         {
             return Logica.Instance.MostrarAtaquesDePokemones();
         }
+
         // Gestión de Entrenadores
         public static string IngresarUsuarioAlCentro(string nombre)
         {
@@ -77,7 +79,7 @@ namespace program
 
             if (jugador1 == null || jugador2 == null)
             {
-                return "No hay jugadores suficientes para la batalla.";
+                return "No se encontraron los jugadores para iniciar la batalla.";
             }
 
             Batalla batalla = new Batalla(jugador1, jugador2);
@@ -90,18 +92,19 @@ namespace program
         public static string UsarHabilidad(string entrenador, string? habilidad)
         {
             Batalla batalla = ObtenerBatallaPorEntrenador(entrenador);
-            if (batalla == null) return "No estás en una batalla actyalmente.";
+            if (batalla == null) return "No estás en una batalla activa.";
 
             Entrenador jugador = GameManager.ObtenerEntrenador(entrenador);
             IHabilidad habilidadUsar = jugador.PokemonActivo.ObtenerHabilidad(habilidad);
 
-            return batalla.RealizarTurno(habilidadUsar);
+            string resultado = batalla.RealizarTurno(habilidadUsar);
+            return resultado;
         }
 
         public static string CambiarPokemones(string entrenador, string pokemon)
         {
             Batalla batalla = ObtenerBatallaPorEntrenador(entrenador);
-            if (batalla == null) return "No estás en una batalla actualmente.";
+            if (batalla == null) return "No estás en una batalla activa.";
 
             Entrenador jugador = GameManager.ObtenerEntrenador(entrenador);
             Pokemon cambio = jugador.ObtenerPokemonPorNombre(pokemon);
@@ -125,9 +128,9 @@ namespace program
         public static string VerCentroJuego()
         {
             List<string> nombres = GameManager.ObtenerNombresEntrenadores();
-            if (nombres.Count == 0) return "No hay jugadores en el centro de juego.";
+            if (nombres.Count == 0) return "No hay jugadores en el lobby.";
 
-            string respuesta = "Jugadores en el centro de juego:\n";
+            string respuesta = "Jugadores en el lobby:\n";
             respuesta += string.Join("\n", nombres);
             return respuesta;
         }

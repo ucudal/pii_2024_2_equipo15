@@ -137,60 +137,98 @@
         //     Instanciar todos los ataques disponibles
         //--------------------------------------------------------------------------------
 
-        public static Ataques Placaje = new Ataques("Placaje", 40, Normal, true);
-        public static Ataques Hiperrayo = new Ataques("Hiperrayo", 150, Normal, false);
-        public static Ataques Lanzallamas = new Ataques("Lanzallamas", 90, Fuego, true);
-        public static Ataques HidroBomba = new Ataques("Hidro Bomba", 110, Agua, false);
-        public static Ataques RayoHielo = new Ataques("Rayo Hielo", 90, Hielo, false);
-        public static Ataques Trueno = new Ataques("Trueno", 110, Electrico, true);
-        public static Ataques Terremoto = new Ataques("Terremoto", 100, Tierra, true);
-        public static Ataques RocaAfilada = new Ataques("Roca Afilada", 100, Roca, false);
-        public static Ataques BolaSombra = new Ataques("Bola Sombra", 80, Fantasma, false);
-        public static Ataques ABoCajarro = new Ataques("A Bocajarro", 120, Lucha, true);
+        public static Ataques Placaje = new Ataques("Placaje", 40,  false);
+        public static Ataques Hiperrayo = new Ataques("Hiperrayo", 150,  false);
+        public static Ataques Lanzallamas = new Ataques("Lanzallamas", 90,  false);
+        public static Ataques HidroBomba = new Ataques("Hidro Bomba", 110,  false);
+        public static Ataques RayoHielo = new Ataques("Rayo Hielo", 90,  false);
+        public static Ataques Trueno = new Ataques("Trueno", 110,  false);
+        public static Ataques Terremoto = new Ataques("Terremoto", 100, false);
+        public static Ataques RocaAfilada = new Ataques("Roca Afilada", 100, false);
+        public static Ataques BolaSombra = new Ataques("Bola Sombra", 80,  false);
+        public static Ataques ABoCajarro = new Ataques("A Bocajarro", 120,  false);
+        public static Ataques LluviaDraco = new Ataques("Lluvia Draco", 130, true);
+        public static Ataques Explosión = new Ataques("Explosión", 250, true);
+        public static Ataques PulsoUmbrío = new Ataques("Pulso Umbrío", 120, true);
+        public static Ataques ImpactoGélido = new Ataques("Impacto Gélido", 140, true);
 
         //--------------------------------------------------------------------------------
         //     Inicializar la lista de Pokémon disponibles
         //--------------------------------------------------------------------------------
 
-        private List<Pokemon> InicializarPokemones()
-        {
-            // Crear Pokémon con tipos y ataques asignados
-            Pokemon blastoise = new Pokemon("Blastoise", 268, Agua);
-            blastoise.AprenderHabilidad(HidroBomba);
-            blastoise.AprenderHabilidad(Placaje);
+private List<Pokemon> InicializarPokemones()
+{
+Pokemon blastoise = new Pokemon("Blastoise", 268, 120, 80, 160);
+blastoise.AprenderHabilidad(HidroBomba); 
+blastoise.AprenderHabilidad(Placaje); 
+blastoise.AprenderHabilidad(LluviaDraco); 
 
-            Pokemon pikachu = new Pokemon("Pikachu", 180, Electrico);
-            pikachu.AprenderHabilidad(Trueno);
-            pikachu.AprenderHabilidad(Placaje);
+Pokemon pikachu = new Pokemon("Pikachu", 180, 150, 120, 150);
+pikachu.AprenderHabilidad(Trueno); 
+pikachu.AprenderHabilidad(Placaje); 
+pikachu.AprenderHabilidad(Explosión); 
 
-            Pokemon charizard = new Pokemon("Charizard", 266, Fuego, Volador);
-            charizard.AprenderHabilidad(Lanzallamas);
-            charizard.AprenderHabilidad(RayoHielo);
+Pokemon charizard = new Pokemon("Charizard", 266, 100, 80, 200);
+charizard.AprenderHabilidad(Lanzallamas); 
+charizard.AprenderHabilidad(RayoHielo); 
+charizard.AprenderHabilidad(ImpactoGélido); 
 
-            Pokemon gengar = new Pokemon("Gengar", 261, Fantasma, Psiquico);
-            gengar.AprenderHabilidad(BolaSombra);
-            gengar.AprenderHabilidad(Hiperrayo);
+Pokemon gengar = new Pokemon("Gengar", 261, 120, 95, 140);
+gengar.AprenderHabilidad(BolaSombra); 
+gengar.AprenderHabilidad(Hiperrayo); 
+gengar.AprenderHabilidad(PulsoUmbrío); 
 
-            Pokemon dragonite = new Pokemon("Dragonite", 300, Dragon, Volador);
-            dragonite.AprenderHabilidad(RocaAfilada);
-            dragonite.AprenderHabilidad(Placaje);
+Pokemon dragonite = new Pokemon("Dragonite", 300, 200, 100, 110);
+dragonite.AprenderHabilidad(RocaAfilada); 
+dragonite.AprenderHabilidad(Placaje); 
+dragonite.AprenderHabilidad(LluviaDraco); 
 
-            Pokemon machamp = new Pokemon("Machamp", 290, Lucha);
-            machamp.AprenderHabilidad(ABoCajarro);
-            machamp.AprenderHabilidad(Terremoto);
+Pokemon machamp = new Pokemon("Machamp", 290, 200, 100, 120);
+machamp.AprenderHabilidad(ABoCajarro);
+machamp.AprenderHabilidad(Terremoto); 
+machamp.AprenderHabilidad(Explosión); 
 
-          
 
-            return new List<Pokemon>
-            {
-                blastoise,
-                pikachu,
-                charizard,
-                gengar,
-                dragonite,
-                machamp
-            };
-        }
+Pokemon snorlax = new Pokemon("Snorlax", 450, 50, 110, 200);
+snorlax.AprenderHabilidad(Placaje); 
+snorlax.AprenderHabilidad(Hiperrayo); 
+snorlax.AprenderHabilidad(ImpactoGélido); 
+
+Pokemon jolteon = new Pokemon("Jolteon", 220, 200, 100, 80);
+jolteon.AprenderHabilidad(Trueno); 
+jolteon.AprenderHabilidad(Explosión); 
+
+Pokemon scizor = new Pokemon("Scizor", 250, 120, 150, 180);
+scizor.AprenderHabilidad(RocaAfilada); 
+scizor.AprenderHabilidad(Placaje); 
+scizor.AprenderHabilidad(LluviaDraco); 
+
+Pokemon gyarados = new Pokemon("Gyarados", 300, 130, 150, 100);
+gyarados.AprenderHabilidad(HidroBomba); 
+gyarados.AprenderHabilidad(Lanzallamas); 
+gyarados.AprenderHabilidad(ImpactoGélido); 
+
+Pokemon tyranitar = new Pokemon("Tyranitar", 350, 100, 200, 150);
+tyranitar.AprenderHabilidad(Terremoto); 
+tyranitar.AprenderHabilidad(RocaAfilada); 
+tyranitar.AprenderHabilidad(PulsoUmbrío); 
+
+    return new List<Pokemon>
+    {
+        blastoise,
+        pikachu,
+        charizard,
+        gengar,
+        dragonite,
+        machamp,
+        snorlax,
+        jolteon,
+        scizor,
+        gyarados,
+        tyranitar
+    };
+}
+
 
         // Mostrar todos los Pokémon disponibles
         public string MostrarPokemones()
@@ -198,7 +236,15 @@
             string resultado = "```Lista de Pokémon disponibles:\n";
             foreach (var pokemon in pokemones)
             {
-                resultado += $"{pokemon.Nombre} | Tipo: {pokemon.TipoPrincipal.Nombre} | HP: {pokemon.Vida}/{pokemon.VidaBase}\n";
+                resultado += $"{pokemon.Nombre} | HP: {pokemon.Vida}/{pokemon.VidaBase} | Ataque: {pokemon.Ataque} | Defensa: {pokemon.Defensa} | Velocidad: {pokemon.Velocidad}\n";
+                resultado += "Ataques:\n";
+
+                foreach (var habilidad in pokemon.Habilidades)
+                {
+                    resultado += $"- {habilidad.Nombre} | Daño: {habilidad.Danio} | Precisión: {habilidad.Precision} | PP: {habilidad.Puntos_de_Poder} | Especial: {(habilidad.EsEspecial ? "Sí" : "No")} | Ataque Cargado: {(habilidad.EsDobleTurno ? "Sí" : "No")}\n";
+                }
+
+                resultado += "\n"; // Separador entre Pokémon
             }
             resultado += "```";
             return resultado;
@@ -210,26 +256,31 @@
             return pokemones.Find(p => p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
         }
 
-        // Obtener todos los Pokémon disponibles
+   
         public List<Pokemon> ObtenerTodos()
         {
             return new List<Pokemon>(pokemones);
         }
         public string MostrarAtaquesDePokemones()
         {
+            if (pokemones == null || !pokemones.Any())
+                return "No hay Pokémon disponibles para mostrar sus ataques.";
+
             string resultado = "```Lista de ataques de cada Pokémon:\n";
             foreach (var pokemon in pokemones)
             {
                 resultado += $"{pokemon.Nombre}:\n";
                 foreach (var habilidad in pokemon.Habilidades)
                 {
-                    resultado += $"- {habilidad.Nombre} | Daño: {habilidad.Danio} | Precisión: {habilidad.Precision} | Tipo: {habilidad.Tipo.Nombre}\n";
+                    // Mostrar información relevante para cada habilidad
+                    resultado += $"- {habilidad.Nombre} | Daño: {habilidad.Danio} | Precisión: {habilidad.Precision} | PP: {habilidad.Puntos_de_Poder} | Especial: {(habilidad.EsEspecial ? "Sí" : "No")}\n";
                 }
                 resultado += "\n";
             }
             resultado += "```";
             return resultado;
         }
+
 
     }
 }

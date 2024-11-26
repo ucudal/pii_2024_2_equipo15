@@ -33,7 +33,7 @@ public static class BotLoader
 
             await bot.StartAsync(serviceProvider);
 
-            Console.WriteLine("Conectado a Discord. Presione 'q' para salir...");
+            Console.WriteLine("Conectado a Discord.");
 
             do
             {
