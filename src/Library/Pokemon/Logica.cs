@@ -237,18 +237,11 @@ tyranitar.AprenderHabilidad(PulsoUmbrío);
             foreach (var pokemon in pokemones)
             {
                 resultado += $"{pokemon.Nombre} | HP: {pokemon.Vida}/{pokemon.VidaBase} | Ataque: {pokemon.Ataque} | Defensa: {pokemon.Defensa} | Velocidad: {pokemon.Velocidad}\n";
-                resultado += "Ataques:\n";
-
-                foreach (var habilidad in pokemon.Habilidades)
-                {
-                    resultado += $"- {habilidad.Nombre} | Daño: {habilidad.Danio} | Precisión: {habilidad.Precision} | PP: {habilidad.Puntos_de_Poder} | Especial: {(habilidad.EsEspecial ? "Sí" : "No")} | Ataque Cargado: {(habilidad.EsDobleTurno ? "Sí" : "No")}\n";
-                }
-
-                resultado += "\n"; // Separador entre Pokémon
             }
             resultado += "```";
             return resultado;
         }
+
 
         // Obtener un Pokémon por nombre
         public Pokemon? ObtenerPokemon(string nombre)

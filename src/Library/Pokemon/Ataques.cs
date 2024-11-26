@@ -11,11 +11,12 @@ public class Ataques : IHabilidad
     public bool EsEspecial { get; set; } = false; // Por defecto, no es un ataque especial
     public IEfectos Efectos { get; set; }
 
-    public Ataques(string nombre, int danio, bool esEspecial = false)
+    public Ataques(string nombre, int danio, bool esEspecial = false, IEfectos efectos = null)
     {
         Nombre = nombre;
         Danio = danio;
         Poder = danio;
         EsEspecial = esEspecial;
+        Efectos = efectos;
     }
 }
