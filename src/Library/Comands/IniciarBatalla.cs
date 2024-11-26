@@ -11,7 +11,6 @@ public class IniciarBatalla : ModuleBase<SocketCommandContext>
     {
         // Obtener el nombre del entrenador que ejecuta el comando
         string entrenador1 = CommandHelper.GetDisplayName(Context);
-
         // Verificar si el entrenador que ejecuta el comando está en el lobby
         var jugador = GameManager.ObtenerEntrenador(entrenador1);
         if (jugador == null)
@@ -19,7 +18,6 @@ public class IniciarBatalla : ModuleBase<SocketCommandContext>
             await ReplyAsync($"No estás registrado en el lobby. Usa el comando adecuado para unirte.");
             return;
         }
-
         // Comprobar si el equipo del entrenador tiene al menos un Pokémon
         if (jugador.Pokemones.Count == 0)
         {

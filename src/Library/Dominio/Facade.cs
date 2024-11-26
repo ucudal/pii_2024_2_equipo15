@@ -7,6 +7,10 @@ namespace program
     {
         private static Dictionary<string, Batalla> batallasActivas = new Dictionary<string, Batalla>();
 
+        public static string MostrarPokemones()
+        {
+            return Logica.Instance.MostrarPokemones();
+        }
         // Gestión de Entrenadores
         public static string IngresarUsuarioAlCentro(string nombre)
         {
