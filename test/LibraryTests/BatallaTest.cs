@@ -44,23 +44,22 @@ public class BatallaTest
     /// cuando todos los Pokémon de uno de los entrenadores están debilitados.
     /// </summary>
     [Test]
-    public void ConocerGanador_Mateo()
+    public void ConocerGanador()
     {
         var entrenador1 = new Entrenador("Juan");
         var entrenador2 = new Entrenador("Mateo");
         var batalla = new Batalla(entrenador1, entrenador2);
+        
+        entrenador1.AgregarPokemonAlEquipo(new Pokemon("Charmander", new Tipos("Fuego"), 50));
+        entrenador2.AgregarPokemonAlEquipo(new Pokemon("Squirtle", new Tipos("Agua"), 0)); 
+        Assert.That(batalla.ConocerGanador(), Contains.Substring($"El equipo de {entrenador1.Nombre} ha ganado"));
 
-        // Aseguramos que todos los Pokémon de Juan estén debilitados (salud = 0)
-        foreach (var pokemon in entrenador1.Equipo)
-        {
-            pokemon.Salud = 0;
-        }
+        entrenador1.Equipo[0].Salud = 0; 
+        entrenador2.Equipo[0].Salud = 50; 
+        Assert.That(batalla.ConocerGanador(), Contains.Substring($"El equipo de {entrenador2.Nombre} ha ganado"));
 
-        // Llamamos al método ConocerGanador para obtener el resultado
-        var ganador = batalla.ConocerGanador();
-
-        // Verificamos que el ganador sea Mateo (Entrenador2)
-        Assert.That(ganador, Contains.Substring("El equipo de Mateo ha ganado"));
+        entrenador1.Equipo[0].Salud = 50; 
+        Assert.That(batalla.ConocerGanador(), Is.Null);
     }
 
     /// <summary>
@@ -75,17 +74,24 @@ public class BatallaTest
         var batalla = new Batalla(entrenador1, entrenador2);
 
         // Aseguramos que entrenador1 tenga al menos un Pokémon
-        var tipoFuego = new Tipos("Fuego");
-        var pokemon = new Pokemon("Charmander", tipoFuego, 100);  // Creamos un Pokémon
-        entrenador1.AgregarPokemonAlEquipo(pokemon);  // Lo agregamos al equipo de entrenador1
+        entrenador1.AgregarPokemonAlEquipo(new Pokemon("Charmander", new Tipos("Fuego"), 0));
+        entrenador2.AgregarPokemonAlEquipo(new Pokemon("Squirtle", new Tipos("Agua"), 100));
+        
+        var resultado1 = batalla.PokemonDebilitado();
+        Assert.That(resultado1, Is.EqualTo("Charmander ha sido abatido"));
+        
+        entrenador1.Equipo[0].Salud = 50; // Revive al Pokémon de Entrenador1
+        entrenador2.Equipo[0].Salud = 0;  // Debilita al Pokémon de Entrenador2
 
-        // Se debilita el Pokémon del entrenador1
-        entrenador1.Equipo[0].Salud = 0;  // Debería debilitar al primer Pokémon
+        var resultado2 = batalla.PokemonDebilitado();
+        Assert.That(resultado2, Is.EqualTo("Squirtle ha sido abatido"));
 
-        var resultado = batalla.PokemonDebilitado();
+        //No hay Pokémon debilitados en ninguno de los equipos
+        entrenador1.Equipo[0].Salud = 50;
+        entrenador2.Equipo[0].Salud = 50;
 
-        // Comprobamos que el mensaje sea el correcto
-        Assert.That(resultado, Contains.Substring("ha sido abatido"));
+        var resultado3 = batalla.PokemonDebilitado();
+        Assert.That(resultado3, Is.Null);
     }
 
     /// <summary>
@@ -100,11 +106,11 @@ public class BatallaTest
         var batalla = new Batalla(entrenador1, entrenador2);
 
         var turnoInicial = batalla.MostrarTurnoActual();
-        Assert.That(turnoInicial, Is.EqualTo($"Es el turno de: {entrenador1.Nombre}"));
+        Assert.That(turnoInicial, Is.EqualTo($"Es el turno de: {entrenador1.Nombre}") .Or.EqualTo($"Es el turno de: {entrenador2.Nombre}"));
         batalla.CambiarTurno();
 
         var turnoFinal = batalla.MostrarTurnoActual();
-        Assert.That(turnoFinal, Is.EqualTo($"Es el turno de: {entrenador2.Nombre}"));
+        Assert.That(turnoFinal, Is.Not.EqualTo(turnoInicial));
     }
 
     /// <summary>

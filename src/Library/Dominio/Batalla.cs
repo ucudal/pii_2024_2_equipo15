@@ -4,25 +4,25 @@ public class Batalla
 {
     public Entrenador Entrenador1 { get; }
     public Entrenador Entrenador2 { get; }
-    private bool turno;
+    private bool _turno;
 
     public Batalla(Entrenador entrenador1, Entrenador entrenador2)
     {
         Entrenador1 = entrenador1;
         Entrenador2 = entrenador2;
-        turno = new Random().Next(2) == 0;
+        _turno = new Random().Next(2) == 0;
         
     }
 
     public void CambiarTurno()
     {
-        turno = !turno;
+        _turno = !_turno;
     }
 
     public string MostrarTurnoActual()
     {
         string turnoActual;
-        if (turno == false)
+        if (_turno == false)
         {
             turnoActual = Entrenador1.Nombre;
         }
@@ -36,14 +36,14 @@ public class Batalla
     public string ConocerGanador()
     {
         {
-            bool TodosSinSaludEntrenador1 = true;
-            bool TodosSinSaludEntrenador2 = true;
+            bool todosSinSaludEntrenador1 = true;
+            bool todosSinSaludEntrenador2 = true;
 
             foreach (Pokemon pokemon in Entrenador1.Equipo) //Buscar si hay algún pokemon de Entrenador1 que tenga Salud
             {
                 if (pokemon.Salud > 0) //Si encontramos un pokemon que su Salud sea mayor que 0, dejamos de buscar
                 {
-                    TodosSinSaludEntrenador1 = false;
+                    todosSinSaludEntrenador1 = false;
                     break;
                 }
             }
@@ -52,22 +52,22 @@ public class Batalla
             {
                 if (pokemon.Salud > 0) //Si encontramos un pokemon que su Salud sea mayor que 0, dejamos de buscar
                 {
-                    TodosSinSaludEntrenador2 = false;
+                    todosSinSaludEntrenador2 = false;
                     break;
                 }
             }
 
-            if (TodosSinSaludEntrenador1) //Si uno de los dos equipos tiene a todos sus pokemons con Salud=0
+            if (todosSinSaludEntrenador1) //Si uno de los dos equipos tiene a todos sus pokemons con Salud=0
             {
                 return $"El equipo de {Entrenador2.Nombre} ha ganado";
             }
-            else if (TodosSinSaludEntrenador2)
+            else if (todosSinSaludEntrenador2)
             {
                 return $"El equipo de {Entrenador1.Nombre} ha ganado";
             }
 
         }
-        return null;
+        return null!;
     }
 
     public string PokemonDebilitado()
@@ -76,7 +76,7 @@ public class Batalla
         {
             if (pokemon.Salud == 0) //Si encontramos un pokemon que su Salud=0, aparece en pantalla
             {
-                return $"{pokemon} ha sido abatido";
+                return $"{pokemon.Nombre} ha sido abatido";
             }
         }
 
@@ -84,11 +84,11 @@ public class Batalla
         {
             if (pokemon.Salud == 0) //Si encontramos un pokemon que su Salud=0, aparece en pantalla
             {
-                return $"{pokemon} ha sido abatido";
+                return $"{pokemon.Nombre} ha sido abatido";
             }
         }
 
-        return null;
+        return null!;
     }
 
     public string VerificarEstado(Pokemon pokemon)
@@ -115,6 +115,6 @@ public class Batalla
                 pokemon.EstaDormido = false;
                 return $"{pokemon.Nombre} se ha librado de la paralisis y ha realizado su ataque";
             } 
-            return null;
+            return null!;
     }
 }

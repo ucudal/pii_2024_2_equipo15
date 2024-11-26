@@ -22,7 +22,7 @@
             Comprueba que el turno actual cambia después de llamar al método <see cref="M:Library.Batalla.CambiarTurno"/>.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTest.ConocerGanador_Mateo">
+        <member name="M:LibraryTests.BatallaTest.ConocerGanador">
             <summary>
             Válida que el método <see cref="M:Library.Batalla.ConocerGanador"/> devuelva el entrenador ganador
             cuando todos los Pokémon de uno de los entrenadores están debilitados.
