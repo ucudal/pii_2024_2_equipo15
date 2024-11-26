@@ -49,7 +49,7 @@
         <member name="M:LibraryTests.BatallaTest.VerificarEstado_Dormido_Atacar">
             <summary>
             Válida que el Pokémon dormido pueda atacar.
-            Este test hace que si el Pokémon dormido se despierta, pueda atacar correctamente.
+            Este test hace que si el Pokémon dormido se despierta, pueda atacar.
             </summary>
         </member>
         <member name="M:LibraryTests.BatallaTest.VerificarEstado_Paralizado_NoAtacar">
@@ -61,7 +61,7 @@
         <member name="M:LibraryTests.BatallaTest.VerificarEstado_Paralizado_Atacar">
             <summary>
             Válida que el Pokémon paralizado pueda atacar.
-            Este test hace que si el Pokémon paralizado se libera, pueda atacar correctamente.
+            Este test hace que si el Pokémon paralizado se libera, pueda atacar .
             </summary>
         </member>
         <member name="M:LibraryTests.EntrenadorTest.Entrenador">

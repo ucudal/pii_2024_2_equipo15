@@ -67,4 +67,39 @@ public class PokemonTest
         Assert.That(resultado, Contains.Substring("---Ataques disponibles---"));
         Assert.That(resultado, Contains.Substring("Lanzallamas"));
     }
+
+    [Test] 
+    public void RecibirDaño()
+    {
+        var tipoRoca = new Tipos("Roca");
+        var Pokemon = new Pokemon("Onix", tipoRoca, 200);
+
+        Pokemon.RecibirDaño(50);
+        Assert.That(Pokemon.Salud, Is.EqualTo(150));
+
+        Pokemon.RecibirDaño(160); 
+        Assert.That(Pokemon.Salud, Is.EqualTo(0)); 
+    }
+    
+    [Test]
+    public void MostrarSalud()
+    {
+        var tipoPlanta = new Tipos("Planta");
+        var Pokemon = new Pokemon("Bulbasaur", tipoPlanta, 100);
+
+        Assert.That(Pokemon.MostrarSalud(Pokemon), Is.EqualTo("100/100")); 
+    }
+
+    [Test]
+    public void Curar()
+    {
+        var tipoPlanta = new Tipos("Planta");
+        var Pokemon = new Pokemon("Bulbasaur", tipoPlanta, 100);
+        
+        Pokemon.RecibirDaño(30);
+        Pokemon.Curar(70); 
+        Assert.That(Pokemon.Salud, Is.EqualTo(100)); 
+        
+        
+    }
 }
