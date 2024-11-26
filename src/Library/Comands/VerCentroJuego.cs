@@ -1,7 +1,7 @@
 ﻿using Discord.Commands;
 using program;
-namespace program;
 
+namespace Library.Commands;
 public class VerCentroJuego : ModuleBase<SocketCommandContext>
 {
     [Command("CentroJuego")]
