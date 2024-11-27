@@ -19,16 +19,7 @@
         public int Precision { get; } // Representado como porcentaje
         public bool EsEspecial { get; }
         public EfectoEspeciales? Efecto { get; }
-
-        public Ataque(string nombre, int danio, int precision, bool esEspecial, EfectoEspeciales? efecto = null)
-        {
-            Nombre = nombre;
-            Danio = danio;
-            Precision = precision;
-            EsEspecial = esEspecial;
-            Efecto = Efecto;
-        }
-
+        
         public string Usar(Pokemon atacante, Pokemon defensor)
         {
             Random random = new Random();
