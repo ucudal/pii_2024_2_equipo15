@@ -38,9 +38,11 @@ namespace program
                     return true;
                 }
             }
+            PokemonActivo = null; // Aseguramos que no haya un Pokémon activo
 
             return false; // No hay Pokémon vivos
         }
+        
 
         // Verificar si hay Pokémon vivos en el equipo
         public bool TienePokemonesVivos()
