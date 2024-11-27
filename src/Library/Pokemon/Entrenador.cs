@@ -38,6 +38,7 @@ namespace program
                     return true;
                 }
             }
+            PokemonActivo = null; // Aseguramos que no haya un Pokémon activo
 
             return false; // No hay Pokémon vivos
         }
