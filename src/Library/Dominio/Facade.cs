@@ -13,6 +13,9 @@ namespace program
         /// Devuelve la lista de Pokémon disponibles en el sistema.
         /// </summary>
         /// <returns>Cadena con los nombres de los Pokémon disponibles.</returns>
+            private static Prohibiciones prohibiciones = new Prohibiciones(); // Instancia de Prohibiciones
+
+
         public static string MostrarPokemones()
         {
             return Logica.Instance.MostrarPokemones();
@@ -46,12 +49,16 @@ namespace program
 
             Pokemon? pokemon = Logica.Instance.ObtenerPokemon(pokemonName); // Comprueba si el Pokémon está registrado.
             if (pokemon == null) return $"El Pokémon {pokemonName} no existe.";
-            
+            if (Facade.pokemonProhibidos.Contains(pokemonName)) //defensa
+                return $"El pokemon esta prohibido";// defensa
+            {
+                
+            }
             if (Batalla.PokemonesSeleccionados.Contains(pokemonName)) // Verifica si el Pokémon ya fue seleccionado por otro entrenador
             {
                 return $"El Pokémon {pokemonName} ya ha sido seleccionado por otro entrenador.";
             }
-
+            
             bool añadido = jugador.AñadirPokemon(pokemon);
             if (!añadido) return "No puedes añadir más Pokémon o ya tienes este Pokémon.";
 
@@ -107,12 +114,12 @@ namespace program
 
             return batalla.IniciarBatalla(); // Comienza la batalla y devuelve el estado inicial.
         }
-
+        
         public static string UsarHabilidad(string entrenador, string? habilidad)
         {
             Batalla batalla = ObtenerBatallaPorEntrenador(entrenador);
             if (batalla == null) return "No estás en una batalla activa.";
-
+            
             Entrenador jugador = GameManager.ObtenerEntrenador(entrenador);
             IHabilidad habilidadUsar = jugador.PokemonActivo.ObtenerHabilidad(habilidad);
 
@@ -138,14 +145,21 @@ namespace program
                 inventarios[entrenador] = new Inventario();
             }
 
+            
+            if (prohibiciones.ItemsProhibidos.Contains(nombreObjeto)) 
+            {
+                return $"El ítem está prohibido."; 
+            }
+
             Pokemon? pokemon = Logica.Instance.ObtenerPokemon(nombrePokemon);
             if (pokemon == null)
             {
-                return "El Pokémon no existe o no está en el equipo.";
+                return $"El Pokémon {nombrePokemon} no existe o no está en el equipo.";
             }
 
             return inventarios[entrenador].UsarObjeto(nombreObjeto, pokemon);
         }
+
 
         public static string MostrarInventario(string entrenador)
         {
@@ -184,5 +198,53 @@ namespace program
             respuesta += string.Join("\n", nombres);
             return respuesta;
         }
+
+
+    
+        private static HashSet<string> pokemonProhibidos = new HashSet<string>();
+        private static HashSet<string> tiposProhibidos = new HashSet<string>();
+        private static HashSet<string> itemsProhibidos = new HashSet<string>();
+        public static string ProhibirPokemon(string pokemon)
+        {
+            if (string.IsNullOrEmpty(pokemon))
+            {
+                return "Debes especificar un nombre de Pokémon para prohibir.";
+            }
+            if (pokemonProhibidos.Contains(pokemon))
+            {
+                return $"El Pokémon {pokemon} ya está prohibido.";
+            }
+            pokemonProhibidos.Add(pokemon);
+            return $"El Pokémon {pokemon} ha sido prohibido para la batalla.";
+        }
+        public static string ProhibirTipo(string tipo)
+        {
+            if (string.IsNullOrEmpty(tipo))
+            {
+                return "Debes especificar un tipo de Pokémon para prohibir.";
+            }
+            if (tiposProhibidos.Contains(tipo))
+            {
+                return $"El tipo ya está prohibido.";
+            }
+            tiposProhibidos.Add(tipo);
+            return $"El tipo ha sido prohibido para la batalla.";
+        }
+        public static string ProhibirItem(string item)
+        { if (string.IsNullOrEmpty(item))
+            {
+                return "Debes especificar un nombre de ítem para prohibir.";
+            }
+            if (itemsProhibidos.Contains(item))
+            {
+                return $"El ítem ya está prohibido.";
+            }
+            itemsProhibidos.Add(item);
+            return $"El ítem ha sido prohibido para la batalla.";
+        }
+        
     }
 }
+
+    
+

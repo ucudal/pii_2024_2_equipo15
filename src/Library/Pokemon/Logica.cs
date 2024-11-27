@@ -248,8 +248,6 @@ tyranitar.AprenderHabilidad(PulsoUmbrío);
         {
             return pokemones.Find(p => p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
         }
-
-   
         public List<Pokemon> ObtenerTodos()
         {
             return new List<Pokemon>(pokemones);
