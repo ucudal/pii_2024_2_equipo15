@@ -1,5 +1,8 @@
 namespace program
 {
+    /// <summary>
+    /// Representa una batalla entre dos entrenadores Pokémon.
+    /// </summary>
     public class Batalla
     {
         private Entrenador entrenador1;
@@ -8,6 +11,16 @@ namespace program
         private Entrenador entrenadorEnEspera;
         private Dictionary<string, int> turnosEspeciales; // Control de enfriamiento para ataques especiales
 
+        /// <summary>
+        /// Lista estática que contiene los nombres de los Pokémon seleccionados en la batalla.
+        /// </summary>
+        public static List<string> PokemonesSeleccionados = new List<string>();
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="Batalla"/>.
+        /// </summary>
+        /// <param name="jugador1">El primer entrenador participante.</param>
+        /// <param name="jugador2">El segundo entrenador participante.</param>
         public Batalla(Entrenador jugador1, Entrenador jugador2)
         {
             entrenador1 = jugador1;
@@ -18,7 +31,7 @@ namespace program
                 { jugador2.Nombre, 0 }
             };
 
-            // Determinar quién inicia el turno basado en la velocidad del Pokémon activo
+            // Determinar el entrenador que inicia el turno basado en la velocidad del Pokémon activo.
             if (jugador1.PokemonActivo.Velocidad >= jugador2.PokemonActivo.Velocidad)
             {
                 entrenadorActual = jugador1;
@@ -31,11 +44,21 @@ namespace program
             }
         }
 
+        /// <summary>
+        /// Inicia la batalla entre los entrenadores y determina quién comienza.
+        /// </summary>
+        /// <returns>Un mensaje indicando el inicio de la batalla y el entrenador que empieza.</returns>
         public string IniciarBatalla()
         {
             return $"{entrenador1.Nombre} y {entrenador2.Nombre} están listos para la batalla. ¡{entrenadorActual.Nombre} comienza!";
         }
 
+        /// <summary>
+        /// Realiza un turno de batalla, permitiendo atacar o cambiar de Pokémon.
+        /// </summary>
+        /// <param name="habilidad">La habilidad utilizada por el Pokémon (opcional).</param>
+        /// <param name="cambio">El nuevo Pokémon al que se desea cambiar (opcional).</param>
+        /// <returns>El resultado de la acción realizada en el turno.</returns>
         public string RealizarTurno(IHabilidad habilidad = null, Pokemon cambio = null)
         {
             if (cambio != null)
@@ -64,6 +87,11 @@ namespace program
             return "No se realizó ninguna acción.";
         }
 
+        /// <summary>
+        /// Realiza un ataque del Pokémon actual al Pokémon del oponente.
+        /// </summary>
+        /// <param name="habilidad">La habilidad que el Pokémon utiliza para atacar.</param>
+        /// <returns>Un mensaje indicando el resultado del ataque.</returns>
         private string Atacar(IHabilidad habilidad)
         {
             Pokemon atacante = entrenadorActual.PokemonActivo;
@@ -81,10 +109,8 @@ namespace program
                 return $"{atacante.Nombre} intentó usar {habilidad.Nombre}, ¡pero falló!";
             }
 
-            // Calcular la efectividad basándose solo en el tipo principal
-            double efectividad = 1.0; // Si habilidad.Tipo no está disponible, consideramos una efectividad neutral (1.0).
-
-            // Cálculo de daño con crítico y variación aleatoria
+            // Cálculo del daño, efectividad, y críticos
+            double efectividad = 1.0; // Por defecto, se asume efectividad neutra
             double critico = new Random().Next(0, 100) < 10 ? 1.5 : 1.0;
             double aleatorio = new Random().NextDouble() * (1.0 - 0.85) + 0.85;
 
@@ -95,22 +121,24 @@ namespace program
             {
                 defensor.Vida = 0;
 
-                // Verificar si el equipo contrario tiene más Pokémon vivos
                 if (!entrenadorEnEspera.TienePokemonesVivos())
                 {
                     return $"{atacante.Nombre} usó {habilidad.Nombre} y derrotó a {defensor.Nombre}. ¡{entrenadorActual.Nombre} gana la batalla!";
                 }
 
                 CambiarTurno();
-                return $"{atacante.Nombre} usó {habilidad.Nombre} y derrotó a {defensor.Nombre}!";
+                return $"{atacante.Nombre} usó {habilidad.Nombre} y derrotó a {defensor.Nombre}.";
             }
 
             CambiarTurno();
             return $"{atacante.Nombre} usó {habilidad.Nombre} y causó {daño} puntos de daño a {defensor.Nombre}. Vida restante: {defensor.Vida}.";
         }
-        public static List<string> PokemonesSeleccionados = new List<string>();
 
-
+        /// <summary>
+        /// Cambia el Pokémon activo por otro en el equipo.
+        /// </summary>
+        /// <param name="nuevoPokemon">El nuevo Pokémon a activar.</param>
+        /// <returns>Un mensaje indicando el resultado del cambio.</returns>
         public string CambiarPokemon(Pokemon nuevoPokemon)
         {
             if (nuevoPokemon.Vida <= 0)
@@ -118,20 +146,20 @@ namespace program
                 return $"{nuevoPokemon.Nombre} está debilitado y no puede ser seleccionado.";
             }
 
-            // Liberar el Pokémon activo actual
             if (entrenadorActual.PokemonActivo != null)
             {
-                // Eliminar el nombre del Pokémon activo actual de la lista de seleccionados
-                Batalla.PokemonesSeleccionados.Remove(entrenadorActual.PokemonActivo.Nombre);
+                PokemonesSeleccionados.Remove(entrenadorActual.PokemonActivo.Nombre);
             }
 
-            // Asignar el nuevo Pokémon
             entrenadorActual.PokemonActivo = nuevoPokemon;
-            Batalla.PokemonesSeleccionados.Add(nuevoPokemon.Nombre);
+            PokemonesSeleccionados.Add(nuevoPokemon.Nombre);
 
             return $"{entrenadorActual.Nombre} cambió a {nuevoPokemon.Nombre}.";
         }
 
+        /// <summary>
+        /// Cambia el turno entre los entrenadores.
+        /// </summary>
         private void CambiarTurno()
         {
             var temp = entrenadorActual;
@@ -139,6 +167,9 @@ namespace program
             entrenadorEnEspera = temp;
         }
 
+        /// <summary>
+        /// Reduce los turnos restantes de enfriamiento para los ataques especiales.
+        /// </summary>
         private void ReducirTurnosEspeciales()
         {
             foreach (var entrenador in turnosEspeciales.Keys.ToList())
@@ -150,6 +181,10 @@ namespace program
             }
         }
 
+        /// <summary>
+        /// Determina el ganador de la batalla.
+        /// </summary>
+        /// <returns>El nombre del ganador o un mensaje indicando que la batalla continúa.</returns>
         public string DeterminarGanador()
         {
             if (!entrenador1.TienePokemonesVivos()) return $"{entrenador2.Nombre} gana la batalla!";
@@ -157,16 +192,29 @@ namespace program
             return "La batalla continúa...";
         }
 
+        /// <summary>
+        /// Verifica si un entrenador específico está en esta batalla.
+        /// </summary>
+        /// <param name="nombreEntrenador">El nombre del entrenador a verificar.</param>
+        /// <returns>True si el entrenador está en la batalla, de lo contrario false.</returns>
         public bool ContieneEntrenador(string nombreEntrenador)
         {
             return entrenador1.Nombre == nombreEntrenador || entrenador2.Nombre == nombreEntrenador;
         }
 
+        /// <summary>
+        /// Devuelve una lista de los entrenadores participantes en la batalla.
+        /// </summary>
+        /// <returns>Una lista de entrenadores.</returns>
         public List<Entrenador> JugadoresDisponibles()
         {
             return new List<Entrenador> { entrenador1, entrenador2 };
         }
 
+        /// <summary>
+        /// Muestra el turno actual en la batalla.
+        /// </summary>
+        /// <returns>Un mensaje indicando de quién es el turno actual.</returns>
         public string MostrarTurnoActual()
         {
             return $"Es el turno de {entrenadorActual.Nombre} con {entrenadorActual.PokemonActivo.Nombre}.";

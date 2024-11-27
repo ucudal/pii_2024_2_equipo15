@@ -12,7 +12,7 @@ public class Menu : ModuleBase<SocketCommandContext>
         string comandos =
             """
             **Menu Principal: Comandos Disponibles**
-
+            
             - **!menu**: Muestra este menú con la lista de comandos disponibles.
             - **!unirse**: Ingresa al usuario al Lobby.
             - **!salir**: Saca al usuario del Lobby.
@@ -24,7 +24,9 @@ public class Menu : ModuleBase<SocketCommandContext>
             - **!cambiar [nombre del Pokémon]**: Cambia el Pokémon activo del jugador.
             - **!usar [nombre del ataque]**: Usa un ataque durante el turno actual.
             - **!iniciar [nombre del oponente (opcional)]**: Inicia una batalla entre dos entrenadores.
-            - **!usarespecial [nombre del ataque]**: Llama un ataque especial si es el turno.
+            - **!usarespecial [nombre del ataque]**: Usa un ataque especial durante tu turno.
+            - **!usarobjeto [nombre del objeto] [nombre del Pokémon]**: Usa un objeto del inventario en un Pokémon.
+            - **!inventario**: Muestra los objetos disponibles en el inventario.
             """;
 
         await ReplyAsync(comandos);
