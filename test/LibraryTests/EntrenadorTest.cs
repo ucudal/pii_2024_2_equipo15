@@ -1,4 +1,4 @@
-﻿/*namespace LibraryTests;
+﻿namespace LibraryTests;
 using NUnit.Framework;
 using program;
 
@@ -77,7 +77,7 @@ public class EntrenadorTest
         Assert.That(entrenador.PokemonActivo, Is.EqualTo(pikachu));
     }
     [Test]
-    public void FijarPokemonActualSinPokemonEspecificado_ConPokemonVivo()
+    public void FijarPokemonActualSinPokemonEspecificadoConPokemonVivo()
     {
         var entrenador = new Entrenador("Ash");
         Pokemon pikachu = new Pokemon("Pikachu", 180, 150, 120, 150);
@@ -92,7 +92,7 @@ public class EntrenadorTest
     }
     
     [Test]
-    public void FijarPokemonActualSinPokemonEspecificado_SinPokemonVivo()
+    public void FijarPokemonActualSinPokemonEspecificadoSinPokemonVivo()
     {
         var entrenador = new Entrenador("Ash");
         Pokemon charmander = new Pokemon("Charmander", 0, 100, 80, 70); // Pokémon sin vida
@@ -163,4 +163,4 @@ public class EntrenadorTest
 
         Assert.That(entrenador.EnBatalla, Is.True);
     }
-}*/
+}

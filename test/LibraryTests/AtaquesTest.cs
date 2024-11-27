@@ -1,4 +1,4 @@
-﻿/*namespace LibraryTests;
+﻿namespace LibraryTests;
 using NUnit.Framework;
 using program;
 
