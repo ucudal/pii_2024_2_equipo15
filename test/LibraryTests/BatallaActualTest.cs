@@ -2,9 +2,8 @@
 using program;
 using System.Collections.Generic;
 
-namespace Tests
+namespace LibraryTests
 {
-    [TestFixture]
     public class BatallaActualTest
     {
         private BatallaActual batallaActual;
