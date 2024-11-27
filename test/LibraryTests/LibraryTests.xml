@@ -4,5 +4,135 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
+        <member name="M:LibraryTests.BatallaActualTest.SetUp">
+            <summary>
+            Configura el estado inicial para las pruebas.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaActualTest.CrearPartida_CreaNuevaBatalla">
+            <summary>
+            Valida que se pueda crear una nueva batalla entre dos entrenadores.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaActualTest.BatallaPorEntrenador_RetornaBatallaCorrecta">
+            <summary>
+            Valida que se pueda obtener la batalla activa de un entrenador.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaActualTest.BatallaPorEntrenador_SinBatallaActiva_RetornaNull">
+            <summary>
+            Valida que si un entrenador no está en ninguna batalla activa, se devuelva null.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaActualTest.TerminarPartida_FinalizaCorrectamente">
+            <summary>
+            Valida que se pueda terminar correctamente una batalla activa.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaActualTest.DeterminarGanador_Entrenador1Gana">
+            <summary>
+            Valida que al determinar el ganador, se retorne correctamente el resultado.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaActualTest.DeterminarGanador_LaBatallaContinua">
+            <summary>
+            Valida que al determinar el ganador, se devuelva que la batalla continúa si ambos tienen Pokémon vivos.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaActualTest.DeterminarGanador_Entrenador2Gana">
+            <summary>
+            Valida que al determinar el ganador, se retorne correctamente si el entrenador 2 gana.
+            </summary>
+        </member>
+        <member name="T:LibraryTests.BatallaTests">
+            <summary>
+            Pruebas para la clase Batalla.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.SetUp">
+            <summary>
+            Configuración inicial para cada prueba.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.Constructor_AsignarEntrenadoresYTurnoInicial">
+            <summary>
+            Prueba que el constructor asigna correctamente los entrenadores y el turno inicial.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.IniciarBatalla_RetornaMensajeCorrecto">
+            <summary>
+            Prueba que IniciarBatalla devuelve el mensaje correcto.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.RealizarTurno_UsarHabilidadConExito">
+            <summary>
+            Prueba que RealizarTurno reduce la vida del oponente al usar una habilidad con éxito.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.Atacar_FallidoPorPrecision_NoReduceVida">
+            <summary>
+            Prueba que Atacar no reduce la vida del oponente si la precisión falla.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.Atacar_Paralizado_NoSeMueve">
+            <summary>
+            Prueba que Atacar no se ejecuta si el atacante está paralizado.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.CambiarPokemon_Exitoso">
+            <summary>
+            Prueba que CambiarPokemon actualiza correctamente el Pokémon activo.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.CambiarPokemon_NoEstaEnEquipo">
+            <summary>
+            Prueba que CambiarPokemon falla si el Pokémon no pertenece al equipo.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.CambiarPokemon_PokemonDebilitado">
+            <summary>
+            Prueba que CambiarPokemon falla si el Pokémon está debilitado.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.ReducirTurnosEspeciales_DecrementaCorrectamente">
+            <summary>
+            Prueba que ReducirTurnosEspeciales decrementa correctamente los turnos.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.DeterminarGanador_Entrenador1Gana">
+            <summary>
+            Prueba que DeterminarGanador devuelve el mensaje correcto cuando gana el entrenador1.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.DeterminarGanador_LaBatallaContinua">
+            <summary>
+            Prueba que DeterminarGanador devuelve el mensaje correcto cuando la batalla continúa.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.ContieneEntrenador_EntrenadorPresente">
+            <summary>
+            Prueba que ContieneEntrenador devuelve true si el entrenador está presente en la batalla.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.ContieneEntrenador_EntrenadorNoPresente">
+            <summary>
+            Prueba que ContieneEntrenador devuelve false si el entrenador no está en la batalla.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.JugadoresDisponibles_RetornaAmbosEntrenadores">
+            <summary>
+            Prueba que JugadoresDisponibles retorna ambos entrenadores.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.MostrarTurnoActual_TurnoDeJugador1">
+            <summary>
+            Prueba que MostrarTurnoActual devuelve el mensaje correcto para el turno del jugador1.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaTests.MostrarTurnoActual_TurnoDeJugador2">
+            <summary>
+            Prueba que MostrarTurnoActual devuelve el mensaje correcto para el turno del jugador2.
+            </summary>
+        </member>
     </members>
 </doc>

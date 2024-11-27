@@ -2,12 +2,11 @@
 using program;
 using System.Collections.Generic;
 
-namespace Tests
+namespace LibraryTests
 {
     /// <summary>
     /// Pruebas para la clase Batalla.
     /// </summary>
-    [TestFixture]
     public class BatallaTests
     {
         private Entrenador jugador1;
