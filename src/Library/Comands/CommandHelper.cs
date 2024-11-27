@@ -6,6 +6,13 @@ namespace Library.Commands;
 
 public static class CommandHelper
 {
+    public static class AyudanteDeComandos
+    {
+        public static string ObtenerNombreDeUsuario(SocketCommandContext context)
+        {
+            return context.User.Username; 
+        }
+    }
     public static string GetDisplayName(
         SocketCommandContext context, 
         string? name = null)
