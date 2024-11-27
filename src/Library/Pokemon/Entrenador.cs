@@ -24,6 +24,7 @@ public class Entrenador
     /// Indica si el entrenador está participando actualmente en una batalla.
     /// </summary>
     public bool EnBatalla { get; set; }
+    public static List<Pokemon> RestriccionDePokemon = new List<Pokemon>();
 
     /// <summary>
     /// Constructor de la clase Entrenador.
@@ -92,9 +93,12 @@ public class Entrenador
     /// </remarks>
     public bool AñadirPokemon(Pokemon pokemon)
     {
+        if (RestriccionDePokemon.Contains(pokemon))
+            return false;
+        
         if (Pokemones.Count >= 6) return false; // Limitar a 6 Pokémon
 
-        if (!Pokemones.Contains(pokemon))
+        if (!Pokemones.Contains(pokemon) && !RestriccionDePokemon.Contains(pokemon) )
         {
             Pokemones.Add(pokemon);
 
@@ -118,4 +122,13 @@ public class Entrenador
     {
         return new List<Pokemon>(Pokemones);
     }
+
+    public string ProhibirPokemons(Pokemon pokemon)
+    {
+        RestriccionDePokemon.Add(pokemon);
+        return $"{pokemon} es un pokémon prohibido";
+    }
+
+
+
 }

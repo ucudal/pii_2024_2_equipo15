@@ -9,6 +9,8 @@ namespace program
         /// Nombre del tipo elemental.
         /// </summary>
         public string Nombre { get; }
+        public static List<string> RestriccionDePokemon = new List<string>();
+
 
         /// <summary>
         /// Diccionario que contiene las ventajas de este tipo contra otros tipos.

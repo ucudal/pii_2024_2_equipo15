@@ -124,5 +124,14 @@ namespace Tests
 
             Assert.That(resultado, Is.EqualTo("No tienes Piedra lunar disponible."));
         }
+        
+        [Test]
+        public void ProhibirObjetos()
+        {
+            var objetoInutil = new Objeto("Objeto inútil", p => { });
+            var RestriccionDeObjeto = objetoInutil.ProhibirObjetos(objetoInutil);
+            Assert.That(RestriccionDeObjeto, Is.EqualTo($"{objetoInutil.Nombre} es un objeto prohibido"));
+
+        }
     }
 }

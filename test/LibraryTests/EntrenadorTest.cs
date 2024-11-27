@@ -163,4 +163,13 @@ public class EntrenadorTest
 
         Assert.That(entrenador.EnBatalla, Is.True);
     }
+
+    [Test]
+    public void ProhibirPokemon()
+    {
+        var entrenador = new Entrenador("Ash");
+        Pokemon pikachu = new Pokemon("Pikachu", 180, 150, 120, 150);
+        var RestriccionDePokemon = entrenador.ProhibirPokemons(pikachu);
+        Assert.That(RestriccionDePokemon, Is.EqualTo($"{pikachu} es un pokémon prohibido"));
+    }
 }

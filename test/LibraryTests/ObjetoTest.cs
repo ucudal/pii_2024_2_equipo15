@@ -116,5 +116,14 @@ namespace Tests
             Assert.That(pikachu.Vida, Is.EqualTo(180)); // Vida no cambia
             Assert.That(pikachu.Estado, Is.Null); // Estado no cambia
         }
+        
+        [Test]
+        public void ProhibirObjetos()
+        {
+            var objetoInutil = new Objeto("Objeto inútil", p => { });
+            var RestriccionDeObjeto = objetoInutil.ProhibirObjetos(objetoInutil);
+            Assert.That(RestriccionDeObjeto, Is.EqualTo($"{objetoInutil.Nombre} es un objeto prohibido"));
+
+        }
     }
 }

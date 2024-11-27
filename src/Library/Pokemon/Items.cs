@@ -15,6 +15,8 @@
         /// </summary>
         public Action<Pokemon> AplicarEfecto { get; }
 
+        public static List<string> RestriccionDeObjetos = new List<string>();
+
         /// <summary>
         /// Constructor de la clase <see cref="Objeto"/>.
         /// </summary>
@@ -33,8 +35,24 @@
         /// <returns>Un mensaje indicando el resultado del uso del objeto.</returns>
         public string Usar(Pokemon objetivo)
         {
-            AplicarEfecto(objetivo);
-            return $"{Nombre} fue usado en {objetivo.Nombre}.";
+            if (RestriccionDeObjetos.Contains(Nombre))
+            {
+                return $"{Nombre} no se puede utilizar, porque es un objeto prohibido.";
+
+            }
+            else
+            {
+                AplicarEfecto(objetivo);
+                return $"{Nombre} fue usado en {objetivo.Nombre}.";
+            }
         }
+        
+        public string ProhibirObjetos(Objeto objeto)
+        {
+            RestriccionDeObjetos.Add(objeto.Nombre);
+            return $"{objeto.Nombre} es un objeto prohibido";
+        }
+
+
     }
 }

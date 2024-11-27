@@ -105,8 +105,10 @@ namespace program
             string key = $"{jugador1.Nombre}-{jugador2.Nombre}";
             batallasActivas[key] = batalla;
 
-            return batalla.IniciarBatalla(); // Comienza la batalla y devuelve el estado inicial.
+            bool aceptarBatalla = true;
+            return batalla.IniciarBatalla(aceptarBatalla); // Comienza la batalla y devuelve el estado inicial.
         }
+        
 
         public static string UsarHabilidad(string entrenador, string? habilidad)
         {

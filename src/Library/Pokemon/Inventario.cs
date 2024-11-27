@@ -9,6 +9,8 @@
         /// Diccionario que almacena los objetos disponibles en el inventario junto con sus cantidades.
         /// </summary>
         private Dictionary<string, int> objetos;
+        
+        public static List<string> RestriccionDeObjetos = new List<string>();
 
         /// <summary>
         /// Constructor de la clase <see cref="Inventario"/>.
@@ -41,6 +43,11 @@
             if (!objetos.ContainsKey(nombreObjeto) || objetos[nombreObjeto] <= 0)
             {
                 return $"No tienes {nombreObjeto} disponible.";
+            }
+
+            if (RestriccionDeObjetos.Contains(nombreObjeto))
+            {
+                return $"Es un objeto prohibido";
             }
 
             switch (nombreObjeto)
@@ -76,5 +83,14 @@
         {
             return string.Join("\n", objetos.Select(o => $"{o.Key}: {o.Value} unidades"));
         }
+        
+        public string ProhibirObjetos(string nombreObjeto)
+        {
+            RestriccionDeObjetos.Add(nombreObjeto); 
+    
+            return $"{nombreObjeto} es un objeto prohibido";
+        }
+
+
     }
 }
