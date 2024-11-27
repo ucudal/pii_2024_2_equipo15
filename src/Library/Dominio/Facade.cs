@@ -5,9 +5,14 @@ namespace program
 {
     public static class Facade
     {
-        private static Dictionary<string, Batalla> batallasActivas = new Dictionary<string, Batalla>();
-        private static Dictionary<string, Inventario> inventarios = new Dictionary<string, Inventario>();
+        private static Dictionary<string, Batalla> batallasActivas = new Dictionary<string, Batalla>(); // Diccionario para rastrear las batallas activas usando como clave una combinación de nombres de entrenadores.
 
+        private static Dictionary<string, Inventario> inventarios = new Dictionary<string, Inventario>(); // Diccionario que almacena los inventarios de cada entrenador por nombre.
+
+        /// <summary>
+        /// Devuelve la lista de Pokémon disponibles en el sistema.
+        /// </summary>
+        /// <returns>Cadena con los nombres de los Pokémon disponibles.</returns>
         public static string MostrarPokemones()
         {
             return Logica.Instance.MostrarPokemones();
@@ -19,6 +24,11 @@ namespace program
         }
 
         // Gestión de Entrenadores
+        /// <summary>
+        /// Añade un entrenador al centro de juego.
+        /// </summary>
+        /// <param name="nombre">Nombre del entrenador a registrar.</param>
+        /// <returns>Mensaje indicando el resultado de la operación.</returns>
         public static string IngresarUsuarioAlCentro(string nombre)
         {
             return GameManager.AgregarEntrenador(nombre);
@@ -31,14 +41,13 @@ namespace program
 
         public static string SeleccionarEquipo(string entrenador, string pokemonName)
         {
-            Entrenador? jugador = GameManager.ObtenerEntrenador(entrenador);
+            Entrenador? jugador = GameManager.ObtenerEntrenador(entrenador); // Verifica si el entrenador existe.
             if (jugador == null) return "No estás registrado como entrenador.";
 
-            Pokemon? pokemon = Logica.Instance.ObtenerPokemon(pokemonName);
+            Pokemon? pokemon = Logica.Instance.ObtenerPokemon(pokemonName); // Comprueba si el Pokémon está registrado.
             if (pokemon == null) return $"El Pokémon {pokemonName} no existe.";
-
-            // Verifica si el Pokémon ya fue seleccionado por otro entrenador
-            if (Batalla.PokemonesSeleccionados.Contains(pokemonName))
+            
+            if (Batalla.PokemonesSeleccionados.Contains(pokemonName)) // Verifica si el Pokémon ya fue seleccionado por otro entrenador
             {
                 return $"El Pokémon {pokemonName} ya ha sido seleccionado por otro entrenador.";
             }
@@ -53,16 +62,16 @@ namespace program
 
         public static string VerPokemones(string entrenador, string? oponente = null)
         {
-            Entrenador? jugador = GameManager.ObtenerEntrenador(entrenador);
+            Entrenador? jugador = GameManager.ObtenerEntrenador(entrenador); // Busca el entrenador en el sistema.
             if (jugador == null) return "No estás registrado como entrenador.";
 
-            string respuesta = $"Equipo de {entrenador}:\n";
+            string respuesta = $"Equipo de {entrenador}:\n"; // Construye la respuesta con el equipo del entrenador.
             foreach (var pokemon in jugador.Pokemones)
             {
                 respuesta += $"- {pokemon.Nombre} (HP: {pokemon.Vida})\n";
             }
 
-            if (!string.IsNullOrEmpty(oponente))
+            if (!string.IsNullOrEmpty(oponente))  // Si se proporciona un oponente, incluye su equipo en la respuesta.
             {
                 Entrenador? rival = GameManager.ObtenerEntrenador(oponente);
                 if (rival != null)
@@ -75,27 +84,28 @@ namespace program
                 }
             }
 
-            return respuesta;
+            return respuesta; // Devuelve la lista de equipos.
         }
 
         // Gestión de Batallas
+  
         public static string IniciarBatalla(string entrenador1, string? entrenador2)
         {
-            Entrenador jugador1 = GameManager.ObtenerEntrenador(entrenador1);
-            Entrenador jugador2 = entrenador2 != null
+            Entrenador jugador1 = GameManager.ObtenerEntrenador(entrenador1); // Obtiene los entrenadores involucrados en la batalla.
+            Entrenador jugador2 = entrenador2 != null // Obtiene los entrenadores involucrados en la batalla.
                 ? GameManager.ObtenerEntrenador(entrenador2)
-                : GameManager.EmparejarAleatorio(entrenador1);
+                : GameManager.EmparejarAleatorio(entrenador1); // Empareja con un oponente aleatorio si no se proporciona.
 
             if (jugador1 == null || jugador2 == null)
             {
                 return "No se encontraron los jugadores para iniciar la batalla.";
             }
 
-            Batalla batalla = new Batalla(jugador1, jugador2);
+            Batalla batalla = new Batalla(jugador1, jugador2);   // Crea una nueva instancia de batalla y la almacena.
             string key = $"{jugador1.Nombre}-{jugador2.Nombre}";
             batallasActivas[key] = batalla;
 
-            return batalla.IniciarBatalla();
+            return batalla.IniciarBatalla(); // Comienza la batalla y devuelve el estado inicial.
         }
 
         public static string UsarHabilidad(string entrenador, string? habilidad)
@@ -147,17 +157,21 @@ namespace program
             return inventarios[entrenador].MostrarInventario();
         }
 
-
+        /// <summary>
+        /// Busca una batalla activa en la que participe el entrenador dado.
+        /// </summary>
+        /// <param name="entrenador">Nombre del entrenador a buscar.</param>
+        /// <returns>Objeto Batalla si se encuentra, de lo contrario null.</returns>
         private static Batalla ObtenerBatallaPorEntrenador(string entrenador)
         {
             foreach (var batalla in batallasActivas.Values)
             {
                 if (batalla.ContieneEntrenador(entrenador))
                 {
-                    return batalla;
+                    return batalla; // Retorna la batalla si el entrenador participa en ella.
                 }
             }
-            return null;
+            return null; // Si no se encuentra una batalla activa para el entrenador.
         }
 
         // Mostrar Estado del Centro de Juego
