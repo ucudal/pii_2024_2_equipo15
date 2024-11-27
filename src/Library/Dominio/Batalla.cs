@@ -7,7 +7,7 @@ namespace program
     {
         private Entrenador entrenador1;
         private Entrenador entrenador2;
-        private Entrenador entrenadorActual;
+        public Entrenador entrenadorActual;
         private Entrenador entrenadorEnEspera;
         private Dictionary<string, int> turnosEspeciales; // Control de enfriamiento para ataques especiales
 

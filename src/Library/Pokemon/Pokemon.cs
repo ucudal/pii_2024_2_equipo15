@@ -43,7 +43,7 @@ namespace program
         /// <summary>
         /// Tipo principal del Pokémon, utilizado para calcular efectividad en batalla.
         /// </summary>
-        public ITipo TipoPrincipal { get; }
+        public ITipo TipoPrincipal { get; init; }
 
         /// <summary>
         /// Habilidad que el Pokémon está cargando, si aplica.
