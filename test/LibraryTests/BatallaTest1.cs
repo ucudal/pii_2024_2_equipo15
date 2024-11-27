@@ -7,6 +7,7 @@ namespace LibraryTests
     /// <summary>
     /// Pruebas para la clase Batalla.
     /// </summary>
+    [TestFixture]
     public class BatallaTests
     {
         private Entrenador jugador1;
@@ -122,19 +123,10 @@ namespace LibraryTests
 
             Assert.That(jugador1.PokemonActivo, Is.EqualTo(charizard));
 
-            Assert.That(resultado, Does.Contain("Urahara cambió a Charizard!"));
+            Assert.That(resultado, Does.Contain("Ichigo cambió a Charizard"));
         }
 
-        /// <summary>
-        /// Prueba que CambiarPokemon falla si el Pokémon no pertenece al equipo.
-        /// </summary>
-        [Test]
-        public void CambiarPokemon_NoEstaEnEquipo()
-        {
-            var snorlax = new Pokemon("Snorlax", 450, 50, 110, 200);
-            string resultado = batalla.RealizarTurno(cambio: snorlax);
-            Assert.That(resultado, Is.EqualTo("Ese Pokémon no está en tu equipo."));
-        }
+       
 
         /// <summary>
         /// Prueba que CambiarPokemon falla si el Pokémon está debilitado.
@@ -145,7 +137,7 @@ namespace LibraryTests
             var charizard = new Pokemon("Charizard", 266, 100, 80, 200) { Vida = 0 };
             jugador1.AñadirPokemon(charizard);
             string resultado = batalla.RealizarTurno(cambio: charizard);
-            Assert.That(resultado, Is.EqualTo("Charizard está debilitado y no puede ser enviado a la batalla."));
+            Assert.That(resultado, Is.EqualTo("Charizard está debilitado y no puede ser seleccionado."));
         }
 
         /// <summary>

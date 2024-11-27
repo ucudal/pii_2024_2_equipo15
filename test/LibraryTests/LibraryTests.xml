@@ -84,11 +84,6 @@
             Prueba que CambiarPokemon actualiza correctamente el Pokémon activo.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTests.CambiarPokemon_NoEstaEnEquipo">
-            <summary>
-            Prueba que CambiarPokemon falla si el Pokémon no pertenece al equipo.
-            </summary>
-        </member>
         <member name="M:LibraryTests.BatallaTests.CambiarPokemon_PokemonDebilitado">
             <summary>
             Prueba que CambiarPokemon falla si el Pokémon está debilitado.
@@ -132,6 +127,207 @@
         <member name="M:LibraryTests.BatallaTests.MostrarTurnoActual_TurnoDeJugador2">
             <summary>
             Prueba que MostrarTurnoActual devuelve el mensaje correcto para el turno del jugador2.
+            </summary>
+        </member>
+        <member name="T:LibraryTests.GameManagerTests">
+            <summary>
+            Pruebas para la clase estática GameManager.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameManagerTests.SetUp">
+            <summary>
+            Configura el estado inicial antes de cada prueba.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameManagerTests.AgregarEntrenador_NuevoEntrenador_SeAgregaExitosamente">
+            <summary>
+            Prueba que un entrenador se pueda agregar correctamente.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameManagerTests.AgregarEntrenador_EntrenadorDuplicado_NoSeAgrega">
+            <summary>
+            Prueba que no se pueda agregar un entrenador duplicado.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameManagerTests.ObtenerEntrenador_EntrenadorExistente_DevuelveEntrenador">
+            <summary>
+            Prueba que se pueda obtener un entrenador por su nombre.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameManagerTests.ObtenerEntrenador_EntrenadorNoExistente_DevuelveNull">
+            <summary>
+            Prueba que ObtenerEntrenador devuelve null si no existe el entrenador.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameManagerTests.ObtenerNombresEntrenadores_DevuelveNombresCorrectamente">
+            <summary>
+            Prueba que ObtenerNombresEntrenadores devuelve la lista de nombres correctamente.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameManagerTests.EmparejarAleatorio_DevuelveEntrenadorDistintoDelExcluido">
+            <summary>
+            Prueba que EmparejarAleatorio devuelve un entrenador distinto del excluido.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameManagerTests.EmparejarAleatorio_SinEntrenadoresDisponibles_DevuelveNull">
+            <summary>
+            Prueba que EmparejarAleatorio devuelve null si no hay entrenadores disponibles.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameManagerTests.EliminarEntrenador_EntrenadorExistente_SeEliminaExitosamente">
+            <summary>
+            Prueba que un entrenador se pueda eliminar correctamente.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameManagerTests.EliminarEntrenador_EntrenadorNoExistente_NoSeElimina">
+            <summary>
+            Prueba que no se pueda eliminar un entrenador que no existe.
+            </summary>
+        </member>
+        <member name="T:Tests.EfectoEspecialesTests">
+            <summary>
+            Pruebas para la clase EfectoEspeciales.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectoEspecialesTests.SetUp">
+            <summary>
+            Configuración inicial para las pruebas.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectoEspecialesTests.Constructor_AsignarNombreYEfecto">
+            <summary>
+            Prueba que el constructor asigne correctamente el nombre y el efecto.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectoEspecialesTests.AplicarEfecto_CambiaEstadoDelPokemon">
+            <summary>
+            Prueba que el efecto se aplique correctamente al Pokémon.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectoEspecialesTests.AplicarEfecto_ReduceVidaDelPokemon">
+            <summary>
+            Prueba que un efecto personalizado modifique la vida del Pokémon.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectoEspecialesTests.AplicarEfecto_SinAccion_NoModificaPokemon">
+            <summary>
+            Prueba que el efecto no tenga impacto si no se realiza ninguna acción.
+            </summary>
+        </member>
+        <member name="T:Tests.FacadeIniciarBatallaTests">
+            <summary>
+            Pruebas para el método Facade.IniciarBatalla.
+            </summary>
+        </member>
+        <member name="M:Tests.FacadeIniciarBatallaTests.SetUp">
+            <summary>
+            Configuración inicial para las pruebas.
+            </summary>
+        </member>
+        <member name="M:Tests.FacadeIniciarBatallaTests.IniciarBatalla_EntrenadorNoRegistrado_NoInicia">
+            <summary>
+            Prueba que se inicie correctamente una batalla entre dos entrenadores registrados.
+            </summary>
+            <summary>
+            Prueba que no se inicie la batalla si uno de los entrenadores no está registrado.
+            </summary>
+        </member>
+        <member name="M:Tests.FacadeIniciarBatallaTests.IniciarBatalla_SinOponenteDisponible_NoInicia">
+            <summary>
+            Prueba que se empareje correctamente un oponente aleatorio si no se especifica un segundo entrenador.
+            </summary>
+            <summary>
+            Prueba que no se inicie la batalla si no hay oponentes disponibles para emparejar aleatoriamente.
+            </summary>
+        </member>
+        <member name="T:Tests.InventarioTests">
+            <summary>
+            Pruebas para la clase Inventario.
+            </summary>
+        </member>
+        <member name="M:Tests.InventarioTests.SetUp">
+            <summary>
+            Configuración inicial para las pruebas.
+            </summary>
+        </member>
+        <member name="M:Tests.InventarioTests.MostrarInventario_MuestraListaDeObjetos">
+            <summary>
+            Prueba que MostrarInventario devuelva la lista correcta de objetos.
+            </summary>
+        </member>
+        <member name="M:Tests.InventarioTests.UsarObjeto_SuperPocion_CuraPokemon">
+            <summary>
+            Prueba que se pueda usar una Súper poción para curar a un Pokémon.
+            </summary>
+        </member>
+        <member name="M:Tests.InventarioTests.UsarObjeto_SuperPocion_NoExcedeVidaBase">
+            <summary>
+            Prueba que usar una Súper poción no exceda la vida base del Pokémon.
+            </summary>
+        </member>
+        <member name="M:Tests.InventarioTests.UsarObjeto_Revivir_RestauraVida">
+            <summary>
+            Prueba que usar Revivir en un Pokémon debilitado lo restaure correctamente.
+            </summary>
+        </member>
+        <member name="M:Tests.InventarioTests.UsarObjeto_Revivir_NoDebilitado_NoHaceNada">
+            <summary>
+            Prueba que usar Revivir en un Pokémon no debilitado no haga nada.
+            </summary>
+        </member>
+        <member name="M:Tests.InventarioTests.UsarObjeto_CuraTotal_EliminaEstado">
+            <summary>
+            Prueba que usar Cura total elimine el estado del Pokémon.
+            </summary>
+        </member>
+        <member name="M:Tests.InventarioTests.UsarObjeto_SinUnidades_NoDisponible">
+            <summary>
+            Prueba que no se pueda usar un objeto si no queda en el inventario.
+            </summary>
+        </member>
+        <member name="M:Tests.InventarioTests.UsarObjeto_NoValido_DevuelveError">
+            <summary>
+            Prueba que usar un objeto no válido devuelva el mensaje apropiado.
+            </summary>
+        </member>
+        <member name="T:Tests.ObjetoTests">
+            <summary>
+            Pruebas para la clase Objeto.
+            </summary>
+        </member>
+        <member name="M:Tests.ObjetoTests.SetUp">
+            <summary>
+            Configuración inicial para las pruebas.
+            </summary>
+        </member>
+        <member name="M:Tests.ObjetoTests.Constructor_AsignarNombreYEfecto">
+            <summary>
+            Prueba que el constructor asigne correctamente el nombre y el efecto.
+            </summary>
+        </member>
+        <member name="M:Tests.ObjetoTests.Usar_ObjetoCuraVida">
+            <summary>
+            Prueba que el efecto del objeto se aplique correctamente a un Pokémon.
+            </summary>
+        </member>
+        <member name="M:Tests.ObjetoTests.Usar_ObjetoNoExcedeVidaBase">
+            <summary>
+            Prueba que el objeto no exceda la vida base del Pokémon.
+            </summary>
+        </member>
+        <member name="M:Tests.ObjetoTests.Usar_ObjetoEliminaEstado">
+            <summary>
+            Prueba que un objeto elimine el estado de un Pokémon.
+            </summary>
+        </member>
+        <member name="M:Tests.ObjetoTests.Usar_ObjetoInfligeDaño">
+            <summary>
+            Prueba que un objeto personalizado pueda infligir daño a un Pokémon.
+            </summary>
+        </member>
+        <member name="M:Tests.ObjetoTests.Usar_ObjetoSinEfecto_NoCambiaPokemon">
+            <summary>
+            Prueba que un objeto sin acción no modifique las propiedades del Pokémon.
             </summary>
         </member>
     </members>
