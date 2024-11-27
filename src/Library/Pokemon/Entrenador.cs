@@ -20,6 +20,28 @@ namespace program
             return Pokemones.Find(p => p.Nombre.Equals(nombrePokemon, StringComparison.OrdinalIgnoreCase));
         }
 
+        // Establecer un Pokémon como el Pokémon activo
+        public bool FijarPokemonActual(Pokemon? pokemon = null)
+        {
+            if (pokemon != null && Pokemones.Contains(pokemon) && pokemon.Vida > 0)
+            {
+                PokemonActivo = pokemon;
+                return true;
+            }
+
+            // Si no se especifica un Pokémon, buscar uno vivo
+            foreach (var poke in Pokemones)
+            {
+                if (poke.Vida > 0)
+                {
+                    PokemonActivo = poke;
+                    return true;
+                }
+            }
+            PokemonActivo = null; // Aseguramos que no haya un Pokémon activo
+
+            return false; // No hay Pokémon vivos
+        }
         
 
         // Verificar si hay Pokémon vivos en el equipo

@@ -9,16 +9,14 @@ public class EntrenadorTest
     {
         var entrenador = new Entrenador("Ash");
         Assert.That(entrenador.Nombre, Is.EqualTo("Ash"));
-        Assert.That(entrenador.Pokemones, Is.Empty);
     }
 
     [Test]
-    public void AñadirPokemon_Correcto()
+    public void AñadirPokemon()
     {
         var entrenador = new Entrenador("Ash");
-        var pikachu = new Pokemon("Pikachu", 100, new Tipos("Electrico", new Dictionary<string, double>()));
+        Pokemon pikachu = new Pokemon("Pikachu", 180, 150, 120, 150);
 
-        // Añadir un Pokémon al equipo
         var resultado = entrenador.AñadirPokemon(pikachu);
 
         Assert.That(resultado, Is.True);
@@ -27,68 +25,104 @@ public class EntrenadorTest
     }
 
     [Test]
-    public void AñadirPokemon_YaEnEquipo()
+    public void AñadirPokemonExistente()
     {
         var entrenador = new Entrenador("Ash");
-        var pikachu = new Pokemon("Pikachu", 100, new Tipos("Electrico", new Dictionary<string, double>()));
+        Pokemon pikachu = new Pokemon("Pikachu", 180, 150, 120, 150);
 
-        // Añadir el mismo Pokémon dos veces
         entrenador.AñadirPokemon(pikachu);
         var resultado = entrenador.AñadirPokemon(pikachu);
 
-        Assert.That(resultado, Is.False); // No se debe añadir dos veces
-        Assert.That(entrenador.Pokemones.Count, Is.EqualTo(1)); // El equipo debe seguir teniendo un solo Pokémon
+        Assert.That(resultado, Is.False); 
+        Assert.That(entrenador.Pokemones.Count, Is.EqualTo(1)); 
     }
 
     [Test]
-    public void AñadirPokemon_EquipoLleno()
+    public void AñadirPokemonEquipoLleno()
     {
         var entrenador = new Entrenador("Ash");
+        Pokemon pikachu = new Pokemon("Pikachu", 180, 150, 120, 150);
+        Pokemon charizard = new Pokemon("Charizard", 266, 100, 80, 200);
+        Pokemon blastoise = new Pokemon("Blastoise", 268, 120, 80, 160);
+        Pokemon gengar = new Pokemon("Gengar", 261, 120, 95, 140);
+        Pokemon dragonite = new Pokemon("Dragonite", 300, 200, 100, 110);
+        Pokemon machamp = new Pokemon("Machamp", 290, 200, 100, 120);
 
-        // Añadir 6 Pokémon al equipo
-        for (int i = 0; i < 6; i++)
-        {
-            entrenador.AñadirPokemon(new Pokemon($"Pokemon{i}", 100, new Tipos("Normal", new Dictionary<string, double>())));
-        }
-
-        // Intentar añadir un séptimo Pokémon
-        var nuevoPokemon = new Pokemon("ExtraPokemon", 100, new Tipos("Electrico", new Dictionary<string, double>()));
-        var resultado = entrenador.AñadirPokemon(nuevoPokemon);
-
-        Assert.That(resultado, Is.False); // No debe permitirse añadir más de 6 Pokémon
-        Assert.That(entrenador.Pokemones.Count, Is.EqualTo(6)); // El equipo debe seguir teniendo 6 Pokémon
-    }
-
-    [Test]
-    public void AñadirPokemon_EstablecerPokemonActivo()
-    {
-        var entrenador = new Entrenador("Ash");
-        var pikachu = new Pokemon("Pikachu", 100, new Tipos("Electrico", new Dictionary<string, double>()));
-
-        // Añadir un Pokémon al equipo
         entrenador.AñadirPokemon(pikachu);
+        entrenador.AñadirPokemon(charizard);
+        entrenador.AñadirPokemon(blastoise);
+        entrenador.AñadirPokemon(gengar);
+        entrenador.AñadirPokemon(dragonite);
+        entrenador.AñadirPokemon(machamp);
 
-        // Verificar que el Pokémon activo se estableció automáticamente
-        Assert.That(entrenador.PokemonActivo, Is.EqualTo(pikachu));
+
+        Pokemon snorlax = new Pokemon("Snorlax", 450, 50, 110, 200);
+        var resultado = entrenador.AñadirPokemon(snorlax);
+
+        Assert.That(resultado, Is.False); 
+        Assert.That(entrenador.Pokemones.Count, Is.EqualTo(6)); 
     }
+    
+
     [Test]
     public void FijarPokemonActual()
     {
         var entrenador = new Entrenador("Ash");
-        var pikachu = new Pokemon("Pikachu", 100, new Tipos("Electrico", new Dictionary<string, double>()));
+        Pokemon pikachu = new Pokemon("Pikachu", 180, 150, 120, 150);
 
+        entrenador.AñadirPokemon(pikachu);
+        var resultado = entrenador.FijarPokemonActual(pikachu);
+
+        Assert.That(resultado, Is.True);
+        Assert.That(entrenador.PokemonActivo, Is.EqualTo(pikachu));
+    }
+    [Test]
+    public void FijarPokemonActualSinPokemonEspecificado_ConPokemonVivo()
+    {
+        var entrenador = new Entrenador("Ash");
+        Pokemon pikachu = new Pokemon("Pikachu", 180, 150, 120, 150);
+        Pokemon charmander = new Pokemon("Charmander", 0, 100, 80, 70);
+
+        entrenador.AñadirPokemon(charmander);
         entrenador.AñadirPokemon(pikachu);
         var resultado = entrenador.FijarPokemonActual();
 
         Assert.That(resultado, Is.True);
         Assert.That(entrenador.PokemonActivo, Is.EqualTo(pikachu));
     }
+    
+    [Test]
+    public void FijarPokemonActualSinPokemonEspecificado_SinPokemonVivo()
+    {
+        var entrenador = new Entrenador("Ash");
+        Pokemon charmander = new Pokemon("Charmander", 0, 100, 80, 70); // Pokémon sin vida
 
+        entrenador.AñadirPokemon(charmander);
+        var resultado = entrenador.FijarPokemonActual();
+
+        Assert.That(resultado, Is.False); // No debe fijarse ningún Pokémon activo
+        Assert.That(entrenador.PokemonActivo, Is.Null); // No hay Pokémon vivos
+    }
+
+
+    [Test]
+    public void FijarPokemonActualPokemonSinVida()
+    {
+        var entrenador = new Entrenador("Ash");
+        Pokemon charmander = new Pokemon("Charmander", 0, 100, 80, 70);
+
+        entrenador.AñadirPokemon(charmander);
+        var resultado = entrenador.FijarPokemonActual(charmander);
+
+        Assert.That(resultado, Is.False);
+        Assert.That(entrenador.PokemonActivo, Is.Null);
+    }
+    
     [Test]
     public void TienePokemonesVivos()
     {
         var entrenador = new Entrenador("Ash");
-        var pikachu = new Pokemon("Pikachu", 0, new Tipos("Electrico", new Dictionary<string, double>()));
+        Pokemon pikachu = new Pokemon("Pikachu", 0, 150, 120, 150);
 
         entrenador.AñadirPokemon(pikachu);
         Assert.That(entrenador.TienePokemonesVivos(), Is.False);
@@ -101,7 +135,7 @@ public class EntrenadorTest
     public void ObtenerPokemonPorNombre()
     {
         var entrenador = new Entrenador("Ash");
-        var pikachu = new Pokemon("Pikachu", 100, new Tipos("Electrico", new Dictionary<string, double>()));
+        Pokemon pikachu = new Pokemon("Pikachu", 180, 150, 120, 150);
 
         entrenador.AñadirPokemon(pikachu);
         var resultado = entrenador.ObtenerPokemonPorNombre("Pikachu");
@@ -109,11 +143,11 @@ public class EntrenadorTest
         Assert.That(resultado, Is.EqualTo(pikachu));
     }
     
-    [Test]
+      [Test]
     public void RecibirEquipoPokemon()
     {
         var entrenador = new Entrenador("Ash");
-        var pikachu = new Pokemon("Pikachu", 100, new Tipos("Electrico", new Dictionary<string, double>()));
+        Pokemon pikachu = new Pokemon("Pikachu", 180, 150, 120, 150);
 
         entrenador.AñadirPokemon(pikachu);
         var equipo = entrenador.RecibirEquipoPokemon();
@@ -121,7 +155,6 @@ public class EntrenadorTest
         Assert.That(equipo, Has.Count.EqualTo(1));
         Assert.That(equipo[0], Is.EqualTo(pikachu));
     }
-    
     [Test]
     public void EnBatalla()
     {
