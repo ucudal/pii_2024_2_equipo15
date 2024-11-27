@@ -16,6 +16,7 @@ namespace program
         /// </summary>
         public static List<string> PokemonesSeleccionados = new List<string>();
 
+
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Batalla"/>.
         /// </summary>
@@ -25,6 +26,7 @@ namespace program
         {
             entrenador1 = jugador1;
             entrenador2 = jugador2;
+
             turnosEspeciales = new Dictionary<string, int>
             {
                 { jugador1.Nombre, 0 },
@@ -48,9 +50,16 @@ namespace program
         /// Inicia la batalla entre los entrenadores y determina quién comienza.
         /// </summary>
         /// <returns>Un mensaje indicando el inicio de la batalla y el entrenador que empieza.</returns>
-        public string IniciarBatalla()
+        public string IniciarBatalla(bool aceptarBatalla)
         {
+            if (aceptarBatalla == false)
+            {
+                return "La batalla no comienza, las reglas no han sido aceptadas";
+            }
+
             return $"{entrenador1.Nombre} y {entrenador2.Nombre} están listos para la batalla. ¡{entrenadorActual.Nombre} comienza!";
+
+            
         }
 
         /// <summary>
@@ -70,7 +79,8 @@ namespace program
             {
                 if (habilidad.EsEspecial && turnosEspeciales[entrenadorActual.Nombre] > 0)
                 {
-                    return $"No puedes usar ataques especiales aún. Debes esperar {turnosEspeciales[entrenadorActual.Nombre]} turno(s).";
+                    return
+                        $"No puedes usar ataques especiales aún. Debes esperar {turnosEspeciales[entrenadorActual.Nombre]} turno(s).";
                 }
 
                 string resultado = Atacar(habilidad);
@@ -97,7 +107,8 @@ namespace program
             Pokemon atacante = entrenadorActual.PokemonActivo;
             Pokemon defensor = entrenadorEnEspera.PokemonActivo;
 
-            if (!string.IsNullOrEmpty(atacante.Estado) && atacante.Estado == "paralizado" && new Random().Next(0, 100) < 25)
+            if (!string.IsNullOrEmpty(atacante.Estado) && atacante.Estado == "paralizado" &&
+                new Random().Next(0, 100) < 25)
             {
                 CambiarTurno();
                 return $"{atacante.Nombre} está paralizado y no puede moverse.";
@@ -114,7 +125,8 @@ namespace program
             double critico = new Random().Next(0, 100) < 10 ? 1.5 : 1.0;
             double aleatorio = new Random().NextDouble() * (1.0 - 0.85) + 0.85;
 
-            int daño = (int)((habilidad.Danio * (atacante.Velocidad / (double)defensor.Velocidad) + 2) * efectividad * critico * aleatorio);
+            int daño = (int)((habilidad.Danio * (atacante.Velocidad / (double)defensor.Velocidad) + 2) * efectividad *
+                             critico * aleatorio);
             defensor.Vida -= daño;
 
             if (defensor.Vida <= 0)
@@ -123,7 +135,8 @@ namespace program
 
                 if (!entrenadorEnEspera.TienePokemonesVivos())
                 {
-                    return $"{atacante.Nombre} usó {habilidad.Nombre} y derrotó a {defensor.Nombre}. ¡{entrenadorActual.Nombre} gana la batalla!";
+                    return
+                        $"{atacante.Nombre} usó {habilidad.Nombre} y derrotó a {defensor.Nombre}. ¡{entrenadorActual.Nombre} gana la batalla!";
                 }
 
                 CambiarTurno();
@@ -131,7 +144,8 @@ namespace program
             }
 
             CambiarTurno();
-            return $"{atacante.Nombre} usó {habilidad.Nombre} y causó {daño} puntos de daño a {defensor.Nombre}. Vida restante: {defensor.Vida}.";
+            return
+                $"{atacante.Nombre} usó {habilidad.Nombre} y causó {daño} puntos de daño a {defensor.Nombre}. Vida restante: {defensor.Vida}.";
         }
 
         /// <summary>
@@ -219,5 +233,7 @@ namespace program
         {
             return $"Es el turno de {entrenadorActual.Nombre} con {entrenadorActual.PokemonActivo.Nombre}.";
         }
+     
     }
+
 }

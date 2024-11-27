@@ -54,12 +54,27 @@ namespace LibraryTests
         /// Prueba que IniciarBatalla devuelve el mensaje correcto.
         /// </summary>
         [Test]
-        public void IniciarBatalla_RetornaMensajeCorrecto()
+        public void BatallaAceptada()
         {
-            string resultado = batalla.IniciarBatalla();
+            jugador1 = new Entrenador("Ichigo");
+            jugador2 = new Entrenador("Urahara");
+            batalla = new Batalla(jugador1, jugador2);
+            bool aceptarBatalla = true;
+            string resultado = batalla.IniciarBatalla(aceptarBatalla);
             Assert.That(resultado, Is.EqualTo("Ichigo y Urahara están listos para la batalla. ¡Ichigo comienza!"));
         }
 
+        [Test]
+        public void BatallaNoAceptada()
+        {
+            Entrenador entrenador1 = new Entrenador("Ichigo");
+            Entrenador entrenador2 = new Entrenador("Urahara");
+            batalla = new Batalla(entrenador1, entrenador2);
+            bool aceptarBatalla = false;
+            string resultado = batalla.IniciarBatalla(aceptarBatalla);
+            Assert.That(resultado, Is.EqualTo("La batalla no comienza, las reglas no han sido aceptadas"));
+        }
+        
         /// <summary>
         /// Prueba que RealizarTurno reduce la vida del oponente al usar una habilidad con éxito.
         /// </summary>

@@ -59,7 +59,7 @@
             Prueba que el constructor asigna correctamente los entrenadores y el turno inicial.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTests.IniciarBatalla_RetornaMensajeCorrecto">
+        <member name="M:LibraryTests.BatallaTests.BatallaAceptada">
             <summary>
             Prueba que IniciarBatalla devuelve el mensaje correcto.
             </summary>
