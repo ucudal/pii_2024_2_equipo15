@@ -28,19 +28,28 @@ namespace program
             return GameManager.EliminarEntrenador(nombre);
         }
 
-        public static string SeleccionarEquipo(string entrenador, string pokemonNombre)
+        public static string SeleccionarEquipo(string entrenador, string pokemonName)
         {
             Entrenador? jugador = GameManager.ObtenerEntrenador(entrenador);
             if (jugador == null) return "No estás registrado como entrenador.";
 
-            Pokemon? pokemon = Logica.Instance.ObtenerPokemon(pokemonNombre);
-            if (pokemon == null) return $"El Pokémon {pokemonNombre} no existe.";
+            Pokemon? pokemon = Logica.Instance.ObtenerPokemon(pokemonName);
+            if (pokemon == null) return $"El Pokémon {pokemonName} no existe.";
+
+            // Verifica si el Pokémon ya fue seleccionado por otro entrenador
+            if (Batalla.PokemonesSeleccionados.Contains(pokemonName))
+            {
+                return $"El Pokémon {pokemonName} ya ha sido seleccionado por otro entrenador.";
+            }
 
             bool añadido = jugador.AñadirPokemon(pokemon);
             if (!añadido) return "No puedes añadir más Pokémon o ya tienes este Pokémon.";
 
-            return $"{pokemonNombre} fue añadido al equipo de {entrenador}.";
+            // Agrega el nombre del Pokémon a la lista de seleccionados
+            Batalla.PokemonesSeleccionados.Add(pokemonName);
+            return $"{pokemonName} fue añadido al equipo de {entrenador}.";
         }
+
 
         public static string VerPokemones(string entrenador, string? oponente = null)
         {

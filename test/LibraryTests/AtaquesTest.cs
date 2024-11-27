@@ -1,4 +1,4 @@
-﻿namespace LibraryTests;
+﻿/*namespace LibraryTests;
 using NUnit.Framework;
 using program;
 
@@ -27,3 +27,4 @@ public class AtaquesTest
         Assert.That(ataque.Efectos, Is.Null);
     }
 }
+

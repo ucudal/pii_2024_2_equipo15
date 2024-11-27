@@ -265,14 +265,16 @@ tyranitar.AprenderHabilidad(PulsoUmbrío);
                 resultado += $"{pokemon.Nombre}:\n";
                 foreach (var habilidad in pokemon.Habilidades)
                 {
-                    // Mostrar información relevante para cada habilidad
-                    resultado += $"- {habilidad.Nombre} | Daño: {habilidad.Danio} | Precisión: {habilidad.Precision} | PP: {habilidad.Puntos_de_Poder} | Especial: {(habilidad.EsEspecial ? "Sí" : "No")}\n";
+                    // Mostrar solo los datos relevantes: Nombre, Daño y si es Especial
+                    resultado += $"- {habilidad.Nombre} | Daño: {habilidad.Danio} | Especial: {(habilidad.EsEspecial ? "Sí" : "No")}\n";
                 }
                 resultado += "\n";
             }
             resultado += "```";
             return resultado;
         }
+
+
 
 
     }

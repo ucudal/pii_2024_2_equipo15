@@ -24,6 +24,7 @@ public class Menu : ModuleBase<SocketCommandContext>
             - **!cambiar [nombre del Pokémon]**: Cambia el Pokémon activo del jugador.
             - **!usar [nombre del ataque]**: Usa un ataque durante el turno actual.
             - **!iniciar [nombre del oponente (opcional)]**: Inicia una batalla entre dos entrenadores.
+            - **!usarespecial [nombre del ataque]**: Llama un ataque especial si es el turno.
             """;
 
         await ReplyAsync(comandos);

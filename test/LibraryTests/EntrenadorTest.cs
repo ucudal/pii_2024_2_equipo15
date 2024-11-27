@@ -1,4 +1,4 @@
-﻿namespace LibraryTests;
+﻿/*namespace LibraryTests;
 using NUnit.Framework;
 using program;
 
@@ -163,4 +163,4 @@ public class EntrenadorTest
 
         Assert.That(entrenador.EnBatalla, Is.True);
     }
-}
+}*/

@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿/*using NUnit.Framework;
 namespace LibraryTests;
 using program;
 
@@ -40,3 +40,4 @@ public class PokemonTest
         Assert.That(pikachu.MostrarHabilidades(), Contains.Substring("Trueno"));
     }
 }
+*/

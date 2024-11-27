@@ -2,7 +2,7 @@
 
 namespace program
 {
-    class Program
+    class Bot
     {
         //Inicialización de programa con bot
         private static void Main()

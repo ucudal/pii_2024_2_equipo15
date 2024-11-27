@@ -42,6 +42,7 @@ namespace program
 
             return false; // No hay Pokémon vivos
         }
+        
 
         // Verificar si hay Pokémon vivos en el equipo
         public bool TienePokemonesVivos()
