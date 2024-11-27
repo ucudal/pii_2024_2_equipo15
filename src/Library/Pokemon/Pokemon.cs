@@ -11,7 +11,8 @@ namespace program
         public List<IHabilidad> Habilidades { get; }
         public ITipo TipoPrincipal { get; }
         public IHabilidad HabilidadCargando { get; set; }
-        public string Estado { get; set; }
+        public string Estado { get; set; } // Estado actual (paralizado, dormido, etc.)
+        public int DuracionEstado { get; set; } // Duración restante del estado especial
 
         public Pokemon(string nombre, int vida, int velocidad, int ataque, int defensa, string estado = null)
         {
@@ -24,8 +25,8 @@ namespace program
             Habilidades = new List<IHabilidad>();
             HabilidadCargando = null;
             Estado = estado;
+            DuracionEstado = 0; // Por defecto, sin estado especial
         }
-
 
         public void AprenderHabilidad(IHabilidad habilidad)
         {
@@ -44,7 +45,6 @@ namespace program
 
             return resultado;
         }
-
 
         public IHabilidad? ObtenerHabilidad(string nombreHabilidad)
         {
