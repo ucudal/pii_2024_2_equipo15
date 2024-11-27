@@ -4,883 +4,134 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
-        <member name="M:LibraryTests.AtaquesTest.Ataques">
+        <member name="M:Tests.BatallaActualTest.SetUp">
             <summary>
-            Verifica que los ataques se inicialicen correctamente y que sus propiedades sean válidas.
+            Configura el estado inicial para las pruebas.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTest.Batalla">
+        <member name="M:Tests.BatallaActualTest.CrearPartida_CreaNuevaBatalla">
             <summary>
-            Válida que los entrenadores inicializados en la batalla sean los esperados.
-            Comprueba que las propiedades <see cref="P:Library.Batalla.Entrenador1"/> y <see cref="P:Library.Batalla.Entrenador2"/> 
-            correspondan a los valores dados durante la creación de la batalla.
+            Valida que se pueda crear una nueva batalla entre dos entrenadores.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTest.CambiarTurno">
+        <member name="M:Tests.BatallaActualTest.BatallaPorEntrenador_RetornaBatallaCorrecta">
             <summary>
-            Válida el cambio de turno en la batalla.
-            Comprueba que el turno actual cambia después de llamar al método <see cref="M:Library.Batalla.CambiarTurno"/>.
+            Valida que se pueda obtener la batalla activa de un entrenador.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTest.ConocerGanador">
+        <member name="M:Tests.BatallaActualTest.BatallaPorEntrenador_SinBatallaActiva_RetornaNull">
             <summary>
-            Válida que el método <see cref="M:Library.Batalla.ConocerGanador"/> devuelva el entrenador ganador
-            cuando todos los Pokémon de uno de los entrenadores están debilitados.
+            Valida que si un entrenador no está en ninguna batalla activa, se devuelva null.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTest.PokemonDebilitado">
+        <member name="M:Tests.BatallaActualTest.TerminarPartida_FinalizaCorrectamente">
             <summary>
-            Válida que el método <see cref="M:Library.Batalla.PokemonDebilitado"/> identifique correctamente
-            si un Pokémon ha sido derrotado en la batalla.
+            Valida que se pueda terminar correctamente una batalla activa.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTest.MostrarTurnoActual">
+        <member name="M:Tests.BatallaActualTest.DeterminarGanador_Entrenador1Gana">
             <summary>
-            Válida que el método <see cref="M:Library.Batalla.MostrarTurnoActual"/> devuelva correctamente
-            el entrenador cuyo turno es el actual.
+            Valida que al determinar el ganador, se retorne correctamente el resultado.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTest.VerificarEstado_Dormido_NoAtacar">
+        <member name="M:Tests.BatallaActualTest.DeterminarGanador_LaBatallaContinua">
             <summary>
-            Válida que el Pokémon dormido no pueda atacar.
-            Este test hace que cuando un Pokémon está dormido, no puede realizar un ataque.
+            Valida que al determinar el ganador, se devuelva que la batalla continúa si ambos tienen Pokémon vivos.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTest.VerificarEstado_Dormido_Atacar">
+        <member name="M:Tests.BatallaActualTest.DeterminarGanador_Entrenador2Gana">
             <summary>
-            Válida que el Pokémon dormido pueda atacar.
-            Este test hace que si el Pokémon dormido se despierta, pueda atacar.
+            Valida que al determinar el ganador, se retorne correctamente si el entrenador 2 gana.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTest.VerificarEstado_Paralizado_NoAtacar">
+        <member name="T:Tests.BatallaTests">
             <summary>
-            Válida que el Pokémon paralizado no pueda atacar.
-            Este test hace que cuando un Pokémon está paralizado, no puede realizar un ataque.
+            Pruebas para la clase Batalla.
             </summary>
         </member>
-        <member name="M:LibraryTests.BatallaTest.VerificarEstado_Paralizado_Atacar">
+        <member name="M:Tests.BatallaTests.SetUp">
             <summary>
-            Válida que el Pokémon paralizado pueda atacar.
-            Este test hace que si el Pokémon paralizado se libera, pueda atacar .
+            Configuración inicial para cada prueba.
             </summary>
         </member>
-        <member name="M:LibraryTests.EntrenadorTest.Entrenador">
+        <member name="M:Tests.BatallaTests.Constructor_AsignarEntrenadoresYTurnoInicial">
             <summary>
-            Válida la correcta inicialización de un objeto <see cref="M:LibraryTests.EntrenadorTest.Entrenador"/>.
-            Comprueba que los valores predeterminados de las propiedades del entrenador sean correctos:
-            <list type="bullet">
-            <item><description>Nombre del entrenador.</description></item>
-            <item><description>Equipo inicial vacío.</description></item>
-            <item><description>Cantidad de ítems iniciales.</description></item>
-            </list>
+            Prueba que el constructor asigna correctamente los entrenadores y el turno inicial.
             </summary>
         </member>
-        <member name="M:LibraryTests.EntrenadorTest.AgregarPokemon">
+        <member name="M:Tests.BatallaTests.IniciarBatalla_RetornaMensajeCorrecto">
             <summary>
-            Válida que un Pokémon se pueda agregar al equipo del entrenador.
-            Comprueba que el Pokémon aparece en la lista de equipo y que el mensaje de retorno es correcto.
+            Prueba que IniciarBatalla devuelve el mensaje correcto.
             </summary>
         </member>
-        <member name="M:LibraryTests.EntrenadorTest.Atacar">
+        <member name="M:Tests.BatallaTests.RealizarTurno_UsarHabilidadConExito">
             <summary>
-            Válida que el método <see cref="M:Library.Entrenador.Atacar(Library.IPokemon,Library.IAtaque)"/> reduzca correctamente la salud
-            del Pokémon objetivo en base al daño del ataque utilizado.
+            Prueba que RealizarTurno reduce la vida del oponente al usar una habilidad con éxito.
             </summary>
         </member>
-        <member name="M:LibraryTests.EntrenadorTest.ItemSuperPocion">
+        <member name="M:Tests.BatallaTests.Atacar_FallidoPorPrecision_NoReduceVida">
             <summary>
-            Válida el uso de una Súper Poción para curar a un Pokémon.
-            Comprueba que la salud del Pokémon aumenta y que el mensaje retornado es correcto.
+            Prueba que Atacar no reduce la vida del oponente si la precisión falla.
             </summary>
         </member>
-        <member name="M:LibraryTests.EntrenadorTest.ItemRevivir">
+        <member name="M:Tests.BatallaTests.Atacar_Paralizado_NoSeMueve">
             <summary>
-            Válida el uso del ítem Revivir para restaurar parcialmente la salud de un Pokémon debilitado.
+            Prueba que Atacar no se ejecuta si el atacante está paralizado.
             </summary>
         </member>
-        <member name="M:LibraryTests.EntrenadorTest.ItemCuraTotal">
+        <member name="M:Tests.BatallaTests.CambiarPokemon_Exitoso">
             <summary>
-            Válida el uso del ítem Cura Total para eliminar efectos de estado (como quemaduras o envenenamientos) de un Pokémon.
+            Prueba que CambiarPokemon actualiza correctamente el Pokémon activo.
             </summary>
         </member>
-        <member name="M:LibraryTests.EntrenadorTest.MostrarPokemon">
+        <member name="M:Tests.BatallaTests.CambiarPokemon_NoEstaEnEquipo">
             <summary>
-            Válida que el método <see cref="M:Library.Entrenador.MostrarPokemon"/> devuelva correctamente
-            los nombres de los Pokémon en el equipo del entrenador.
+            Prueba que CambiarPokemon falla si el Pokémon no pertenece al equipo.
             </summary>
         </member>
-        <member name="M:LibraryTests.PokemonTest.Pokemon">
+        <member name="M:Tests.BatallaTests.CambiarPokemon_PokemonDebilitado">
             <summary>
-            Válida que un objeto <see cref="M:LibraryTests.PokemonTest.Pokemon"/> se inicialice correctamente.
-            Comprueba las propiedades:
-            <list type="bullet">
-            <item><description>Nombre del Pokémon.</description></item>
-            <item><description>Salud inicial y salud total.</description></item>
-            <item><description>Tipo del Pokémon.</description></item>
-            <item><description>Lista de ataques inicial (vacía).</description></item>
-            </list>
+            Prueba que CambiarPokemon falla si el Pokémon está debilitado.
             </summary>
         </member>
-        <member name="M:LibraryTests.PokemonTest.AgregarAtaques">
+        <member name="M:Tests.BatallaTests.ReducirTurnosEspeciales_DecrementaCorrectamente">
             <summary>
-            Válida que un ataque se pueda agregar correctamente a la lista de ataques de un Pokémon.
-            Comprueba que:
-            <list type="bullet">
-            <item><description>El ataque se añade a la lista de ataques.</description></item>
-            <item><description>El nombre del ataque añadido es correcto.</description></item>
-            </list>
+            Prueba que ReducirTurnosEspeciales decrementa correctamente los turnos.
             </summary>
         </member>
-        <member name="M:LibraryTests.PokemonTest.ConocerAtaques">
+        <member name="M:Tests.BatallaTests.DeterminarGanador_Entrenador1Gana">
             <summary>
-            Válida que el método <see cref="M:Library.Pokemon.ConocerAtaques(Library.Pokemon)"/> devuelva correctamente
-            los nombres de los ataques disponibles de un Pokémon.
+            Prueba que DeterminarGanador devuelve el mensaje correcto cuando gana el entrenador1.
             </summary>
         </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsPlanta">
+        <member name="M:Tests.BatallaTests.DeterminarGanador_LaBatallaContinua">
             <summary>
-            Válida que el tipo Bicho sea muy efectivo contra Planta.
+            Prueba que DeterminarGanador devuelve el mensaje correcto cuando la batalla continúa.
             </summary>
         </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsPsiquico">
+        <member name="M:Tests.BatallaTests.ContieneEntrenador_EntrenadorPresente">
             <summary>
-            Válida que el tipo Bicho sea muy efectivo contra Psíquico.
+            Prueba que ContieneEntrenador devuelve true si el entrenador está presente en la batalla.
             </summary>
         </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsLucha">
+        <member name="M:Tests.BatallaTests.ContieneEntrenador_EntrenadorNoPresente">
             <summary>
-            Válida que el tipo Bicho sea muy efectivo contra Lucha.
+            Prueba que ContieneEntrenador devuelve false si el entrenador no está en la batalla.
             </summary>
         </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsVeneno">
+        <member name="M:Tests.BatallaTests.JugadoresDisponibles_RetornaAmbosEntrenadores">
             <summary>
-            Válida que el tipo Bicho sea muy efectivo contra Veneno.
+            Prueba que JugadoresDisponibles retorna ambos entrenadores.
             </summary>
         </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsFuego">
+        <member name="M:Tests.BatallaTests.MostrarTurnoActual_TurnoDeJugador1">
             <summary>
-            Válida que el tipo Bicho sea poco efectivo contra Fuego.
+            Prueba que MostrarTurnoActual devuelve el mensaje correcto para el turno del jugador1.
             </summary>
         </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsVolador">
+        <member name="M:Tests.BatallaTests.MostrarTurnoActual_TurnoDeJugador2">
             <summary>
-            Válida que el tipo Bicho sea poco efectivo contra Volador.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsElectrico">
-            <summary>
-            Válida que el tipo Bicho tenga efectividad neutral contra Eléctrico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsFantasma">
-            <summary>
-            Válida que el tipo Bicho tenga efectividad neutral contra Fantasma.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsNormal">
-            <summary>
-            Válida que el tipo Bicho tenga efectividad neutral contra Normal.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsTierra">
-            <summary>
-            Válida que el tipo Bicho tenga efectividad neutral contra Tierra.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsRoca">
-            <summary>
-            Válida que el tipo Bicho tenga efectividad neutral contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsAgua">
-            <summary>
-            Válida que el tipo Bicho tenga efectividad neutral contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadBichoVsDragon">
-            <summary>
-            Válida que el tipo Bicho tenga efectividad neutral contra Dragón.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsFuego">
-            <summary>
-            Válida que el tipo Agua sea muy efectivo contra Fuego.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsTierra">
-            <summary>
-            Válida que el tipo Agua sea muy efectivo contra Tierra.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsRoca">
-            <summary>
-            Válida que el tipo Agua sea muy efectivo contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsAgua">
-            <summary>
-            Válida que el tipo Agua sea poco efectivo contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsDragon">
-            <summary>
-            Válida que el tipo Agua sea poco efectivo contra Dragón.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsPlanta">
-            <summary>
-            Válida que el tipo Agua sea poco efectivo contra Planta.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsBicho">
-            <summary>
-            Válida que el tipo Agua tenga efectividad neutral contra Bicho.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsPsiquico">
-            <summary>
-            Válida que el tipo Agua tenga efectividad neutral contra Psíquico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsLucha">
-            <summary>
-            Válida que el tipo Agua tenga efectividad neutral contra Lucha.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsElectrico">
-            <summary>
-            Válida que el tipo Agua tenga efectividad neutral contra Eléctrico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsFantasma">
-            <summary>
-            Válida que el tipo Agua tenga efectividad neutral contra Fantasma.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadAguaVsNormal">
-            <summary>
-            Válida que el tipo Agua tenga efectividad neutral contra Normal.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsDragon">
-            <summary>
-            Válida que el tipo Dragón sea muy efectivo contra Dragón.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsAgua">
-            <summary>
-            Válida que el tipo Dragón tenga efectividad neutral contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsFuego">
-            <summary>
-            Válida que el tipo Dragón tenga efectividad neutral contra Fuego.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsTierra">
-            <summary>
-            Válida que el tipo Dragón tenga efectividad neutral contra Tierra.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsRoca">
-            <summary>
-            Válida que el tipo Dragón tenga efectividad neutral contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsElectrico">
-            <summary>
-            Válida que el tipo Dragón sea poco neutral contra Eléctrico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsBicho">
-            <summary>
-            Válida que el tipo Dragón tenga efectividad neutral contra Bicho.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsPsiquico">
-            <summary>
-            Válida que el tipo Dragón tenga efectividad neutral contra Psíquico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsLucha">
-            <summary>
-            Válida que el tipo Dragón tenga efectividad neutral contra Lucha.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsFantasma">
-            <summary>
-            Válida que el tipo Dragón tenga efectividad neutral contra Fantasma.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsNormal">
-            <summary>
-            Válida que el tipo Dragón tenga efectividad neutral contra Normal.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsVeneno">
-            <summary>
-            Válida que el tipo Dragón tenga efectividad neutral contra Veneno.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDragonVsVolador">
-            <summary>
-            Válida que el tipo Dragón tenga efectividad neutral contra Volador.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsVolador">
-            <summary>
-            Válida que el tipo Eléctrico sea muy efectivo contra Volador.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsAgua">
-            <summary>
-            Válida que el tipo Eléctrico sea muy efectivo contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsDragon">
-            <summary>
-            Válida que el tipo Eléctrico tenga efectividad poco efectiva contra Dragón.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsTierra">
-            <summary>
-            Válida que el tipo Eléctrico tenga efectividad poco efectiva contra Tierra.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsPlanta">
-            <summary>
-            Válida que el tipo Eléctrico tenga efectividad poco efectiva contra Planta.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsFuego">
-            <summary>
-            Válida que el tipo Eléctrico tenga efectividad neutral contra Fuego.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsNormal">
-            <summary>
-            Válida que el tipo Eléctrico tenga efectividad neutral contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsElectrico">
-            <summary>
-            Válida que el tipo Eléctrico sea inmune a Eléctrico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsRoca">
-            <summary>
-            Válida que el tipo Eléctrico tenga efectividad neutral contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsPsiquico">
-            <summary>
-            Válida que el tipo Eléctrico tenga efectividad neutral contra Psíquico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsLucha">
-            <summary>
-            Válida que el tipo Eléctrico tenga efectividad neutral contra Lucha.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsFantasma">
-            <summary>
-            Válida que el tipo Eléctrico tenga efectividad neutral contra Fantasma.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadElectricoVsVeneno">
-            <summary>
-            Válida que el tipo Eléctrico tenga efectividad neutral contra Veneno.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsPsiquico">
-            <summary>
-            Válida que el tipo Fantasma sea muy efectivo contra Psíquico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsNormal">
-            <summary>
-            Válida que el tipo Fantasma sea inmune a Normal.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsFuego">
-            <summary>
-            Válida que el tipo Fantasma tenga efectividad neutral contra Fuego.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsAgua">
-            <summary>
-            Válida que el tipo Fantasma tenga efectividad neutral contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsDragon">
-            <summary>
-            Válida que el tipo Fantasma tenga efectividad neutral contra Dragón.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsTierra">
-            <summary>
-            Válida que el tipo Fantasma tenga efectividad neutral contra Tierra.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsPlanta">
-            <summary>
-            Válida que el tipo Fantasma tenga efectividad neutral contra Planta.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsLucha">
-            <summary>
-            Válida que el tipo Fantasma tenga efectividad neutral contra Lucha.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsVeneno">
-            <summary>
-            Válida que el tipo Fantasma tenga efectividad neutral contra Veneno.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsFantasma">
-            <summary>
-            Válida que el tipo Fantasma tenga efectividad alta contra Fantasma.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsRoca">
-            <summary>
-            Válida que el tipo Fantasma tenga efectividad neutral contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFantasmaVsVolador">
-            <summary>
-            Válida que el tipo Fantasma tenga efectividad neutral contra Volador.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFuegoVsBicho">
-            <summary>
-            Válida que el tipo Fuego sea muy efectivo contra Bicho.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFuegoVsHielo">
-            <summary>
-            Válida que el tipo Fuego sea muy efectivo contra Hielo.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFuegoVsPlanta">
-            <summary>
-            Válida que el tipo Fuego sea muy efectivo contra Planta.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFuegoVsAgua">
-            <summary>
-            Válida que el tipo Fuego sea poco efectivo contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFuegoVsDragon">
-            <summary>
-            Válida que el tipo Fuego sea poco efectivo contra Dragón.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFuegoVsFuego">
-            <summary>
-            Válida que el tipo Fuego sea poco efectivo contra Fuego.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFuegoVsRoca">
-            <summary>
-            Válida que el tipo Fuego sea poco efectivo contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFuegoVsFantasma">
-            <summary>
-            Válida que el tipo Fuego tenga efectividad neutral contra Fantasma.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFuegoVsNormal">
-            <summary>
-            Válida que el tipo Fuego tenga efectividad neutral contra Normal.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFuegoVsVeneno">
-            <summary>
-            Válida que el tipo Fuego tenga efectividad neutral contra Veneno.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadFuegoVsTierra">
-            <summary>
-            Válida que el tipo Fuego tenga efectividad neutral contra Tierra.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadHieloVsDragon">
-            <summary>
-            Válida que el tipo Hielo sea muy efectivo contra Dragón.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadHieloVsPlanta">
-            <summary>
-            Válida que el tipo Hielo sea muy efectivo contra Planta.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadHieloVsTierra">
-            <summary>
-            Válida que el tipo Hielo sea muy efectivo contra Tierra.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadHieloVsVolador">
-            <summary>
-            Válida que el tipo Hielo sea muy efectivo contra Volador.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadHieloVsAgua">
-            <summary>
-            Válida que el tipo Hielo sea poco efectivo contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadHieloVsHielo">
-            <summary>
-            Válida que el tipo Hielo sea poco efectivo contra Hielo.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadHieloVsFuego">
-            <summary>
-            Válida que el tipo Hielo tenga efectividad neutral contra Fuego.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadHieloVsFantasma">
-            <summary>
-            Válida que el tipo Hielo tenga efectividad neutral contra Fantasma.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadHieloVsNormal">
-            <summary>
-            Válida que el tipo Hielo tenga efectividad neutral contra Normal.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadHieloVsVeneno">
-            <summary>
-            Válida que el tipo Hielo tenga efectividad neutral contra Veneno.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadHieloVsRoca">
-            <summary>
-            Válida que el tipo Hielo tenga efectividad neutral contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsHielo">
-            <summary>
-            Válida que el tipo Lucha sea muy efectivo contra Hielo.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsNormal">
-            <summary>
-            Válida que el tipo Lucha sea muy efectivo contra Normal.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsRoca">
-            <summary>
-            Válida que el tipo Lucha sea muy efectivo contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsPsiquico">
-            <summary>
-            Válida que el tipo Lucha sea muy efectivo contra Psíquico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsVeneno">
-            <summary>
-            Válida que el tipo Lucha sea muy efectivo contra Veneno.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsBicho">
-            <summary>
-            Válida que el tipo Lucha sea poco efectivo contra Bicho.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsFantasma">
-            <summary>
-            Válida que el tipo Lucha sea poco efectivo contra Fantasma.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsVolador">
-            <summary>
-            Válida que el tipo Lucha sea poco efectivo contra Volador.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsElectrico">
-            <summary>
-            Válida que el tipo Lucha tenga efectividad neutral contra Eléctrico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsAgua">
-            <summary>
-            Válida que el tipo Lucha tenga efectividad neutral contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsDragon">
-            <summary>
-            Válida que el tipo Lucha tenga efectividad neutral contra Dragón.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsPlanta">
-            <summary>
-            Válida que el tipo Lucha tenga efectividad neutral contra Planta.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadLuchaVsFuego">
-            <summary>
-            Válida que el tipo Lucha tenga efectividad neutral contra Fuego.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadNormalVsRoca">
-            <summary>
-            Válida que el tipo Normal sea poco efectivo contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadNormalVsFantasma">
-            <summary>
-            Válida que el tipo Normal sea poco efectivo contra Fantasma.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadNormalVsHielo">
-            <summary>
-            Válida que el tipo Normal tenga efectividad neutral contra Hielo.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadNormalVsLucha">
-            <summary>
-            Válida que el tipo Normal tenga efectividad neutral contra Lucha.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadNormalVsElectrico">
-            <summary>
-            Válida que el tipo Normal tenga efectividad neutral contra Eléctrico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadNormalVsAgua">
-            <summary>
-            Válida que el tipo Normal tenga efectividad neutral contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadNormalVsDragon">
-            <summary>
-            Válida que el tipo Normal tenga efectividad neutral contra Dragón.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadNormalVsPlanta">
-            <summary>
-            Válida que el tipo Normal tenga efectividad neutral contra Planta.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadNormalVsFuego">
-            <summary>
-            Válida que el tipo Normal tenga efectividad neutral contra Fuego.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadNormalVsVeneno">
-            <summary>
-            Válida que el tipo Normal tenga efectividad neutral contra Veneno.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadNormalVsPsiquico">
-            <summary>
-            Válida que el tipo Normal tenga efectividad neutral contra Psíquico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsElectrico">
-            <summary>
-            Válida que el tipo Tierra sea neutro contra Eléctrico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsFuego">
-            <summary>
-            Válida que el tipo Tierra sea muy efectivo contra Fuego.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsRoca">
-            <summary>
-            Válida que el tipo Tierra sea muy efectivo contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsVeneno">
-            <summary>
-            Válida que el tipo Tierra sea muy efectivo contra Veneno.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsBicho">
-            <summary>
-            Válida que el tipo Tierra sea poco efectivo contra Bicho.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsPlanta">
-            <summary>
-            Válida que el tipo Tierra sea poco efectivo contra Planta.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsVolador">
-            <summary>
-            Válida que el tipo Tierra sea poco efectivo contra Volador.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsAgua">
-            <summary>
-            Válida que el tipo Tierra tenga efectividad neutral contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsDragon">
-            <summary>
-            Válida que el tipo Tierra tenga efectividad neutral contra Dragón.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsLucha">
-            <summary>
-            Válida que el tipo Tierra tenga efectividad neutral contra Lucha.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsHielo">
-            <summary>
-            Válida que el tipo Tierra tenga efectividad neutral contra Hielo.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsNormal">
-            <summary>
-            Válida que el tipo Tierra tenga efectividad neutral contra Normal.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadTierraVsPsiquico">
-            <summary>
-            Válida que el tipo Tierra tenga efectividad neutral contra Psíquico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVenenoVsBicho">
-            <summary>
-            Válida que el tipo Veneno sea muy efectivo contra Bicho.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVenenoVsPlanta">
-            <summary>
-            Válida que el tipo Veneno sea muy efectivo contra Planta.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVenenoVsTierra">
-            <summary>
-            Válida que el tipo Veneno sea muy efectivo contra Tierra.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVenenoVsFantasma">
-            <summary>
-            Válida que el tipo Veneno sea poco efectivo contra Fantasma.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVenenoVsVeneno">
-            <summary>
-            Válida que el tipo Veneno sea poco efectivo contra Veneno.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVenenoVsRoca">
-            <summary>
-            Válida que el tipo Veneno sea poco efectivo contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVenenoVsElectrico">
-            <summary>
-            Válida que el tipo Veneno tenga efectividad neutral contra Eléctrico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVenenoVsFuego">
-            <summary>
-            Válida que el tipo Veneno tenga efectividad neutral contra Fuego.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVenenoVsAgua">
-            <summary>
-            Válida que el tipo Veneno tenga efectividad neutral contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVenenoVsDragon">
-            <summary>
-            Válida que el tipo Veneno tenga efectividad neutral contra Dragón.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVenenoVsLucha">
-            <summary>
-            Válida que el tipo Veneno tenga efectividad neutral contra Lucha.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVoladorBicho">
-            <summary>
-            Verifica que el tipo Volador sea muy efectivo contra Bicho.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVoladorLucha">
-            <summary>
-            Verifica que el tipo Volador sea muy efectivo contra Lucha.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVoladorPlanta">
-            <summary>
-            Verifica que el tipo Volador sea muy efectivo contra Planta.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVoladorElectrico">
-            <summary>
-            Verifica que el tipo Volador sea neutro efectivo contra Eléctrico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVoladorRoca">
-            <summary>
-            Verifica que el tipo Volador sea poco efectivo contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVoladorVolador">
-            <summary>
-            Verifica que el tipo Volador sea neutral contra Volador.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVoladorTierra">
-            <summary>
-            Verifica que el tipo Volador sea neutro efectivo contra Tierra.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVoladorElectricoNeutral">
-            <summary>
-            Verifica que el tipo Volador sea neutral contra Eléctrico.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVoladorRocaNeutral">
-            <summary>
-            Verifica que el tipo Volador poco efectivo contra Roca.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadVoladorAgua">
-            <summary>
-            Verifica que el tipo Volador sea neutro efectivo contra Agua.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.EfectividadDaño">
-            <summary>
-            Válida que el método <see cref="!:Tipos.efectividadDeDaño"/> devuelva correctamente
-            la efectividad entre un tipo atacante y un tipo objetivo.
-            En este caso, Agua es muy efectivo contra Fuego.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.DañoPocoEfectivo">
-            <summary>
-            Válida que el daño sea poco efectivo entre tipos.
-            En este caso, Agua es poco efectivo contra Planta.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.DañoNeutral">
-            <summary>
-            Válida que el daño sea neutral entre tipos.
-            En este caso, Agua contra Normal no tiene ventajas ni desventajas.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.DañoInmune">
-            <summary>
-            Válida que un tipo sea inmune al daño de otro.
-            En este caso, Fantasma es inmune a Normal.
-            </summary>
-        </member>
-        <member name="M:LibraryTests.TiposTest.DañoMismoTipo">
-            <summary>
-            Válida que los ataques de un tipo contra sí mismo sean neutrales.
-            En este caso, Fuego contra Fuego.
+            Prueba que MostrarTurnoActual devuelve el mensaje correcto para el turno del jugador2.
             </summary>
         </member>
     </members>
