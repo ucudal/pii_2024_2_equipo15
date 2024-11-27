@@ -1,3 +1,5 @@
+using System.Diagnostics.Eventing.Reader;
+
 namespace program
 {
     /// <summary>
@@ -50,7 +52,18 @@ namespace program
         /// <returns>Un mensaje indicando el inicio de la batalla y el entrenador que empieza.</returns>
         public string IniciarBatalla()
         {
-            return $"{entrenador1.Nombre} y {entrenador2.Nombre} están listos para la batalla. ¡{entrenadorActual.Nombre} comienza!";
+            if (Restricciones.ListaDeRestricciones.Count > 0)
+            {
+                Restricciones.MostrarRestricciones();
+            }
+
+            if (!Restricciones.AceptacionRestriccion)
+            {
+                return
+                    $"{entrenador1.Nombre} y {entrenador2.Nombre} están listos para la batalla. ¡{entrenadorActual.Nombre} comienza!";
+            }
+
+            return $"No se han aceptado las restricciones entonces la batalla no comenzara!";
         }
 
         /// <summary>

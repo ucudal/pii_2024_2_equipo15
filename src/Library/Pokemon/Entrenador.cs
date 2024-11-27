@@ -18,7 +18,7 @@ public class Entrenador
     /// <summary>
     /// Obtiene o establece el Pokémon actualmente activo en batalla.
     /// </summary>
-    public Pokemon? PokemonActivo { get; set; }
+    public  Pokemon? PokemonActivo { get; set; }
 
     /// <summary>
     /// Indica si el entrenador está participando actualmente en una batalla.

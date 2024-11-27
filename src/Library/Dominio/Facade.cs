@@ -52,6 +52,11 @@ namespace program
                 return $"El Pokémon {pokemonName} ya ha sido seleccionado por otro entrenador.";
             }
 
+            if (Restricciones.RestriccionesPokemon.Contains(pokemonName))
+            {
+                return $"El Pokémon {pokemonName} ha sido restringido y no se puede seleccionar.";
+            } 
+
             bool añadido = jugador.AñadirPokemon(pokemon);
             if (!añadido) return "No puedes añadir más Pokémon o ya tienes este Pokémon.";
 
@@ -133,6 +138,10 @@ namespace program
 
         public static string UsarObjeto(string entrenador, string nombreObjeto, string nombrePokemon)
         {
+            if (Restricciones.RestriccionesItems.Contains(nombreObjeto))
+            {
+                return $"El objeto {nombreObjeto} ha sido restringido antes de comenzar la batalla y no se puede utilizar";
+            }
             if (!inventarios.ContainsKey(entrenador))
             {
                 inventarios[entrenador] = new Inventario();
