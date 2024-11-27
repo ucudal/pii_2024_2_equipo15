@@ -3,7 +3,7 @@ public class Ataque
 {
     public string Nombre { get; }
     public int Danio { get; }
-    public int Precision { get; } // Representado como porcentaje
+    public int Precision { get; } 
     public bool EsEspecial { get; }
     public EfectoEspeciales? Efecto { get; }
         
@@ -12,13 +12,13 @@ public class Ataque
         Random random = new Random();
         if (random.Next(0, 100) >= Precision)
         {
-            return $"{atacante.Nombre} intentó usar {Nombre}, pero falló.";
+            return $"{atacante.Nombre} intento usar {Nombre}, pero fallo";
         }
 
         if (EsEspecial && Efecto != null && string.IsNullOrEmpty(defensor.Estado))
         {
             Efecto.AplicarEfecto(defensor);
-            return $"{atacante.Nombre} usó {Nombre} y aplicó el efecto {Efecto.Nombre} en {defensor.Nombre}.";
+            return $"{atacante.Nombre} uso {Nombre} y aplicó el efecto {Efecto.Nombre} en {defensor.Nombre}.";
         }
 
         // Daño con posibilidad de crítico
