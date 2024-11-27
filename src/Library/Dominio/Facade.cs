@@ -6,6 +6,7 @@ namespace program
     public static class Facade
     {
         private static Dictionary<string, Batalla> batallasActivas = new Dictionary<string, Batalla>();
+        private static Dictionary<string, Inventario> inventarios = new Dictionary<string, Inventario>();
 
         public static string MostrarPokemones()
         {
@@ -49,7 +50,6 @@ namespace program
             Batalla.PokemonesSeleccionados.Add(pokemonName);
             return $"{pokemonName} fue añadido al equipo de {entrenador}.";
         }
-
 
         public static string VerPokemones(string entrenador, string? oponente = null)
         {
@@ -120,6 +120,33 @@ namespace program
 
             return batalla.RealizarTurno(cambio: cambio);
         }
+
+        public static string UsarObjeto(string entrenador, string nombreObjeto, string nombrePokemon)
+        {
+            if (!inventarios.ContainsKey(entrenador))
+            {
+                inventarios[entrenador] = new Inventario();
+            }
+
+            Pokemon? pokemon = Logica.Instance.ObtenerPokemon(nombrePokemon);
+            if (pokemon == null)
+            {
+                return "El Pokémon no existe o no está en el equipo.";
+            }
+
+            return inventarios[entrenador].UsarObjeto(nombreObjeto, pokemon);
+        }
+
+        public static string MostrarInventario(string entrenador)
+        {
+            if (!inventarios.ContainsKey(entrenador))
+            {
+                inventarios[entrenador] = new Inventario();
+            }
+
+            return inventarios[entrenador].MostrarInventario();
+        }
+
 
         private static Batalla ObtenerBatallaPorEntrenador(string entrenador)
         {
