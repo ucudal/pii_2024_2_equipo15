@@ -108,22 +108,28 @@ namespace program
             CambiarTurno();
             return $"{atacante.Nombre} usó {habilidad.Nombre} y causó {daño} puntos de daño a {defensor.Nombre}. Vida restante: {defensor.Vida}.";
         }
+        public static List<string> PokemonesSeleccionados = new List<string>();
 
-        private string CambiarPokemon(Pokemon nuevoPokemon)
+
+        public string CambiarPokemon(Pokemon nuevoPokemon)
         {
-            if (nuevoPokemon == null || !entrenadorActual.Pokemones.Contains(nuevoPokemon))
-            {
-                return "Ese Pokémon no está en tu equipo.";
-            }
-
             if (nuevoPokemon.Vida <= 0)
             {
-                return $"{nuevoPokemon.Nombre} está debilitado y no puede ser enviado a la batalla.";
+                return $"{nuevoPokemon.Nombre} está debilitado y no puede ser seleccionado.";
             }
 
+            // Liberar el Pokémon activo actual
+            if (entrenadorActual.PokemonActivo != null)
+            {
+                // Eliminar el nombre del Pokémon activo actual de la lista de seleccionados
+                Batalla.PokemonesSeleccionados.Remove(entrenadorActual.PokemonActivo.Nombre);
+            }
+
+            // Asignar el nuevo Pokémon
             entrenadorActual.PokemonActivo = nuevoPokemon;
-            CambiarTurno();
-            return $"{entrenadorActual.Nombre} cambió a {nuevoPokemon.Nombre}!";
+            Batalla.PokemonesSeleccionados.Add(nuevoPokemon.Nombre);
+
+            return $"{entrenadorActual.Nombre} cambió a {nuevoPokemon.Nombre}.";
         }
 
         private void CambiarTurno()

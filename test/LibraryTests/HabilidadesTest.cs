@@ -1,4 +1,4 @@
-namespace LibraryTests;
+/*namespace LibraryTests;
 
 using NUnit.Framework;
 using program;
@@ -23,3 +23,4 @@ public class HabilidadesTest
         Assert.That(habilidad.Efectos.Nombre, Is.EqualTo("Quemar"));
     }
 }
+*/

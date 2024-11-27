@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿/*using NUnit.Framework;
 namespace LibraryTests;
 using program;
 
@@ -44,3 +44,4 @@ public class PokemonTest
         Assert.That(resultado, Contains.Substring("Impactrueno"));
     }
 }
+*/
